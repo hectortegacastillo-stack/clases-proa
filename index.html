@@ -2,1382 +2,1427 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Diplomado PROA - Estrategias Clásicas: Guías Locales, Auditoría y Retroalimentación</title>
+<title>Epidemiología Global y Local de la Resistencia Antimicrobiana - Ph.D. Héctor Ortega</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #e8eef5;
-    padding: 20px;
-    color: #1a3a5c;
+    font-family: Georgia, 'Times New Roman', serif;
+    background: #e8eaed;
+    color: #1a1a2e;
   }
   .slide {
     width: 1100px;
-    height: 620px;
+    height: 760px;
     margin: 30px auto;
-    background: linear-gradient(135deg, #ffffff 0%, #f0f6fc 100%);
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    background: #ffffff;
     position: relative;
-    overflow: hidden;
+    padding: 70px 70px 70px 90px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.15);
     page-break-after: always;
-  }
-  .slide::before {
-    content: "";
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 12px;
-    background: linear-gradient(180deg, #0066b3 0%, #00a4e4 50%, #f7941d 100%);
-  }
-  .header {
-    background: linear-gradient(90deg, #0066b3 0%, #0086c9 100%);
-    color: white;
-    padding: 16px 40px 16px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .logo {
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: 2px;
-  }
-  .logo span { color: #f7941d; }
-  .slide-num {
-    background: #f7941d;
-    color: white;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: bold;
-  }
-  .footer {
-    position: absolute;
-    bottom: 0; left: 12px; right: 0;
-    height: 38px;
-    background: #1a3a5c;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 30px;
-    font-size: 12px;
-  }
-  .footer .web { color: #f7941d; font-weight: bold; }
-  .content {
-    padding: 25px 45px 55px 60px;
-    height: calc(100% - 70px - 38px);
     overflow: hidden;
+    border: 1px solid #d0d4dc;
   }
-  h1.title {
-    color: #0066b3;
-    font-size: 28px;
-    border-bottom: 3px solid #f7941d;
-    padding-bottom: 8px;
-    margin-bottom: 15px;
+  /* Encabezado con logos - solo en portada y cierre */
+  .header-logos {
+    position: absolute;
+    top: 25px;
+    right: 40px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .logo-avantis {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .logo-avantis .icon {
+    width: 32px; height: 32px;
+    background: linear-gradient(135deg, #2c8a3f 0%, #1e5fa8 100%);
+    clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 20% 100%, 0% 35%);
+  }
+  .logo-avantis .text-block { line-height: 1; }
+  .logo-avantis .name {
+    font-family: 'Helvetica', Arial, sans-serif;
+    font-weight: bold; font-size: 18px;
+    color: #0a2942;
+  }
+  .logo-avantis .tag {
+    font-family: 'Helvetica', Arial, sans-serif;
+    font-size: 8px; color: #2c8a3f; letter-spacing: 0.5px;
+  }
+  .logo-indo {
+    display: flex; align-items: center; gap: 6px;
+    border-left: 1px solid #ccc; padding-left: 14px;
+  }
+  .logo-indo .shield {
+    width: 26px; height: 32px;
+    background: #4a1d6b;
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+    position: relative;
+  }
+  .logo-indo .shield::after {
+    content:""; position:absolute; left:50%; top:6px;
+    transform:translateX(-50%);
+    width:3px; height:14px; background:#fff;
+  }
+  .logo-indo .name {
+    font-family: 'Helvetica', Arial, sans-serif;
+    font-size: 11px; color: #4a1d6b; line-height: 1.1;
+  }
+  .logo-indo .name span {
+    display: block; font-weight: bold;
+  }
+
+  /* Ícono superior izquierdo en slides de contenido */
+  .corner-icon {
+    position: absolute;
+    top: 30px; left: 30px;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2c8a3f 0%, #1e5fa8 70%);
+    border: 2px solid #1e5fa8;
+  }
+  .corner-icon::after {
+    content:""; position:absolute; left:6px; top:7px;
+    width: 12px; height: 12px;
+    background: #fff;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  }
+
+  /* Línea divisoria superior */
+  .top-line {
+    position: absolute;
+    top: 75px; left: 0; right: 0;
+    height: 1px; background: #b8bcc4;
+  }
+
+  /* Footer */
+  .footer-bar {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    border-top: 1px solid #d0d4dc;
+    padding: 8px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fafbfc;
+    min-height: 60px;
+  }
+  .footer-left {
+    font-size: 9px;
+    color: #555;
+    font-style: italic;
+    max-width: 850px;
+    line-height: 1.35;
+    font-family: 'Helvetica', Arial, sans-serif;
+  }
+  .footer-left b { color: #0a2942; font-style: normal; }
+  .footer-logo {
+    display: flex; align-items: center; gap: 5px;
+  }
+  .footer-logo .icon {
+    width: 22px; height: 22px;
+    background: linear-gradient(135deg, #2c8a3f 0%, #1e5fa8 100%);
+    clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 20% 100%, 0% 35%);
+  }
+  .footer-logo .text-block { line-height: 1; }
+  .footer-logo .name {
+    font-family: 'Helvetica', Arial, sans-serif;
+    font-weight: bold; font-size: 13px; color: #0a2942;
+  }
+  .footer-logo .tag {
+    font-family: 'Helvetica', Arial, sans-serif;
+    font-size: 6px; color: #2c8a3f;
+  }
+  .slide-num {
+    position: absolute;
+    bottom: 8px; right: 130px;
+    font-size: 9px; color: #888;
+    font-family: 'Helvetica', Arial, sans-serif;
+  }
+
+  /* Tipografía */
+  h1.main-title {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: bold;
+    font-size: 64px;
+    color: #0a2942;
+    margin-top: 130px;
+    line-height: 1.05;
+  }
+  h1.slide-title {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: bold;
+    font-size: 30px;
+    color: #0a2942;
+    margin-top: 30px;
+    margin-bottom: 22px;
+    line-height: 1.15;
   }
   h2.subtitle {
-    color: #1a3a5c;
-    font-size: 19px;
-    margin-bottom: 10px;
-    margin-top: 8px;
-  }
-  .cover {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 100%;
-    background: linear-gradient(135deg, #0066b3 0%, #003d6b 100%);
-    color: white;
-    position: relative;
-  }
-  .cover::after {
-    content: "";
-    position: absolute;
-    bottom: 0; right: 0;
-    width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(247,148,29,0.3) 0%, transparent 70%);
-  }
-  .cover .logo-big {
-    font-size: 36px;
-    font-weight: bold;
-    letter-spacing: 4px;
-    margin-bottom: 30px;
-  }
-  .cover .logo-big span { color: #f7941d; }
-  .cover h1 {
-    font-size: 40px;
-    margin-bottom: 18px;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-  }
-  .cover h2 {
-    font-size: 24px;
-    color: #f7941d;
-    margin-bottom: 40px;
-  }
-  .cover .author {
-    font-size: 17px;
-    border-top: 2px solid #f7941d;
-    padding-top: 15px;
-    width: 65%;
-    line-height: 1.6;
-  }
-  ul.styled {
-    list-style: none;
-    padding-left: 0;
-  }
-  ul.styled li {
-    padding: 6px 0 6px 28px;
-    position: relative;
-    font-size: 15px;
-    line-height: 1.45;
-  }
-  ul.styled li::before {
-    content: "▸";
-    color: #f7941d;
-    font-weight: bold;
-    position: absolute;
-    left: 0;
+    font-family: Georgia, serif;
     font-size: 18px;
-  }
-  .grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-top: 10px;
-  }
-  .grid-3 {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 12px;
-    margin-top: 10px;
-  }
-  .grid-4 {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 10px;
-    margin-top: 10px;
-  }
-  .card {
-    background: white;
-    border-left: 5px solid #f7941d;
-    padding: 12px 15px;
-    border-radius: 6px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-  }
-  .card h3 {
-    color: #0066b3;
-    font-size: 16px;
-    margin-bottom: 6px;
-  }
-  .card p { font-size: 13px; line-height: 1.4; }
-  .highlight-box {
-    background: linear-gradient(90deg, #fff3e0 0%, #ffffff 100%);
-    border-left: 5px solid #f7941d;
-    padding: 12px 18px;
-    margin: 12px 0;
-    border-radius: 6px;
+    color: #2c8a3f;
     font-style: italic;
+    margin-bottom: 14px;
+  }
+  h3 {
+    font-family: Georgia, serif;
+    font-size: 16px;
+    color: #1e5fa8;
+    margin: 14px 0 8px 0;
+    font-weight: bold;
+  }
+  p, li {
+    font-family: Georgia, serif;
     font-size: 14px;
+    color: #1a1a2e;
+    line-height: 1.55;
+    margin-bottom: 7px;
   }
-  .objective-box {
-    background: #e3f2fd;
-    border: 2px dashed #0066b3;
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 10px;
-  }
-  table.proa {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 8px;
-    font-size: 13px;
-  }
-  table.proa th {
-    background: #0066b3;
-    color: white;
-    padding: 8px;
-    text-align: left;
-  }
-  table.proa td {
-    padding: 6px 8px;
-    border-bottom: 1px solid #ddd;
-  }
-  table.proa tr:nth-child(even) { background: #f5f9fc; }
-  .timeline {
-    display: flex;
-    justify-content: space-between;
-    margin: 15px 0;
-    position: relative;
-  }
-  .timeline::before {
-    content: "";
-    position: absolute;
-    top: 22px; left: 5%; right: 5%;
-    height: 3px;
-    background: #f7941d;
-  }
-  .step {
-    background: #0066b3;
-    color: white;
-    width: 45px; height: 45px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  ul, ol { margin-left: 26px; }
+  li { margin-bottom: 5px; }
+
+  .expositor {
+    margin-top: 60px;
+    font-family: Georgia, serif;
     font-weight: bold;
     font-size: 16px;
-    z-index: 1;
-    position: relative;
-    margin: 0 auto;
+    color: #0a2942;
   }
-  .step-container {
-    text-align: center;
-    width: 18%;
-  }
-  .step-container p {
-    font-size: 12px;
-    margin-top: 6px;
-    font-weight: 600;
-  }
-  .task-slide {
-    background: linear-gradient(135deg, #fff8e1 0%, #ffffff 100%);
-  }
-  .task-slide .header {
-    background: linear-gradient(90deg, #f7941d 0%, #ff6f00 100%);
-  }
-  .discussion-slide {
-    background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%);
-  }
-  .discussion-slide .header {
-    background: linear-gradient(90deg, #2e7d32 0%, #43a047 100%);
-  }
-  .case-study {
-    background: #f5f9fc;
-    border: 1px solid #b3d4ec;
-    padding: 12px;
-    border-radius: 8px;
-    margin-top: 8px;
-    font-size: 13px;
-    line-height: 1.5;
-  }
-  .case-study strong { color: #0066b3; }
-  .ref {
-    font-size: 10px;
-    color: #666;
+  .expositor-name {
+    font-weight: normal;
     font-style: italic;
-    margin-top: 6px;
-  }
-  .module-divider {
-    background: linear-gradient(135deg, #0066b3 0%, #003d6b 100%);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    text-align: center;
-  }
-  .module-divider .module-label {
-    font-size: 18px;
-    color: #f7941d;
-    letter-spacing: 4px;
-    margin-bottom: 15px;
-  }
-  .module-divider h1 {
-    font-size: 42px;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-    margin-bottom: 15px;
-  }
-  .module-divider .duration {
-    background: #f7941d;
-    padding: 8px 25px;
-    border-radius: 25px;
-    font-weight: bold;
-    margin-top: 20px;
-  }
-  .stat-box {
-    background: white;
-    border-top: 4px solid #f7941d;
-    padding: 12px;
-    border-radius: 6px;
-    text-align: center;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-  }
-  .stat-box .number {
-    font-size: 28px;
-    font-weight: bold;
-    color: #0066b3;
-  }
-  .stat-box .label {
-    font-size: 12px;
-    color: #555;
+    font-size: 15px;
+    color: #2c8a3f;
     margin-top: 4px;
   }
-  .pros-cons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-top: 10px;
+  .institution-line {
+    margin-top: 14px;
+    font-size: 12px;
+    color: #555;
+    font-family: 'Helvetica', sans-serif;
   }
-  .pros, .cons {
-    padding: 12px 15px;
-    border-radius: 8px;
+
+  /* Tablas */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-family: Georgia, serif;
+    font-size: 12px;
   }
-  .pros {
-    background: #e8f5e9;
-    border-left: 5px solid #2e7d32;
+  th {
+    background: #0a2942;
+    color: #ffffff;
+    padding: 7px 9px;
+    text-align: left;
+    border: 1px solid #0a2942;
+    font-weight: bold;
   }
-  .cons {
-    background: #ffebee;
-    border-left: 5px solid #c62828;
+  td {
+    border: 1px solid #b8bcc4;
+    padding: 6px 9px;
+    color: #1a1a2e;
   }
-  .pros h3 { color: #2e7d32; font-size: 15px; margin-bottom: 6px; }
-  .cons h3 { color: #c62828; font-size: 15px; margin-bottom: 6px; }
-  .pros li, .cons li { font-size: 13px; padding: 3px 0 3px 22px; list-style: none; position: relative; }
-  .pros li::before { content: "✓"; color: #2e7d32; position: absolute; left: 0; font-weight: bold; }
-  .cons li::before { content: "✗"; color: #c62828; position: absolute; left: 0; font-weight: bold; }
+  tr:nth-child(even) td { background: #f4f6f9; }
+
+  /* Cajas */
+  .highlight {
+    background: #f0f5ec;
+    border-left: 4px solid #2c8a3f;
+    padding: 9px 14px; margin: 10px 0;
+    font-size: 13px; line-height: 1.5;
+  }
+  .alert {
+    background: #fbeceb;
+    border-left: 4px solid #b53a30;
+    padding: 9px 14px; margin: 10px 0;
+    font-size: 13px; line-height: 1.5;
+  }
+  .info {
+    background: #eef3f9;
+    border-left: 4px solid #1e5fa8;
+    padding: 9px 14px; margin: 10px 0;
+    font-size: 13px; line-height: 1.5;
+  }
+  .two-col { display: flex; gap: 24px; }
+  .two-col > div { flex: 1; }
+  .big-num {
+    font-size: 42px;
+    color: #0a2942;
+    font-weight: bold;
+    font-family: Georgia, serif;
+    text-align: center;
+    margin: 6px 0 2px 0;
+  }
+  .big-num-label {
+    text-align: center; font-size: 12px;
+    color: #555; margin-bottom: 12px;
+    font-style: italic;
+  }
+
+  /* Portada y cierre - diseño especial */
+  .cover, .closing {
+    padding: 0;
+  }
+  .cover-content {
+    padding: 0 90px;
+  }
+  .divider-line {
+    position: absolute;
+    left: 0; right: 0;
+    height: 1px;
+    background: #b8bcc4;
+  }
+
+  /* Workshop */
+  .workshop-slide {
+    background: #fafbfc;
+  }
+  .workshop-slide h1.slide-title { color: #2c8a3f; }
+
   @media print {
-    body { background: white; padding: 0; }
-    .slide { margin: 0; box-shadow: none; page-break-after: always; }
+    body { background: white; }
+    .slide { margin: 0; box-shadow: none; border: none; }
   }
 </style>
 </head>
 <body>
 
-<!-- ============== DIAPOSITIVA 1: PORTADA ============== -->
+<!-- ============ DIAPOSITIVA 1: PORTADA ============ -->
+<div class="slide cover">
+  <div class="header-logos">
+    <div class="logo-avantis">
+      <div class="icon"></div>
+      <div class="text-block">
+        <div class="name">Avantiscorp</div>
+        <div class="tag">Capacitación Integral</div>
+      </div>
+    </div>
+    <div class="logo-indo">
+      <div class="shield"></div>
+      <div class="name"><span>Universidad</span><span>Indoamérica</span></div>
+    </div>
+  </div>
+  <div class="cover-content">
+    <h1 class="main-title">Epidemiología<br>Global y Local de la<br>Resistencia Antimicrobiana</h1>
+    <div class="expositor">
+      Expositor
+      <div class="expositor-name">Ph.D. Héctor Ortega</div>
+      <div class="institution-line">Diplomado en Implementación de Programas de Optimización de Antimicrobianos (PROA)</div>
+    </div>
+  </div>
+  <div class="divider-line" style="bottom: 90px;"></div>
+  <div class="footer-bar">
+    <div class="footer-left"><b>PROA:</b> Programa de Optimización de Antimicrobianos · <b>RAM:</b> Resistencia Antimicrobiana</div>
+    <div class="footer-logo">
+      <div class="icon"></div>
+      <div class="text-block">
+        <div class="name">Avantiscorp</div>
+        <div class="tag">Capacitación Integral</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ DIAPOSITIVA 2: OBJETIVOS ============ -->
 <div class="slide">
-  <div class="cover">
-    <div class="logo-big">AVANTIS<span>CORP</span></div>
-    <h1>Estrategias Clásicas PROA</h1>
-    <h2>Guías Locales, Auditoría y Retroalimentación</h2>
-    <div class="author">
-      <strong>Diplomado en Programas de Optimización del Uso de Antimicrobianos (PROA)</strong><br><br>
-      <strong>Expositora:</strong> MSc. Elisa Curay<br>
-      Delegada Técnica PROA - HGR<br><br>
-      Clase Magistral · Duración Total: 120 minutos
-    </div>
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Objetivos de Aprendizaje</h1>
+  <h3>Al finalizar la conferencia magistral, el participante será capaz de:</h3>
+  <ol>
+    <li><b>Analizar críticamente</b> la magnitud global de la RAM según los informes GRAM 2024 (The Lancet) y GLASS 2025 (OMS).</li>
+    <li><b>Interpretar</b> los datos epidemiológicos regionales emanados de EARS-Net (Europa), CDC-AR (USA), ReLAVRA+ (Américas) e INSPI-MSP (Ecuador).</li>
+    <li><b>Identificar y priorizar</b> los patógenos según la WHO BPPL 2024 y el grupo ESKAPE-E.</li>
+    <li><b>Contrastar</b> la epidemiología local (Ecuador / región andina) con las tendencias globales.</li>
+    <li><b>Aplicar</b> el marco epidemiológico al diseño de intervenciones PROA basadas en evidencia.</li>
+  </ol>
+  <div class="highlight"><b>Pregunta orientadora:</b> ¿Cómo traducimos los datos epidemiológicos disponibles en decisiones clínicas y estratégicas concretas dentro de un programa PROA hospitalario?</div>
+  <div class="footer-bar">
+    <div class="footer-left"><b>RAM:</b> Resistencia Antimicrobiana · <b>GRAM:</b> Global Research on Antimicrobial Resistance · <b>GLASS:</b> Global Antimicrobial Resistance and Use Surveillance System · <b>EARS-Net:</b> European Antimicrobial Resistance Surveillance Network · <b>CDC-AR:</b> Centers for Disease Control – Antibiotic Resistance · <b>ReLAVRA+:</b> Red Latinoamericana y del Caribe de Vigilancia de la Resistencia a los Antimicrobianos · <b>INSPI-MSP:</b> Instituto Nacional de Investigación en Salud Pública – Ministerio de Salud Pública (Ecuador) · <b>WHO BPPL:</b> WHO Bacterial Priority Pathogens List · <b>PROA:</b> Programa de Optimización de Antimicrobianos.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
   </div>
+  <div class="slide-num">2 / 40</div>
 </div>
 
-<!-- ============== DIAPOSITIVA 2: ESTRUCTURA DE LA SESIÓN ============== -->
+<!-- ============ DIAPOSITIVA 3: DEFINICIONES ============ -->
 <div class="slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">02 / 32</div>
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Marco Conceptual: Definiciones Clave</h1>
+  <table>
+    <tr><th style="width: 18%">Término</th><th>Definición operativa</th></tr>
+    <tr><td><b>RAM</b></td><td>Capacidad de un microorganismo de resistir los efectos de un antimicrobiano al que era previamente susceptible (WHO).</td></tr>
+    <tr><td><b>MDR</b></td><td><i>Multidrug-resistant:</i> no susceptibilidad a ≥1 agente en ≥3 categorías antimicrobianas (Magiorakos et al., CMI 2012).</td></tr>
+    <tr><td><b>XDR</b></td><td><i>Extensively drug-resistant:</i> susceptibilidad únicamente a ≤2 categorías antimicrobianas.</td></tr>
+    <tr><td><b>PDR</b></td><td><i>Pandrug-resistant:</i> no susceptibilidad a todos los agentes de todas las categorías disponibles.</td></tr>
+    <tr><td><b>DTR</b></td><td><i>Difficult-to-Treat Resistance:</i> no susceptibilidad a todos los β-lactámicos de primera línea y a las fluoroquinolonas (Kadri SS, CID 2018).</td></tr>
+    <tr><td><b>BLEE</b></td><td>β-Lactamasa de Espectro Extendido (hidroliza penicilinas, cefalosporinas 1ª-4ª G y monobactámicos; CTX-M, TEM, SHV).</td></tr>
+    <tr><td><b>CRE / CRAB</b></td><td>Enterobacterales / Acinetobacter baumannii resistentes a carbapenémicos.</td></tr>
+  </table>
+  <div class="info"><b>Importancia clínica:</b> la correcta clasificación fenotípica orienta el aislamiento, la terapia empírica dirigida y la notificación epidemiológica.</div>
+  <div class="footer-bar">
+    <div class="footer-left"><b>RAM:</b> Resistencia Antimicrobiana · <b>MDR:</b> Multidrug-Resistant · <b>XDR:</b> Extensively Drug-Resistant · <b>PDR:</b> Pandrug-Resistant · <b>DTR:</b> Difficult-to-Treat Resistance · <b>BLEE:</b> β-Lactamasa de Espectro Extendido · <b>CRE:</b> Carbapenem-Resistant Enterobacterales · <b>CRAB:</b> Carbapenem-Resistant <i>Acinetobacter baumannii</i> · <b>CMI:</b> Clinical Microbiology and Infection · <b>CID:</b> Clinical Infectious Diseases · <b>CTX-M, TEM, SHV:</b> familias de β-lactamasas.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
   </div>
-  <div class="content">
-    <h1 class="title">Estructura de la Sesión (120 minutos)</h1>
-    <div class="grid-3">
-      <div class="card" style="border-left-color:#0066b3;">
-        <h3>📚 Bloque 1: Clase Magistral</h3>
-        <p><strong>60 minutos</strong><br>Marco conceptual, desarrollo teórico de las tres estrategias clásicas, evidencia científica y casos integradores.</p>
-      </div>
-      <div class="card" style="border-left-color:#f7941d;">
-        <h3>✍️ Bloque 2: Trabajo Individual</h3>
-        <p><strong>30 minutos</strong><br>Desarrollo en clase de tarea aplicada al contexto institucional. Entrega en PDF al término.</p>
-      </div>
-      <div class="card" style="border-left-color:#2e7d32;">
-        <h3>💬 Bloque 3: Discusión</h3>
-        <p><strong>30 minutos</strong><br>Socialización de tareas, análisis crítico, retroalimentación grupal y cierre con aprendizajes clave.</p>
-      </div>
-    </div>
-    <div class="objective-box" style="margin-top:15px;">
-      <h2 class="subtitle" style="margin-bottom:6px;">🎯 Objetivo General</h2>
-      <p style="font-size:14px;">Al finalizar la sesión, el participante será capaz de <strong>diseñar, implementar y evaluar</strong> las tres estrategias clásicas PROA (guías locales, auditoría prospectiva y retroalimentación) en su institución de salud, con base en evidencia y adaptación al contexto local.</p>
-    </div>
-  </div>
-  <div class="footer">
-    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
-    <span class="web">www.avantiscorp.com</span>
-  </div>
+  <div class="slide-num">3 / 40</div>
 </div>
 
-<!-- ============== DIAPOSITIVA 3: AGENDA DETALLADA ============== -->
+<!-- ============ DIAPOSITIVA 4: MAGNITUD GLOBAL ============ -->
 <div class="slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">03 / 32</div>
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Magnitud Global: Estudio GRAM 2024 (The Lancet)</h1>
+  <div class="two-col">
+    <div>
+      <div class="big-num">4.71 M</div>
+      <div class="big-num-label">muertes <b>asociadas</b> a RAM bacteriana (2021)</div>
+      <div class="big-num">1.14 M</div>
+      <div class="big-num-label">muertes <b>directamente atribuibles</b> a RAM (2021)</div>
+    </div>
+    <div>
+      <h3>Proyecciones del modelo GRAM al 2050</h3>
+      <ul>
+        <li><b>39.1 millones</b> de muertes acumuladas atribuibles a RAM (período 2025–2050).</li>
+        <li><b>169 millones</b> de muertes asociadas acumuladas en el mismo período.</li>
+        <li>Incremento del <b>67.5%</b> en muertes anuales por RAM respecto a 2021.</li>
+        <li>Mayor impacto proyectado en adultos ≥70 años (+146%) y en Asia meridional y África subsahariana.</li>
+      </ul>
+    </div>
   </div>
-  <div class="content">
-    <h1 class="title">Agenda Detallada de la Clase Magistral (60 min)</h1>
-    <table class="proa">
-      <thead>
-        <tr><th style="width:15%;">Tiempo</th><th>Contenido</th><th style="width:18%;">Diapositivas</th></tr>
-      </thead>
-      <tbody>
-        <tr><td><strong>0 - 5 min</strong></td><td>Introducción, contexto epidemiológico de la RAM y justificación PROA</td><td>4 - 6</td></tr>
-        <tr><td><strong>5 - 10 min</strong></td><td>Marco conceptual: estrategias restrictivas vs persuasivas</td><td>7 - 8</td></tr>
-        <tr><td><strong>10 - 25 min</strong></td><td><strong>Guías locales:</strong> definición, atributos, proceso y barreras</td><td>9 - 14</td></tr>
-        <tr><td><strong>25 - 45 min</strong></td><td><strong>Auditoría prospectiva con retroalimentación</strong>: metodología y operativa</td><td>15 - 22</td></tr>
-        <tr><td><strong>45 - 53 min</strong></td><td>Indicadores, evidencia Cochrane y cuadro de mando PROA</td><td>23 - 25</td></tr>
-        <tr><td><strong>53 - 60 min</strong></td><td>Caso clínico integrador y mensajes clave</td><td>26 - 28</td></tr>
-        <tr><td><strong>60 - 90 min</strong></td><td>Tarea individual en clase + entrega en PDF</td><td>29 - 30</td></tr>
-        <tr><td><strong>90 - 120 min</strong></td><td>Discusión grupal y cierre</td><td>31 - 32</td></tr>
-      </tbody>
-    </table>
+  <div class="alert"><b>Mensaje clave:</b> la RAM es ya una <i>pandemia silenciosa</i>, con mortalidad comparable a la suma de VIH y malaria.</div>
+  <p style="font-size: 11px; color: #666; font-style: italic;">Fuente: GBD 2021 Antimicrobial Resistance Collaborators. Lancet 2024;404(10459):1199-1226. doi:10.1016/S0140-6736(24)01867-1</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>RAM:</b> Resistencia Antimicrobiana · <b>GRAM:</b> Global Research on Antimicrobial Resistance · <b>GBD:</b> Global Burden of Disease · <b>M:</b> millones · <b>VIH:</b> Virus de Inmunodeficiencia Humana.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
   </div>
-  <div class="footer">
-    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
-    <span class="web">www.avantiscorp.com</span>
-  </div>
+  <div class="slide-num">4 / 40</div>
 </div>
 
-<!-- ============== DIAPOSITIVA 4: CONTEXTO RAM ============== -->
+<!-- ============ DIAPOSITIVA 5: DISTRIBUCIÓN GEOGRÁFICA ============ -->
 <div class="slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">04 / 32</div>
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Distribución Geográfica de la Mortalidad por RAM</h1>
+  <table>
+    <tr><th>Región (GBD)</th><th>Tasa mortalidad atribuible /100.000 (2021)</th><th>Tendencia 1990–2021</th></tr>
+    <tr><td>África subsahariana occidental</td><td>27.4</td><td>Estable elevada</td></tr>
+    <tr><td>Asia meridional</td><td>21.5</td><td>Ascendente</td></tr>
+    <tr><td>América Latina tropical</td><td>17.8</td><td>Ascendente</td></tr>
+    <tr><td>América Latina andina (Ecuador, Perú, Bolivia)</td><td>15.2</td><td>Ascendente</td></tr>
+    <tr><td>Europa occidental</td><td>11.0</td><td>Descendente (–36% en menores de 5 años)</td></tr>
+    <tr><td>Asia-Pacífico de altos ingresos</td><td>8.3</td><td>Descendente</td></tr>
+  </table>
+  <div class="highlight"><b>Paradoja epidemiológica:</b> mientras la mortalidad pediátrica por RAM cayó &gt;50% globalmente (vacunación, IPC, WASH), la mortalidad en adultos mayores aumentó &gt;80%.</div>
+  <p style="font-size: 11px; color: #666; font-style: italic;">Fuente: Naghavi M et al. GRAM 2024. Lancet 2024;404:1199-1226.</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>RAM:</b> Resistencia Antimicrobiana · <b>GBD:</b> Global Burden of Disease · <b>IPC:</b> Infection Prevention and Control (Prevención y Control de Infecciones) · <b>WASH:</b> Water, Sanitation and Hygiene (Agua, Saneamiento e Higiene).</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
   </div>
-  <div class="content">
-    <h1 class="title">Contexto: La Resistencia Antimicrobiana (RAM)</h1>
-    <p style="font-size:15px; margin-bottom:12px;">La RAM es declarada por la <strong>OMS</strong> como una de las <strong>10 principales amenazas para la salud pública mundial</strong>. Su impacto se refleja en mortalidad, costos sanitarios y pérdida de eficacia de antimicrobianos esenciales.</p>
-    <div class="grid-4">
-      <div class="stat-box">
-        <div class="number">4.95M</div>
-        <div class="label">Muertes asociadas a RAM en 2019 (Lancet 2022)</div>
-      </div>
-      <div class="stat-box">
-        <div class="number">1.27M</div>
-        <div class="label">Muertes directamente atribuibles a RAM/año</div>
-      </div>
-      <div class="stat-box">
-        <div class="number">10M</div>
-        <div class="label">Muertes proyectadas/año al 2050 sin acción</div>
-      </div>
-      <div class="stat-box">
-        <div class="number">30-50%</div>
-        <div class="label">Prescripciones antibióticas inapropiadas en hospitales</div>
-      </div>
-    </div>
-    <div class="highlight-box" style="margin-top:18px;">
-      🌍 <strong>Plan de Acción Mundial OMS contra la RAM (2015):</strong> exige a los Estados implementar PROA institucionales como pilar estratégico. Los PROA son obligatorios en muchos países y su evidencia de impacto es robusta.
-    </div>
-    <p class="ref">Murray CJL et al. Global burden of bacterial antimicrobial resistance in 2019. Lancet 2022;399(10325):629-655</p>
-  </div>
-  <div class="footer">
-    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
-    <span class="web">www.avantiscorp.com</span>
-  </div>
+  <div class="slide-num">5 / 40</div>
 </div>
 
-<!-- ============== DIAPOSITIVA 5: QUÉ ES PROA ============== -->
+<!-- ============ DIAPOSITIVA 6: GLASS 2025 ============ -->
 <div class="slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">05 / 32</div>
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">WHO GLASS 2025: El Sistema Global de Vigilancia</h1>
+  <h3>Datos del informe publicado en octubre 2025</h3>
+  <ul>
+    <li><b>104 países</b> reportaron datos de RAM al GLASS en 2024 (frente a 25 países en 2017).</li>
+    <li><b>Más de 23 millones</b> de infecciones bacteriológicamente confirmadas analizadas.</li>
+    <li><b>1 de cada 6</b> infecciones bacterianas confirmadas fue resistente a antibióticos de primera línea (datos 2023).</li>
+    <li>La resistencia aumentó en <b>40% de las combinaciones patógeno–antibiótico</b> monitoreadas entre 2018 y 2023.</li>
+    <li>Crecimiento promedio anual de resistencia: <b>entre 5% y 15%</b> según combinación.</li>
+  </ul>
+  <div class="alert"><b>Brecha crítica:</b> solo el 48% de los países de ingresos bajos cuentan con capacidad básica de laboratorio para vigilancia microbiológica integrada.</div>
+  <p style="font-size: 11px; color: #666; font-style: italic;">Fuente: WHO. Global antibiotic resistance surveillance report 2025. Ginebra: OMS; 2025. ISBN 978-92-4-011633-7.</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>RAM:</b> Resistencia Antimicrobiana · <b>WHO/OMS:</b> World Health Organization / Organización Mundial de la Salud · <b>GLASS:</b> Global Antimicrobial Resistance and Use Surveillance System · <b>ISBN:</b> International Standard Book Number.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
   </div>
-  <div class="content">
-    <h1 class="title">¿Qué es un PROA? Recordatorio Conceptual</h1>
-    <h2 class="subtitle">📖 Definición operativa</h2>
-    <p style="font-size:15px; margin-bottom:10px;">Un <strong>Programa de Optimización del Uso de Antimicrobianos (PROA)</strong> es un conjunto coordinado de intervenciones diseñadas para mejorar y medir el uso apropiado de antimicrobianos, promoviendo la selección del régimen óptimo (fármaco, dosis, duración, vía) para lograr el mejor desenlace clínico minimizando toxicidad, resistencia y costos.</p>
-    
-    <h2 class="subtitle">🏛️ Pilares estructurales (CDC Core Elements 2019)</h2>
-    <div class="grid-3">
-      <div class="card"><h3>1. Liderazgo</h3><p>Compromiso institucional, presupuesto, recursos humanos dedicados.</p></div>
-      <div class="card"><h3>2. Responsabilidad</h3><p>Médico líder PROA con autoridad clara.</p></div>
-      <div class="card"><h3>3. Experticia farmacéutica</h3><p>Químico farmacéutico co-líder operativo.</p></div>
-      <div class="card"><h3>4. Acciones</h3><p>Intervenciones (guías, auditoría, restricciones).</p></div>
-      <div class="card"><h3>5. Seguimiento</h3><p>Monitoreo de procesos, consumo y resultados.</p></div>
-      <div class="card"><h3>6. Reporte y educación</h3><p>Comunicación periódica y capacitación continua.</p></div>
-    </div>
-    <p class="ref">CDC. Core Elements of Hospital Antibiotic Stewardship Programs 2019</p>
-  </div>
-  <div class="footer">
-    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
-    <span class="web">www.avantiscorp.com</span>
-  </div>
+  <div class="slide-num">6 / 40</div>
 </div>
 
-<!-- ============== DIAPOSITIVA 6: OBJETIVOS PROA ============== -->
+<!-- ============ DIAPOSITIVA 7: WHO BPPL 2024 ============ -->
 <div class="slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">06 / 32</div>
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">WHO Bacterial Priority Pathogens List 2024</h1>
+  <table>
+    <tr><th style="width:14%">Prioridad</th><th style="width:38%">Patógeno</th><th>Resistencia</th></tr>
+    <tr><td rowspan="3"><b>CRÍTICA</b></td><td><i>Acinetobacter baumannii</i></td><td>Resistente a carbapenémicos</td></tr>
+    <tr><td>Enterobacterales</td><td>Resistentes a carbapenémicos y a 3GC</td></tr>
+    <tr><td><i>Mycobacterium tuberculosis</i></td><td>Resistente a rifampicina (nuevo en lista 2024)</td></tr>
+    <tr><td rowspan="6"><b>ALTA</b></td><td><i>Salmonella</i> Typhi</td><td>Resistente a fluoroquinolonas</td></tr>
+    <tr><td><i>Shigella</i> spp.</td><td>Resistente a fluoroquinolonas</td></tr>
+    <tr><td><i>Enterococcus faecium</i></td><td>Resistente a vancomicina</td></tr>
+    <tr><td><i>Pseudomonas aeruginosa</i></td><td>Resistente a carbapenémicos</td></tr>
+    <tr><td><i>Salmonella</i> no tifoidea</td><td>Resistente a fluoroquinolonas</td></tr>
+    <tr><td><i>Neisseria gonorrhoeae</i></td><td>Resistente a 3GC y fluoroquinolonas</td></tr>
+    <tr><td><b>MEDIA</b></td><td><i>S. pneumoniae, H. influenzae, S. aureus,</i> GAS, GBS</td><td>Varias resistencias</td></tr>
+  </table>
+  <div class="highlight"><b>Cambio 2024 vs 2017:</b> <i>P. aeruginosa</i> carbapenem-R descendió de "crítica" a "alta"; ingresó <i>M. tuberculosis</i> RR-TB.</div>
+  <div class="footer-bar">
+    <div class="footer-left"><b>WHO BPPL:</b> WHO Bacterial Priority Pathogens List · <b>3GC:</b> Cefalosporinas de Tercera Generación · <b>GAS:</b> Group A Streptococcus (<i>Streptococcus pyogenes</i>) · <b>GBS:</b> Group B Streptococcus (<i>Streptococcus agalactiae</i>) · <b>RR-TB:</b> Rifampicin-Resistant Tuberculosis · <b>R:</b> Resistente.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
   </div>
-  <div class="content">
-    <h1 class="title">Objetivos Fundamentales de un PROA</h1>
-    <div class="grid-2">
-      <div class="card" style="border-left-color:#2e7d32;">
-        <h3>🎯 Objetivos Primarios (Clínicos)</h3>
-        <p>• Mejorar desenlaces clínicos (curación, mortalidad)<br>• Reducir efectos adversos asociados a antimicrobianos<br>• Disminuir infecciones por <em>C. difficile</em><br>• Minimizar selección de cepas resistentes</p>
-      </div>
-      <div class="card" style="border-left-color:#0066b3;">
-        <h3>📊 Objetivos Secundarios (Sistema)</h3>
-        <p>• Reducir consumo innecesario de antimicrobianos<br>• Optimizar costos farmacéuticos<br>• Mejorar adherencia a guías clínicas<br>• Generar cultura de prescripción responsable</p>
-      </div>
-    </div>
-    <h2 class="subtitle" style="margin-top:15px;">🧩 Las "5 D" del Stewardship</h2>
-    <div class="grid-4">
-      <div class="card"><h3>Diagnóstico</h3><p>Correcto antes de tratar.</p></div>
-      <div class="card"><h3>Drug</h3><p>Fármaco correcto.</p></div>
-      <div class="card"><h3>Dose</h3><p>Dosis óptima (PK/PD).</p></div>
-      <div class="card"><h3>Duración</h3><p>El menor tiempo eficaz.</p></div>
-    </div>
-    <div class="highlight-box" style="margin-top:12px;">
-      💡 La <strong>5ª D: De-escalation (desescalamiento)</strong> es transversal a todas las estrategias clásicas que veremos hoy.
-    </div>
-  </div>
-  <div class="footer">
-    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
-    <span class="web">www.avantiscorp.com</span>
-  </div>
+  <div class="slide-num">7 / 40</div>
 </div>
 
-<!-- ============== DIAPOSITIVA 7: TIPOS DE INTERVENCIONES ============== -->
+<!-- ============ DIAPOSITIVA 8: ESKAPE ============ -->
 <div class="slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">07 / 32</div>
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">El Grupo ESKAPE-E: Más Vigente que Nunca</h1>
+  <table>
+    <tr><th style="width:8%">Sigla</th><th style="width:35%">Patógeno</th><th>Mecanismo dominante 2024</th></tr>
+    <tr><td>E</td><td><i>Enterococcus faecium</i></td><td>VRE (genes <i>vanA / vanB</i>)</td></tr>
+    <tr><td>S</td><td><i>Staphylococcus aureus</i></td><td>MRSA (gen <i>mecA / mecC</i>)</td></tr>
+    <tr><td>K</td><td><i>Klebsiella pneumoniae</i></td><td>BLEE + carbapenemasas KPC / NDM / OXA-48</td></tr>
+    <tr><td>A</td><td><i>Acinetobacter baumannii</i></td><td>OXA-23, OXA-24, NDM</td></tr>
+    <tr><td>P</td><td><i>Pseudomonas aeruginosa</i></td><td>Pérdida de OprD + AmpC desreprimida + VIM / IMP</td></tr>
+    <tr><td>E</td><td><i>Enterobacter</i> spp.</td><td>AmpC desreprimida + carbapenemasas</td></tr>
+    <tr><td>+E</td><td><i>Escherichia coli</i></td><td>BLEE CTX-M-15, clon ST131; emergencia de NDM</td></tr>
+  </table>
+  <div class="alert">Estos 7 patógenos concentran aproximadamente el <b>73% de la carga mundial de RAM hospitalaria</b> según el estudio GRAM 2024.</div>
+  <p style="font-size: 11px; color: #666; font-style: italic;">Fuente: Rice LB. J Infect Dis 2008;197:1079-81 (concepto original). Actualización: Murray CJL et al. Lancet 2022;399:629-655.</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>ESKAPE-E:</b> acrónimo de los 7 patógenos: <i>Enterococcus, Staphylococcus, Klebsiella, Acinetobacter, Pseudomonas, Enterobacter, Escherichia coli</i> · <b>VRE:</b> Vancomycin-Resistant Enterococci · <b>MRSA:</b> Methicillin-Resistant <i>Staphylococcus aureus</i> · <b>BLEE:</b> β-Lactamasa de Espectro Extendido · <b>KPC:</b> Klebsiella pneumoniae Carbapenemase · <b>NDM:</b> New Delhi Metallo-β-lactamase · <b>OXA:</b> Oxacilinasa · <b>VIM:</b> Verona Integron-encoded Metallo-β-lactamase · <b>IMP:</b> Imipenemase · <b>OprD:</b> Outer membrane porin D · <b>AmpC:</b> β-lactamasa cromosómica clase C · <b>RAM:</b> Resistencia Antimicrobiana.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
   </div>
-  <div class="content">
-    <h1 class="title">Clasificación de las Intervenciones PROA</h1>
-    <p style="font-size:15px; margin-bottom:10px;">La <strong>IDSA/SHEA (Barlam et al., 2016)</strong> y la <strong>Cochrane Review (Davey et al., 2017)</strong> agrupan las intervenciones en dos grandes categorías:</p>
-    <div class="pros-cons">
-      <div class="pros" style="background:#e3f2fd; border-left-color:#0066b3;">
-        <h3 style="color:#0066b3;">🔒 ESTRATEGIAS RESTRICTIVAS (Front-end)</h3>
-        <ul style="list-style:none;">
-          <li style="padding-left:0;">• Pre-autorización para antimicrobianos restringidos</li>
-          <li style="padding-left:0;">• Formulario terapéutico limitado</li>
-          <li style="padding-left:0;">• Restricción por servicio o por diagnóstico</li>
-          <li style="padding-left:0;">• Stop orders automáticos</li>
-        </ul>
-        <p style="font-size:12px; margin-top:8px;"><strong>Ventaja:</strong> efecto inmediato. <strong>Desventaja:</strong> resistencia cultural, percepción punitiva.</p>
-      </div>
-      <div class="cons" style="background:#fff3e0; border-left-color:#f7941d;">
-        <h3 style="color:#f7941d;">🤝 ESTRATEGIAS PERSUASIVAS (Back-end)</h3>
-        <ul style="list-style:none;">
-          <li style="padding-left:0;">• <strong>Guías locales de tratamiento</strong></li>
-          <li style="padding-left:0;">• <strong>Auditoría prospectiva con feedback</strong></li>
-          <li style="padding-left:0;">• Educación continua y rondas clínicas</li>
-          <li style="padding-left:0;">• Recordatorios y order-sets en CPOE</li>
-        </ul>
-        <p style="font-size:12px; margin-top:8px;"><strong>Ventaja:</strong> sostenibilidad, cambio cultural. <strong>Desventaja:</strong> efecto más lento.</p>
-      </div>
-    </div>
-    <div class="highlight-box">
-      📌 <strong>Hoy nos enfocaremos en las 3 estrategias persuasivas clásicas:</strong> Guías Locales + Auditoría + Retroalimentación. Son el "corazón" de cualquier PROA institucional sostenible.
-    </div>
-  </div>
-  <div class="footer">
-    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
-    <span class="web">www.avantiscorp.com</span>
-  </div>
+  <div class="slide-num">8 / 40</div>
 </div>
 
-<!-- ============== DIAPOSITIVA 8: EVIDENCIA COCHRANE ============== -->
+<!-- ============ DIAPOSITIVA 9: PATÓGENOS GRAM ============ -->
 <div class="slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">08 / 32</div>
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Los 6 Patógenos que Concentran la Mortalidad Global</h1>
+  <p>De acuerdo con GRAM 2021, <b>seis patógenos</b> son responsables de aproximadamente <b>3.57 millones</b> de muertes asociadas a RAM (~76% del total):</p>
+  <ol>
+    <li><b><i>Escherichia coli</i></b> — 1.05 millones de muertes asociadas.</li>
+    <li><b><i>Staphylococcus aureus</i></b> — 1.00 millones.</li>
+    <li><b><i>Klebsiella pneumoniae</i></b> — 790.000.</li>
+    <li><b><i>Streptococcus pneumoniae</i></b> — 700.000.</li>
+    <li><b><i>Acinetobacter baumannii</i></b> — 560.000.</li>
+    <li><b><i>Pseudomonas aeruginosa</i></b> — 540.000.</li>
+  </ol>
+  <div class="highlight"><b>Combinación patógeno-fármaco con mayor mortalidad atribuible:</b> MRSA (130.000 muertes/año, con incremento del 90% desde 1990).</div>
+  <p style="font-size: 11px; color: #666; font-style: italic;">Fuente: Naghavi M et al. Lancet 2024;404:1199-1226.</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>GRAM:</b> Global Research on Antimicrobial Resistance · <b>RAM:</b> Resistencia Antimicrobiana · <b>MRSA:</b> Methicillin-Resistant <i>Staphylococcus aureus</i>.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
   </div>
-  <div class="content">
-    <h1 class="title">Evidencia: Revisión Cochrane (Davey et al., 2017)</h1>
-    <p style="font-size:15px; margin-bottom:10px;">Revisión sistemática que incluyó <strong>221 estudios</strong> (58 ECA, 163 estudios de series temporales) sobre intervenciones PROA en hospitales.</p>
-    <div class="grid-2">
-      <div class="stat-box">
-        <div class="number">+15%</div>
-        <div class="label">Aumento absoluto en prescripción adecuada con intervenciones combinadas</div>
-      </div>
-      <div class="stat-box">
-        <div class="number">-1.95 días</div>
-        <div class="label">Reducción promedio en duración de antibioticoterapia</div>
-      </div>
-      <div class="stat-box">
-        <div class="number">-1.12 días</div>
-        <div class="label">Reducción promedio en estancia hospitalaria</div>
-      </div>
-      <div class="stat-box">
-        <div class="number">Sin ↑</div>
-        <div class="label">Mortalidad: NO incrementa con intervenciones PROA</div>
-      </div>
-    </div>
-    <h2 class="subtitle" style="margin-top:15px;">🔬 Conclusiones clave</h2>
-    <ul class="styled">
-      <li>Las estrategias <strong>persuasivas y restrictivas son igualmente eficaces</strong> a largo plazo.</li>
-      <li>La <strong>combinación de varias estrategias</strong> (multifacética) supera intervenciones aisladas.</li>
-      <li>El <strong>feedback estructurado</strong> potencia el efecto de las guías locales (sinergia).</li>
-      <li>La <strong>seguridad clínica</strong> está demostrada: no hay aumento de mortalidad ni reingresos.</li>
-    </ul>
-    <p class="ref">Davey P et al. Interventions to improve antibiotic prescribing practices for hospital inpatients. Cochrane Database Syst Rev 2017;2:CD003543</p>
-  </div>
-  <div class="footer">
-    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
-    <span class="web">www.avantiscorp.com</span>
-  </div>
+  <div class="slide-num">9 / 40</div>
 </div>
 
-<!-- ============== DIAPOSITIVA 9: SEPARADOR MÓDULO GUÍAS ============== -->
+<!-- ============ DIAPOSITIVA 10: EARS-NET ============ -->
 <div class="slide">
-  <div class="module-divider">
-    <div class="module-label">MÓDULO 1</div>
-    <h1>Guías Locales de<br>Tratamiento Antimicrobiano</h1>
-    <p style="font-size:18px; max-width:70%;">Adaptar lo global a la realidad local: el primer pilar persuasivo del PROA</p>
-    <div class="duration">⏱️ 15 minutos</div>
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Europa: EARS-Net 2024 (datos publicados 2025)</h1>
+  <table>
+    <tr><th>Combinación patógeno-antibiótico</th><th>% R UE/EEE 2024</th><th>Tendencia 2020–2024</th></tr>
+    <tr><td><i>E. coli</i> – 3GC-R</td><td>14.9%</td><td>Ligero descenso</td></tr>
+    <tr><td><i>K. pneumoniae</i> – 3GC-R</td><td>32.6%</td><td>Estable elevada</td></tr>
+    <tr><td><i>K. pneumoniae</i> – Carbapenem-R</td><td>11.7%</td><td>+50% desde 2020</td></tr>
+    <tr><td><i>S. aureus</i> – Meticilina-R (MRSA)</td><td>14.8%</td><td>Descendente (4.48 BSI / 100.000 hab.)</td></tr>
+    <tr><td><i>E. faecium</i> – Vancomicina-R (VRE)</td><td>17.2%</td><td>Ascendente</td></tr>
+    <tr><td><i>P. aeruginosa</i> – Carbapenem-R</td><td>16.3%</td><td>Estable</td></tr>
+    <tr><td><i>A. baumannii</i> – Carbapenem-R</td><td>52.4%</td><td>Ascendente; sureste de Europa &gt;80%</td></tr>
+  </table>
+  <div class="alert">Gradiente Norte–Sur marcado: Países Bajos &lt;5% MRSA frente a Grecia/Rumanía &gt;30%.</div>
+  <p style="font-size: 11px; color: #666; font-style: italic;">Fuente: ECDC. Antimicrobial resistance in the EU/EEA (EARS-Net) – Annual Epidemiological Report for 2024. Estocolmo: ECDC; 2025.</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>EARS-Net:</b> European Antimicrobial Resistance Surveillance Network · <b>ECDC:</b> European Centre for Disease Prevention and Control · <b>UE/EEE:</b> Unión Europea / Espacio Económico Europeo · <b>3GC:</b> Cefalosporinas de 3ª Generación · <b>R:</b> Resistente · <b>BSI:</b> Bloodstream Infection (Infección del Torrente Sanguíneo) · <b>MRSA:</b> Methicillin-Resistant <i>S. aureus</i> · <b>VRE:</b> Vancomycin-Resistant Enterococci · <b>hab.:</b> habitantes.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
   </div>
+  <div class="slide-num">10 / 40</div>
 </div>
 
-<!-- ============== DIAPOSITIVA 10: GUÍAS - DEFINICIÓN ============== -->
+<!-- ============ DIAPOSITIVA 11: CDC USA ============ -->
 <div class="slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">10 / 32</div>
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Estados Unidos: CDC Antibiotic Resistance Update</h1>
+  <h3>Cifras anuales según CDC (actualización 2024)</h3>
+  <ul>
+    <li>Más de <b>2.8 millones</b> de infecciones por bacterias y hongos resistentes por año.</li>
+    <li>Más de <b>35.900</b> muertes anuales directamente atribuibles.</li>
+    <li>Repunte post-COVID-19: hospitales experimentaron <b>+15% MRSA</b> y <b>+78% CRAB</b> en el período 2020–2021.</li>
+  </ul>
+  <h3>Amenazas urgentes priorizadas (CDC 2024):</h3>
+  <ol>
+    <li>CRE (<i>Carbapenem-Resistant Enterobacterales</i>) — <b>NDM en aumento explosivo</b> (Nueva York: de 58 a 388 casos entre 2019 y 2024).</li>
+    <li><i>Acinetobacter baumannii</i> resistente a carbapenémicos.</li>
+    <li><i>Candida auris</i> — <b>6.304 casos clínicos</b> reportados en 2024.</li>
+    <li><i>Neisseria gonorrhoeae</i> resistente a ceftriaxona.</li>
+    <li><i>Clostridioides difficile</i> (no es RAM clásica, pero amenaza crítica).</li>
+  </ol>
+  <p style="font-size: 11px; color: #666; font-style: italic;">Fuente: CDC. Antimicrobial Resistance Threats Update 2024. Devinney K et al. MMWR 2025;74(23).</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>CDC:</b> Centers for Disease Control and Prevention (USA) · <b>COVID-19:</b> Coronavirus Disease 2019 · <b>MRSA:</b> Methicillin-Resistant <i>S. aureus</i> · <b>CRAB:</b> Carbapenem-Resistant <i>Acinetobacter baumannii</i> · <b>CRE:</b> Carbapenem-Resistant Enterobacterales · <b>NDM:</b> New Delhi Metallo-β-lactamase · <b>RAM:</b> Resistencia Antimicrobiana · <b>MMWR:</b> Morbidity and Mortality Weekly Report.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
   </div>
-  <div class="content">
-    <h1 class="title">Guías Locales: Definición y Justificación</h1>
-    <h2 class="subtitle">📘 Definición operativa</h2>
-    <p style="font-size:15px; margin-bottom:10px;">Documentos institucionales que <strong>adaptan recomendaciones internacionales</strong> (IDSA, ESCMID, OMS, NICE) a la <strong>epidemiología local</strong>, perfil de resistencia, formulario terapéutico disponible, recursos diagnósticos y características poblacionales del centro.</p>
-    
-    <h2 class="subtitle">❓ ¿Por qué guías "locales" y no solo "internacionales"?</h2>
-    <ul class="styled">
-      <li><strong>Variabilidad geográfica de la resistencia:</strong> la prevalencia de BLEE en Enterobacterias varía del 5% al 70% entre regiones del mismo país.</li>
-      <li><strong>Disponibilidad del formulario:</strong> no todos los centros disponen de los mismos antimicrobianos (ceftolozano-tazobactam, meropenem-vaborbactam, etc.).</li>
-      <li><strong>Características poblacionales:</strong> comorbilidades, patología endémica, perfil del paciente del centro.</li>
-      <li><strong>Recursos diagnósticos:</strong> disponibilidad de PCR, biomarcadores, cultivos rápidos, MALDI-TOF.</li>
-      <li><strong>Apropiación clínica:</strong> los profesionales adhieren más a guías que perciben como "propias".</li>
-    </ul>
-    <div class="highlight-box">
-      💡 <strong>Principio rector:</strong> "Pensar globalmente, actuar localmente". Las guías internacionales orientan; el antibiograma local decide.
-    </div>
-  </div>
-  <div class="footer">
-    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
-    <span class="web">www.avantiscorp.com</span>
-  </div>
+  <div class="slide-num">11 / 40</div>
 </div>
 
-<!-- ============== DIAPOSITIVA 11: ATRIBUTOS AGREE-II ============== -->
+<!-- ============ DIAPOSITIVA 12: LATAM ============ -->
 <div class="slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">11 / 32</div>
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">América Latina y el Caribe: ReLAVRA+ / OPS</h1>
+  <div class="alert"><b>La región con mayor mortalidad por RAM ajustada a población del mundo:</b> 322.000 muertes en 2021, con proyección de <b>650.000 muertes para 2050</b>.</div>
+  <h3>Características epidemiológicas distintivas</h3>
+  <ul>
+    <li>Hiperendemia de <b>KPC</b> (Brasil, Argentina, Colombia) coexistiendo con <b>NDM</b> emergente.</li>
+    <li>Dispersión de <b>cepas duales KPC+NDM</b> en un mismo aislado (Chile, Colombia, Ecuador desde 2022).</li>
+    <li>BLEE tipo CTX-M-15 en más del 50% de <i>E. coli</i> y <i>K. pneumoniae</i> nosocomiales.</li>
+    <li>MRSA-CA (clon USA300-LV, variante latinoamericana) endémico en comunidad.</li>
+    <li><i>A. baumannii</i> carbapenem-R: prevalencia &gt;70% en UCI.</li>
+    <li>Venta libre de antibióticos persiste pese a regulación parcial en algunos países.</li>
+  </ul>
+  <p style="font-size: 11px; color: #666; font-style: italic;">Fuente: Pillonetto M et al. Carbapenemase-producing Gram-negative bacteria in LAC. Antimicrob Resist Infect Control 2025. OPS/PAHO ReLAVRA+ 2024.</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>ReLAVRA+:</b> Red Latinoamericana y del Caribe de Vigilancia de la Resistencia a los Antimicrobianos · <b>OPS / PAHO:</b> Organización Panamericana de la Salud / Pan American Health Organization · <b>RAM:</b> Resistencia Antimicrobiana · <b>KPC:</b> Klebsiella pneumoniae Carbapenemase · <b>NDM:</b> New Delhi Metallo-β-lactamase · <b>BLEE:</b> β-Lactamasa de Espectro Extendido · <b>MRSA-CA:</b> MRSA Community-Acquired · <b>UCI:</b> Unidad de Cuidados Intensivos · <b>LAC:</b> Latin America and the Caribbean · <b>R:</b> Resistente.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
   </div>
-  <div class="content">
-    <h1 class="title">Atributos de una Guía Local de Calidad (AGREE-II)</h1>
-    <p style="font-size:14px; margin-bottom:8px;">El instrumento <strong>AGREE-II</strong> evalúa la calidad metodológica de las guías de práctica clínica en 6 dominios:</p>
-    <div class="grid-3">
-      <div class="card">
-        <h3>1. Alcance y propósito</h3>
-        <p>Pregunta clínica clara, objetivos específicos, población definida, escenario delimitado (ej. NAC en adultos hospitalizados).</p>
-      </div>
-      <div class="card">
-        <h3>2. Participación de actores</h3>
-        <p>Equipo multidisciplinario: infectología, microbiología, farmacia, enfermería, médicos asistenciales relevantes.</p>
-      </div>
-      <div class="card">
-        <h3>3. Rigor metodológico</h3>
-        <p>Búsqueda sistemática de evidencia + datos locales de resistencia (antibiograma de los últimos 12-24 meses).</p>
-      </div>
-      <div class="card">
-        <h3>4. Claridad de presentación</h3>
-        <p>Algoritmos visuales, dosis exactas, duración recomendada, criterios explícitos de desescalamiento y suspensión.</p>
-      </div>
-      <div class="card">
-        <h3>5. Aplicabilidad</h3>
-        <p>Considera barreras, facilitadores, recursos disponibles, indicadores de monitoreo y herramientas de implementación.</p>
-      </div>
-      <div class="card">
-        <h3>6. Independencia editorial</h3>
-        <p>Declaración de conflictos de interés, financiación transparente, revisión externa por pares.</p>
-      </div>
-    </div>
-    <p class="ref">AGREE Next Steps Consortium. The AGREE II Instrument [www.agreetrust.org]</p>
-  </div>
-  <div class="footer">
-    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
-    <span class="web">www.avantiscorp.com</span>
-  </div>
+  <div class="slide-num">12 / 40</div>
 </div>
 
-<!-- ============== DIAPOSITIVA 12: PROCESO ELABORACIÓN ============== -->
+<!-- ============ DIAPOSITIVA 13: UCI LATAM ============ -->
 <div class="slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">12 / 32</div>
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Carbapenem-Resistencia en UCI Latinoamericanas</h1>
+  <h3>Meta-análisis publicado en Antibiotics (MDPI), 2025</h3>
+  <div class="big-num">28.88%</div>
+  <div class="big-num-label">Prevalencia agrupada de carbapenem-resistencia entre BGN aislados en UCI de LAC (IC 95%: 17.32 – 44.05%)</div>
+  <table>
+    <tr><th>Patógeno</th><th>% Carbapenem-R en UCI LAC</th></tr>
+    <tr><td><i>Acinetobacter baumannii</i></td><td>67.4%</td></tr>
+    <tr><td><i>Pseudomonas aeruginosa</i></td><td>32.1%</td></tr>
+    <tr><td><i>Klebsiella pneumoniae</i></td><td>28.6%</td></tr>
+    <tr><td><i>Enterobacter cloacae</i> complex</td><td>14.2%</td></tr>
+    <tr><td><i>Escherichia coli</i></td><td>5.1%</td></tr>
+  </table>
+  <p style="font-size: 11px; color: #666; font-style: italic;">Fuente: Systematic Review and Meta-analysis. Antibiotics 2026;15(2):209.</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>UCI:</b> Unidad de Cuidados Intensivos · <b>BGN:</b> Bacilos Gram-Negativos · <b>LAC:</b> Latin America and the Caribbean (América Latina y el Caribe) · <b>IC 95%:</b> Intervalo de Confianza al 95% · <b>R:</b> Resistente · <b>MDPI:</b> Multidisciplinary Digital Publishing Institute.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
   </div>
-  <div class="content">
-    <h1 class="title">Proceso de Elaboración de una Guía Local</h1>
-    <div class="timeline">
-      <div class="step-container"><div class="step">1</div><p>Diagnóstico situacional</p></div>
-      <div class="step-container"><div class="step">2</div><p>Análisis epidemiológico local</p></div>
-      <div class="step-container"><div class="step">3</div><p>Redacción multidisciplinaria</p></div>
-      <div class="step-container"><div class="step">4</div><p>Validación y pilotaje</p></div>
-      <div class="step-container"><div class="step">5</div><p>Difusión y monitoreo</p></div>
-    </div>
-    <table class="proa" style="margin-top:15px;">
-      <tr><th style="width:18%;">Etapa</th><th>Actividades clave</th><th style="width:25%;">Productos</th></tr>
-      <tr><td><strong>Diagnóstico</strong></td><td>Identificar escenarios prioritarios, prescripciones inadecuadas más frecuentes</td><td>Mapa de necesidades</td></tr>
-      <tr><td><strong>Epidemiología</strong></td><td>Antibiograma acumulado del centro, perfil de patógenos por servicio</td><td>Reporte microbiológico</td></tr>
-      <tr><td><strong>Redacción</strong></td><td>Revisión de evidencia + adaptación a recursos locales + consenso clínico</td><td>Borrador de guía</td></tr>
-      <tr><td><strong>Validación</strong></td><td>Revisión externa, pilotaje en servicio piloto, ajustes</td><td>Guía aprobada</td></tr>
-      <tr><td><strong>Difusión</strong></td><td>Capacitación, formato bolsillo + digital, integración a CPOE</td><td>Plan de implementación</td></tr>
-    </table>
-  </div>
-  <div class="footer">
-    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
-    <span class="web">www.avantiscorp.com</span>
-  </div>
+  <div class="slide-num">13 / 40</div>
 </div>
 
-<!-- ============== DIAPOSITIVA 13: ANTIBIOGRAMA LOCAL ============== -->
+<!-- ============ DIAPOSITIVA 14: NDM ============ -->
 <div class="slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">13 / 32</div>
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">La Expansión Global de NDM</h1>
+  <ul>
+    <li>Descrita en 2008 en un paciente sueco hospitalizado previamente en Nueva Delhi.</li>
+    <li>Actualmente presente en más de <b>70 países</b> y en al menos <b>11 especies</b> bacterianas distintas.</li>
+    <li><b>Variantes:</b> NDM-1 a NDM-37; predominan NDM-1, NDM-5 y NDM-7.</li>
+    <li>Plásmidos IncX3, IncFII e IncC: confieren altísima transmisibilidad horizontal.</li>
+    <li>Coexistencia frecuente con el gen <b><i>mcr-1</i></b> (resistencia a colistina) y con <b>16S rRNA metilasas</b> (pan-aminoglucósido-R).</li>
+  </ul>
+  <div class="alert"><b>Implicación PROA:</b> NDM hidroliza todos los β-lactámicos excepto aztreonam, pero las cepas portadoras suelen co-portar BLEE; el tratamiento requiere <i>aztreonam + avibactam</i> o <i>cefiderocol</i>.</div>
+  <p style="font-size: 11px; color: #666; font-style: italic;">Fuente: Wu W et al. Clin Microbiol Rev 2019;32:e00115-18. Devinney K et al. MMWR 2025;74(23).</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>NDM:</b> New Delhi Metallo-β-lactamase · <b><i>mcr-1</i>:</b> mobilized colistin resistance gene 1 · <b>16S rRNA:</b> subunidad 16S del ARN ribosomal · <b>R:</b> Resistente · <b>BLEE:</b> β-Lactamasa de Espectro Extendido · <b>PROA:</b> Programa de Optimización de Antimicrobianos · <b>Inc:</b> Incompatibility group (grupos de incompatibilidad plasmídica) · <b>MMWR:</b> Morbidity and Mortality Weekly Report.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
   </div>
-  <div class="content">
-    <h1 class="title">El Antibiograma Local: Fuente de Verdad de la Guía</h1>
-    <h2 class="subtitle">📊 Reglas para construir un antibiograma acumulado válido (CLSI M39)</h2>
-    <ul class="styled">
-      <li><strong>Mínimo 30 aislamientos</strong> por especie/servicio para reportar % de sensibilidad confiable.</li>
-      <li><strong>Solo el primer aislamiento</strong> por paciente y por especie en el período (evitar duplicación).</li>
-      <li><strong>Período mínimo 12 meses</strong>; ideal acumulado anual con tendencia trianual.</li>
-      <li><strong>Estratificar</strong>: por servicio (UCI vs sala general), origen (comunitario vs nosocomial), grupo etario.</li>
-      <li><strong>Excluir cultivos de vigilancia</strong> y muestras de colonización; usar solo aislamientos clínicamente significativos.</li>
-    </ul>
-    <h2 class="subtitle" style="margin-top:12px;">🎯 Uso del antibiograma en la guía</h2>
-    <div class="grid-2">
-      <div class="card">
-        <h3>Decisión empírica</h3>
-        <p>Elegir antibiótico con sensibilidad ≥80-90% frente al patógeno más probable según escenario clínico.</p>
-      </div>
-      <div class="card">
-        <h3>Detección de tendencias</h3>
-        <p>Monitorear emergencia de resistencias (KPC, NDM, MRSA-CA) para actualización oportuna de la guía.</p>
-      </div>
-    </div>
-    <p class="ref">CLSI M39-A4. Analysis and Presentation of Cumulative Antimicrobial Susceptibility Test Data; 2014</p>
-  </div>
-  <div class="footer">
-    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
-    <span class="web">www.avantiscorp.com</span>
-  </div>
+  <div class="slide-num">14 / 40</div>
 </div>
 
-<!-- ============== DIAPOSITIVA 14: IMPLEMENTACIÓN Y BARRERAS ============== -->
+<!-- ============ DIAPOSITIVA 15: CANDIDA AURIS ============ -->
 <div class="slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">14 / 32</div>
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Candidozyma (Candida) auris: Amenaza Fúngica Emergente</h1>
+  <ul>
+    <li>Descrita por primera vez en Japón en 2009; se han identificado <b>5 clados geográficos</b>.</li>
+    <li>A diciembre de 2025: <b>84.941 casos</b> reportados en <b>82 países</b> (6 continentes).</li>
+    <li>Aceleración documentada tras la pandemia de COVID-19.</li>
+    <li>Resistencia: <b>~90% a fluconazol</b>; <b>~30% a anfotericina B</b>; <b>&lt;5% a equinocandinas</b>, pero con emergencia de pan-resistencia.</li>
+    <li>Capacidad única de colonización persistente de piel, mucosas y superficies inertes.</li>
+    <li>Mortalidad en candidemia: <b>30 – 60%</b>.</li>
+  </ul>
+  <div class="highlight"><b>Implicación PROA + IPC:</b> aislamiento de contacto estricto, vigilancia de colonización (hisopado axilar e inguinal) y desinfección ambiental con peróxido de hidrógeno o clorhexidina.</div>
+  <p style="font-size: 11px; color: #666; font-style: italic;">Fuente: Lockhart SR et al. Clin Microbiol Rev 2025; CDC C. auris tracking 2024.</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>COVID-19:</b> Coronavirus Disease 2019 · <b>PROA:</b> Programa de Optimización de Antimicrobianos · <b>IPC:</b> Infection Prevention and Control · <b>CDC:</b> Centers for Disease Control and Prevention.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
   </div>
-  <div class="content">
-    <h1 class="title">Implementación: Claves del Éxito y Barreras</h1>
-    <div class="pros-cons">
-      <div class="pros">
-        <h3>✅ Facilitadores de adherencia</h3>
-        <ul style="list-style:none;">
-          <li>Formato de bolsillo + app móvil + intranet</li>
-          <li>Códigos QR en estaciones de enfermería y CPOE</li>
-          <li>Order-sets preestablecidos por escenario clínico</li>
-          <li>Capacitación inicial + recordatorios periódicos</li>
-          <li>Champions clínicos en cada servicio</li>
-          <li>Feedback de adherencia individual y por servicio</li>
-        </ul>
-      </div>
-      <div class="cons">
-        <h3>⚠️ Barreras frecuentes</h3>
-        <ul style="list-style:none;">
-          <li>Guía extensa, poco práctica en cama del paciente</li>
-          <li>Falta de actualización (>3 años desactualizada)</li>
-          <li>Resistencia de servicios al "intervencionismo PROA"</li>
-          <li>Ausencia de integración con CPOE/historia clínica</li>
-          <li>Datos de antibiograma local no representativos</li>
-          <li>Personal en rotación (residentes) sin inducción</li>
-        </ul>
-      </div>
-    </div>
-    <div class="highlight-box" style="margin-top:12px;">
-      ⚠️ <strong>Error frecuente:</strong> "copiar-pegar" guías internacionales sin adaptación local genera fracaso terapéutico (sub-cobertura empírica) o sobreuso de antibióticos de amplio espectro innecesarios. La <strong>credibilidad del PROA</strong> depende de la calidad de la guía.
-    </div>
-    <p class="ref">Schuts EC et al. Current evidence on hospital antimicrobial stewardship objectives. Lancet Infect Dis 2016;16(7):847-856</p>
-  </div>
-  <div class="footer">
-    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
-    <span class="web">www.avantiscorp.com</span>
-  </div>
+  <div class="slide-num">15 / 40</div>
 </div>
 
-<!-- ============== DIAPOSITIVA 15: SEPARADOR AUDITORÍA ============== -->
+<!-- ============ DIAPOSITIVA 16: CONSUMO GLOBAL ============ -->
 <div class="slide">
-  <div class="module-divider">
-    <div class="module-label">MÓDULO 2</div>
-    <h1>Auditoría Prospectiva<br>con Retroalimentación</h1>
-    <p style="font-size:18px; max-width:70%;">El "Audit & Feedback" — la intervención persuasiva con mayor evidencia de impacto en PROA</p>
-    <div class="duration">⏱️ 20 minutos</div>
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Consumo Global de Antimicrobianos</h1>
+  <ul>
+    <li>Consumo humano global estimado: <b>~46 mil millones de DDD/año</b> (2018), con proyección a <b>75 mil millones para 2030</b> sin intervención efectiva.</li>
+    <li>Incremento del <b>65%</b> en consumo total entre 2000 y 2015, impulsado principalmente por países de ingresos bajos y medianos.</li>
+    <li>India, China y Pakistán: principales contribuyentes al aumento absoluto.</li>
+    <li><b>Sector veterinario:</b> aproximadamente el 70% del uso total global de antimicrobianos.</li>
+    <li>Correlación ecológica robusta entre consumo y RAM, especialmente para fluoroquinolonas y cefalosporinas de 3ª generación.</li>
+  </ul>
+  <div class="alert">Durante la pandemia de COVID-19, <b>más del 75% de pacientes hospitalizados recibieron antibióticos</b>, pese a que la coinfección bacteriana se documentó en menos del 15%.</div>
+  <p style="font-size: 11px; color: #666; font-style: italic;">Fuente: Klein EY et al. PNAS 2018;115:E3463. Browne AJ et al. Lancet Planet Health 2021.</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>DDD:</b> Defined Daily Dose (Dosis Diaria Definida, OMS) · <b>RAM:</b> Resistencia Antimicrobiana · <b>COVID-19:</b> Coronavirus Disease 2019 · <b>PNAS:</b> Proceedings of the National Academy of Sciences.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
   </div>
+  <div class="slide-num">16 / 40</div>
 </div>
 
-<!-- ============== DIAPOSITIVA 16: AUDITORÍA - DEFINICIÓN ============== -->
+<!-- ============ DIAPOSITIVA 17: AWARE ============ -->
 <div class="slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">16 / 32</div>
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Clasificación AWaRe de la OMS</h1>
+  <table>
+    <tr><th>Categoría</th><th>Definición</th><th>Ejemplos</th><th>Meta OMS 2030</th></tr>
+    <tr><td><b>Access</b></td><td>Primera/segunda elección, espectro estrecho, bajo riesgo de RAM</td><td>Amoxicilina, ampicilina, cefalexina, TMP/SMX, nitrofurantoína</td><td>≥60% del consumo total</td></tr>
+    <tr><td><b>Watch</b></td><td>Mayor potencial de inducir RAM; uso restringido a indicaciones específicas</td><td>Ceftriaxona, ciprofloxacino, piperacilina-tazobactam, meropenem</td><td>Limitar uso</td></tr>
+    <tr><td><b>Reserve</b></td><td>"Última línea"; solo para infecciones por microorganismos MDR confirmados</td><td>Colistina, ceftazidima-avibactam, cefiderocol, linezolid, tigeciclina</td><td>Uso muy restringido</td></tr>
+  </table>
+  <div class="highlight">Indicador PROA esencial: <b>porcentaje Access ≥ 60%</b> sobre el total de DDD prescritas en la institución.</div>
+  <p style="font-size: 11px; color: #666; font-style: italic;">Fuente: WHO. AWaRe classification of antibiotics. Ginebra: OMS; 2023 (revisión 2024).</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>AWaRe:</b> Access, Watch, Reserve · <b>OMS:</b> Organización Mundial de la Salud · <b>RAM:</b> Resistencia Antimicrobiana · <b>TMP/SMX:</b> Trimetoprima/Sulfametoxazol · <b>MDR:</b> Multidrug-Resistant · <b>DDD:</b> Defined Daily Dose · <b>PROA:</b> Programa de Optimización de Antimicrobianos.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
   </div>
-  <div class="content">
-    <h1 class="title">Auditoría Prospectiva con Retroalimentación (PAF)</h1>
-    <h2 class="subtitle">🔍 Definición</h2>
-    <p style="font-size:15px; margin-bottom:10px;">Revisión <strong>prospectiva</strong>, individualizada y no impositiva de las prescripciones antimicrobianas activas, con <strong>recomendación directa al médico tratante</strong> sobre la optimización del tratamiento (espectro, dosis, duración, vía, desescalamiento o suspensión).</p>
-    
-    <div class="grid-2">
-      <div class="card" style="border-left-color:#0066b3;">
-        <h3>📌 Características clave</h3>
-        <p>• Realizada a las <strong>48-72 h</strong> del inicio del antimicrobiano<br>• Recomendación <strong>NO vinculante</strong> (consultoría)<br>• Enfoque <strong>educativo, no punitivo</strong><br>• Documentada en historia clínica<br>• Seguimiento de aceptación</p>
-      </div>
-      <div class="card" style="border-left-color:#0066b3;">
-        <h3>📊 Recomendación IDSA/SHEA 2016</h3>
-        <p><strong>Recomendación FUERTE, evidencia de calidad MODERADA</strong>. Reduce consumo de antibióticos de amplio espectro, disminuye <em>C. difficile</em>, costos y resistencias. Sin afectar mortalidad ni reingresos.</p>
-      </div>
-    </div>
-
-    <div class="highlight-box">
-      💡 <strong>Diferencia con la pre-autorización:</strong> la auditoría actúa <em>después</em> de iniciado el tratamiento (back-end), permitiendo refinar con datos clínicos y microbiológicos disponibles, mientras que la pre-autorización actúa <em>antes</em> (front-end).
-    </div>
-    <p class="ref">Barlam TF et al. Implementing an antibiotic stewardship program. Clin Infect Dis 2016;62(10):e51-77</p>
-  </div>
-  <div class="footer">
-    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
-    <span class="web">www.avantiscorp.com</span>
-  </div>
+  <div class="slide-num">17 / 40</div>
 </div>
 
-<!-- ============== DIAPOSITIVA 17: ANTIMICROBIANOS DIANA ============== -->
+<!-- ============ DIAPOSITIVA 18: DETERMINANTES ============ -->
 <div class="slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">17 / 32</div>
-  </div>
-  <div class="content">
-    <h1 class="title">¿Qué Antimicrobianos Auditar Prioritariamente?</h1>
-    <p style="font-size:14px; margin-bottom:10px;">No todos los antimicrobianos requieren auditoría intensiva. Se prioriza por <strong>riesgo de resistencia, toxicidad, costo y volumen de uso</strong>.</p>
-    <div class="grid-3">
-      <div class="card">
-        <h3>🦠 Anti-Gram negativos amplio espectro</h3>
-        <p>Carbapenémicos (meropenem, imipenem), piperacilina-tazobactam, cefalosporinas anti-Pseudomonas (cefepime, ceftazidima), aminoglucósidos.</p>
-      </div>
-      <div class="card">
-        <h3>🦠 Anti-Gram positivos resistentes</h3>
-        <p>Vancomicina, linezolid, daptomicina, ceftarolina, tedizolid.</p>
-      </div>
-      <div class="card">
-        <h3>🦠 Antifúngicos sistémicos</h3>
-        <p>Equinocandinas (caspofungina, anidulafungina), voriconazol, posaconazol, anfotericina liposomal.</p>
-      </div>
-      <div class="card">
-        <h3>💊 Anti-RAM extrema (Reserve OMS)</h3>
-        <p>Ceftolozano-tazobactam, ceftazidima-avibactam, meropenem-vaborbactam, cefiderocol, polimixinas.</p>
-      </div>
-      <div class="card">
-        <h3>🦠 Antivirales de alto costo</h3>
-        <p>Ganciclovir, valganciclovir, oseltamivir prolongado, remdesivir.</p>
-      </div>
-      <div class="card">
-        <h3>📍 Escenarios prioritarios</h3>
-        <p>Tratamientos >7 días, neutropenia febril prolongada, sospecha de infecciones por MDR, pacientes en UCI.</p>
-      </div>
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Determinantes Epidemiológicos de la RAM</h1>
+  <div class="two-col">
+    <div>
+      <h3>Factores microbiológicos</h3>
+      <ul>
+        <li>Presión selectiva por uso y abuso de antimicrobianos.</li>
+        <li>Transferencia horizontal de genes (plásmidos, integrones, transposones).</li>
+        <li>Persistencia ambiental (biofilms).</li>
+      </ul>
+      <h3>Factores asistenciales</h3>
+      <ul>
+        <li>Densidad de uso antibiótico (DDD/100 PD).</li>
+        <li>Adherencia a IPC; lavado de manos &lt;50% global.</li>
+        <li>Uso prolongado de dispositivos invasivos.</li>
+      </ul>
     </div>
-    <div class="highlight-box" style="margin-top:10px;">
-      📌 <strong>Clasificación AWaRe (OMS 2021):</strong> priorizar auditoría sobre los grupos <strong>Watch</strong> y <strong>Reserve</strong>; los <strong>Access</strong> requieren menos vigilancia rutinaria.
+    <div>
+      <h3>Factores socioeconómicos</h3>
+      <ul>
+        <li>Venta de antibióticos sin receta.</li>
+        <li>Calidad subestándar de antimicrobianos.</li>
+        <li>Deficiencias en WASH.</li>
+        <li>Densidad poblacional y hacinamiento.</li>
+      </ul>
+      <h3>Factores One Health</h3>
+      <ul>
+        <li>Uso veterinario y como promotor de crecimiento.</li>
+        <li>Contaminación de aguas residuales.</li>
+        <li>Comercio internacional y viajes.</li>
+      </ul>
     </div>
   </div>
-  <div class="footer">
-    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
-    <span class="web">www.avantiscorp.com</span>
+  <p style="font-size: 11px; color: #666; font-style: italic;">Fuente: Holmes AH et al. Lancet 2016;387:176-87. Collignon P et al. Lancet Planet Health 2018.</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>RAM:</b> Resistencia Antimicrobiana · <b>DDD/100 PD:</b> Dosis Diaria Definida por 100 pacientes-día · <b>IPC:</b> Infection Prevention and Control · <b>WASH:</b> Water, Sanitation and Hygiene.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
   </div>
+  <div class="slide-num">18 / 40</div>
 </div>
 
-<!-- ============== DIAPOSITIVA 18: METODOLOGÍA AUDITORÍA ============== -->
+<!-- ============ DIAPOSITIVA 19: ONE HEALTH ============ -->
 <div class="slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">18 / 32</div>
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">El Enfoque One Health en RAM</h1>
+  <div class="highlight" style="text-align:center; font-size:14px;">
+    <b>"La RAM no respeta fronteras entre humanos, animales y ambiente"</b><br>
+    <span style="font-size:12px;">— Declaración Cuadripartita FAO / OMSA / PNUMA / OMS, 2022</span>
   </div>
-  <div class="content">
-    <h1 class="title">Metodología Operativa de la Auditoría (Paso a Paso)</h1>
-    <table class="proa">
-      <thead>
-        <tr><th style="width:15%;">Etapa</th><th style="width:45%;">Acción</th><th>Responsable / Herramienta</th></tr>
-      </thead>
-      <tbody>
-        <tr><td><strong>1. Identificación</strong></td><td>Listado diario de pacientes con antimicrobianos diana (reporte automatizado de farmacia/CPOE)</td><td>Químico farmacéutico PROA</td></tr>
-        <tr><td><strong>2. Revisión clínica</strong></td><td>Historia clínica, microbiología, imágenes, biomarcadores (PCR, PCT), evolución</td><td>Médico infectólogo / internista PROA</td></tr>
-        <tr><td><strong>3. Evaluación</strong></td><td>Adecuación según guía local: indicación, espectro, dosis, vía, duración, interacciones</td><td>Checklist estandarizado PROA</td></tr>
-        <tr><td><strong>4. Recomendación</strong></td><td>Sugerencia escrita y/o verbal al equipo tratante (mantener / desescalar / cambiar / suspender)</td><td>Nota en HC + comunicación directa</td></tr>
-        <tr><td><strong>5. Seguimiento</strong></td><td>Verificar aceptación a las 24-48 h y desenlace clínico del paciente</td><td>Registro en base de datos PROA</td></tr>
-        <tr><td><strong>6. Análisis</strong></td><td>Cálculo de indicadores: tasa de aceptación, tipo de recomendación, ahorro de DDD</td><td>Reporte mensual al comité PROA</td></tr>
-      </tbody>
-    </table>
-    <div class="highlight-box" style="margin-top:12px;">
-      💡 <strong>Regla de oro:</strong> "El médico tratante mantiene la autoridad final sobre la decisión clínica." La auditoría es un <em>servicio consultivo</em>, no una orden administrativa. Esta postura es esencial para mantener la relación de confianza y la sostenibilidad del programa.
-    </div>
+  <h3>Tres dimensiones interconectadas</h3>
+  <ol>
+    <li><b>Salud humana:</b> selección clínica hospitalaria y comunitaria.</li>
+    <li><b>Salud animal:</b> uso en producción intensiva, acuicultura y mascotas. La colistina como promotor del crecimiento fue el origen documentado de <i>mcr-1</i> en China (2015).</li>
+    <li><b>Ambiente:</b> efluentes hospitalarios, farmacéuticos, ríos urbanos. Los ríos Ganges, Yamuna y el río Guayas (Ecuador) presentan concentraciones detectables de carbapenemasas.</li>
+  </ol>
+  <p>La <b>Declaración Política de la AGNU sobre RAM (septiembre 2024)</b> compromete a los Estados Miembros a reducir las muertes humanas por RAM en <b>10% para 2030</b>.</p>
+  <p style="font-size: 11px; color: #666; font-style: italic;">Fuente: UNGA High-Level Meeting on AMR, septiembre 2024. Quadripartite Joint Plan of Action 2022-2026.</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>RAM:</b> Resistencia Antimicrobiana · <b>FAO:</b> Food and Agriculture Organization · <b>OMSA:</b> Organización Mundial de Sanidad Animal (ex-OIE) · <b>PNUMA:</b> Programa de las Naciones Unidas para el Medio Ambiente · <b>OMS:</b> Organización Mundial de la Salud · <b><i>mcr-1</i>:</b> mobilized colistin resistance gene 1 · <b>AGNU / UNGA:</b> Asamblea General de las Naciones Unidas / United Nations General Assembly · <b>AMR:</b> Antimicrobial Resistance.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
   </div>
-  <div class="footer">
-    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
-    <span class="web">www.avantiscorp.com</span>
-  </div>
+  <div class="slide-num">19 / 40</div>
 </div>
 
-<!-- ============== DIAPOSITIVA 19: TIPOS DE RECOMENDACIONES ============== -->
+<!-- ============ DIAPOSITIVA 20: VIGILANCIA ============ -->
 <div class="slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">19 / 32</div>
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Sistemas de Vigilancia: Arquitectura Multinivel</h1>
+  <table>
+    <tr><th>Sistema</th><th>Cobertura</th><th>Tipo de datos</th></tr>
+    <tr><td>GLASS</td><td>Global – 104 países</td><td>RAM + AMC + AMU + infecciones invasivas</td></tr>
+    <tr><td>EARS-Net</td><td>UE/EEE – 30 países</td><td>Aislados invasivos, 8 patógenos centinela</td></tr>
+    <tr><td>ESAC-Net</td><td>UE/EEE</td><td>Consumo antimicrobiano</td></tr>
+    <tr><td>NHSN-AR</td><td>USA – CDC</td><td>IAAS + RAM hospitalaria</td></tr>
+    <tr><td>ReLAVRA+</td><td>América Latina y Caribe – 20 países</td><td>RAM comunitaria y hospitalaria</td></tr>
+    <tr><td>SIVE-Alerta (Ecuador)</td><td>Nacional</td><td>RAM de notificación obligatoria</td></tr>
+    <tr><td>PulseNet LA</td><td>LAC</td><td>Tipificación molecular</td></tr>
+  </table>
+  <div class="alert"><b>Limitaciones comunes:</b> subrepresentación de atención primaria, escasos datos veterinarios y ambientales, ausencia de denominadores poblacionales sólidos.</div>
+  <div class="footer-bar">
+    <div class="footer-left"><b>GLASS:</b> Global AMR and Use Surveillance System · <b>AMC:</b> Antimicrobial Consumption · <b>AMU:</b> Antimicrobial Use · <b>EARS-Net:</b> European Antimicrobial Resistance Surveillance Network · <b>ESAC-Net:</b> European Surveillance of Antimicrobial Consumption Network · <b>NHSN-AR:</b> National Healthcare Safety Network – Antimicrobial Resistance · <b>IAAS:</b> Infecciones Asociadas a la Atención en Salud · <b>ReLAVRA+:</b> Red Latinoamericana y del Caribe de Vigilancia de la Resistencia Antimicrobiana · <b>SIVE:</b> Sistema Integrado de Vigilancia Epidemiológica (Ecuador) · <b>RAM:</b> Resistencia Antimicrobiana · <b>UE/EEE:</b> Unión Europea / Espacio Económico Europeo.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
   </div>
-  <div class="content">
-    <h1 class="title">Tipos de Recomendaciones de Auditoría</h1>
-    <div class="grid-2">
-      <div class="card">
-        <h3>🔽 Desescalamiento</h3>
-        <p>Cambio de antibiótico de amplio espectro a uno de espectro reducido tras conocer microbiología (ej. meropenem → ampicilina en <em>Listeria</em>).</p>
-      </div>
-      <div class="card">
-        <h3>⏹️ Suspensión</h3>
-        <p>Detener antimicrobiano cuando se descarta infección bacteriana o se completa duración óptima (ej. NAC con buena evolución a 5 días).</p>
-      </div>
-      <div class="card">
-        <h3>🔁 Cambio de antibiótico</h3>
-        <p>Por resistencia detectada, fracaso terapéutico, toxicidad o interacción medicamentosa relevante.</p>
-      </div>
-      <div class="card">
-        <h3>📐 Ajuste de dosis</h3>
-        <p>Por función renal, peso, sitio de infección (meningitis), criterios PK/PD (infusión extendida de β-lactámicos).</p>
-      </div>
-      <div class="card">
-        <h3>💊 Terapia secuencial (IV→VO)</h3>
-        <p>Cambio a vía oral en paciente estable, afebril 24-48 h, tolerando dieta, con biodisponibilidad oral adecuada (fluoroquinolonas, linezolid, metronidazol).</p>
-      </div>
-      <div class="card">
-        <h3>⏱️ Optimización de duración</h3>
-        <p>Ajustar a evidencia actual: NAC 5 días, ITU no complicada 3-5 días, PNA 7 días, bacteriemia por GN 7 días.</p>
-      </div>
-    </div>
-    <p class="ref">Spellberg B. The new antibiotic mantra: "Shorter is better". JAMA Intern Med 2016;176(9):1254-1255</p>
-  </div>
-  <div class="footer">
-    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
-    <span class="web">www.avantiscorp.com</span>
-  </div>
+  <div class="slide-num">20 / 40</div>
 </div>
 
-<!-- ============== DIAPOSITIVA 20: RETROALIMENTACIÓN TIPOS ============== -->
+<!-- ============ DIAPOSITIVA 21: ECUADOR ============ -->
 <div class="slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">20 / 32</div>
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Epidemiología Local: Ecuador</h1>
+  <h3>Datos consolidados INSPI/MSP – ReLAVRA+ Ecuador (2023-2024)</h3>
+  <ul>
+    <li><b><i>E. coli</i> en ITU comunitaria:</b> 38 – 45% resistente a fluoroquinolonas; 28 – 32% productora de BLEE.</li>
+    <li><b><i>K. pneumoniae</i> hospitalaria:</b> 55% BLEE; <b>22 – 35% carbapenem-R</b> en UCI (Quito y Guayaquil).</li>
+    <li><b><i>A. baumannii</i> en UCI:</b> &gt;75% resistente a carbapenémicos.</li>
+    <li><b>MRSA:</b> 28 – 34% de los aislados de <i>S. aureus</i>; predominio de CA-MRSA USA300-LV.</li>
+    <li>Detección creciente de <b>NDM</b>; primeros reportes de <b>cepas duales KPC+NDM</b> en 2023.</li>
+    <li>Identificación confirmada de <b><i>Candida auris</i></b> en hospitales de tercer nivel desde 2021.</li>
+  </ul>
+  <div class="highlight"><b>Desafío local:</b> venta sin receta persistente (más del 40% de antibióticos según estudios de farmacia comunitaria), marcada heterogeneidad regional, brechas en capacidad de microbiología clínica.</div>
+  <p style="font-size: 11px; color: #666; font-style: italic;">Fuente: INSPI Ecuador. Informe Nacional de Vigilancia de RAM 2023. OPS/PAHO ReLAVRA+ Country Profile Ecuador 2024.</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>INSPI:</b> Instituto Nacional de Investigación en Salud Pública (Ecuador) · <b>MSP:</b> Ministerio de Salud Pública · <b>ITU:</b> Infección del Tracto Urinario · <b>BLEE:</b> β-Lactamasa de Espectro Extendido · <b>R:</b> Resistente · <b>UCI:</b> Unidad de Cuidados Intensivos · <b>MRSA:</b> Methicillin-Resistant <i>S. aureus</i> · <b>CA-MRSA:</b> Community-Acquired MRSA · <b>NDM:</b> New Delhi Metallo-β-lactamase · <b>KPC:</b> Klebsiella pneumoniae Carbapenemase.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
   </div>
-  <div class="content">
-    <h1 class="title">Retroalimentación: Tipos y Modalidades</h1>
-    <div class="grid-2">
-      <div class="card" style="border-left-color:#0066b3;">
-        <h3>👤 Feedback Individual (caso a caso)</h3>
-        <p>Recomendación directa al prescriptor sobre un paciente específico, en tiempo real o cercano. <strong>Mayor impacto educativo inmediato y mayor tasa de aceptación</strong>. Requiere personal dedicado.</p>
-      </div>
-      <div class="card" style="border-left-color:#0066b3;">
-        <h3>📊 Feedback Agregado (servicio/institución)</h3>
-        <p>Reportes periódicos (mensual/trimestral) con indicadores: DDD/100 días-cama, % adherencia a guías, tasa de aceptación, comparación entre servicios. <strong>Impulsa cambio cultural</strong>.</p>
-      </div>
-    </div>
-    <h2 class="subtitle" style="margin-top:12px;">📡 Modalidades de comunicación</h2>
-    <div class="grid-3">
-      <div class="card"><h3>Verbal directa</h3><p>Pase de visita conjunto, llamada telefónica. Alto impacto, requiere tiempo.</p></div>
-      <div class="card"><h3>Escrita en HC</h3><p>Nota PROA estructurada, formal. Genera trazabilidad documental.</p></div>
-      <div class="card"><h3>Digital / app</h3><p>Mensajería institucional segura, alertas en CPOE. Escalable y asíncrona.</p></div>
-      <div class="card"><h3>Reportes visuales</h3><p>Dashboards con gráficos de tendencia y benchmarking entre pares.</p></div>
-      <div class="card"><h3>Sesiones académicas</h3><p>Discusión de casos auditados en reuniones del servicio (educativo grupal).</p></div>
-      <div class="card"><h3>Newsletter PROA</h3><p>Boletín mensual con casos destacados, evidencia y datos institucionales.</p></div>
-    </div>
-  </div>
-  <div class="footer">
-    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
-    <span class="web">www.avantiscorp.com</span>
-  </div>
+  <div class="slide-num">21 / 40</div>
 </div>
 
-<!-- ============== DIAPOSITIVA 21: PRINCIPIOS FEEDBACK EFECTIVO ============== -->
+<!-- ============ DIAPOSITIVA 22: COMPARATIVA ============ -->
 <div class="slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">21 / 32</div>
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Comparativa Global vs Local (<i>K. pneumoniae</i>)</h1>
+  <table>
+    <tr><th>Indicador</th><th>UE/EEE 2024</th><th>USA 2024</th><th>LAC 2024</th><th>Ecuador 2024</th></tr>
+    <tr><td>3GC-R (BLEE)</td><td>32.6%</td><td>~20%</td><td>50 – 65%</td><td>55%</td></tr>
+    <tr><td>Carbapenem-R</td><td>11.7%</td><td>~5% (excepto NY)</td><td>22 – 40%</td><td>22 – 35%</td></tr>
+    <tr><td>Mecanismo dominante</td><td>OXA-48, KPC</td><td>KPC (NDM en alza)</td><td>KPC + NDM</td><td>KPC + NDM emergente</td></tr>
+    <tr><td>Colistina-R</td><td>&lt;5%</td><td>&lt;5%</td><td>5 – 15%</td><td>~10%</td></tr>
+  </table>
+  <div class="alert"><b>Lectura crítica:</b> Ecuador presenta perfiles más cercanos al promedio de LAC que a Europa, lo que exige un PROA adaptado al contexto local con enfoque diferencial.</div>
+  <div class="footer-bar">
+    <div class="footer-left"><b>UE/EEE:</b> Unión Europea / Espacio Económico Europeo · <b>LAC:</b> Latin America and the Caribbean · <b>3GC:</b> Cefalosporinas de 3ª Generación · <b>BLEE:</b> β-Lactamasa de Espectro Extendido · <b>R:</b> Resistente · <b>OXA-48:</b> Oxacilinasa-48 · <b>KPC:</b> Klebsiella pneumoniae Carbapenemase · <b>NDM:</b> New Delhi Metallo-β-lactamase · <b>NY:</b> Nueva York · <b>PROA:</b> Programa de Optimización de Antimicrobianos.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
   </div>
-  <div class="content">
-    <h1 class="title">Principios del Feedback Efectivo</h1>
-    <p style="font-size:14px; margin-bottom:8px;">Basados en la revisión Cochrane de Ivers et al. (2012, 140 estudios) y el modelo de <strong>Clinical Performance Feedback Intervention Theory (CP-FIT)</strong>.</p>
-    <div class="grid-2">
-      <div class="card">
-        <h3>⏰ Oportuno</h3>
-        <p>Cuanto más cercano al evento clínico, mayor efecto educativo. Idealmente dentro de 24-72 h de la prescripción.</p>
-      </div>
-      <div class="card">
-        <h3>🎯 Específico</h3>
-        <p>Mensaje concreto: qué cambiar, por qué y cómo. Evitar generalidades. Citar guía local y evidencia.</p>
-      </div>
-      <div class="card">
-        <h3>📈 Comparativo</h3>
-        <p>Con metas claras, benchmarking entre pares y servicios. Mostrar tendencia individual e institucional.</p>
-      </div>
-      <div class="card">
-        <h3>🔄 Bidireccional</h3>
-        <p>Escuchar al prescriptor, no monólogo del PROA. Considerar el contexto clínico que el equipo conoce mejor.</p>
-      </div>
-      <div class="card">
-        <h3>🤝 Constructivo / no punitivo</h3>
-        <p>Enfoque en mejora del proceso, no en culpabilizar. Lenguaje colaborativo: "podríamos considerar..."</p>
-      </div>
-      <div class="card">
-        <h3>🔁 Repetido y combinado</h3>
-        <p>Verbal + escrito + visual. Sostenido en el tiempo (no eventos aislados). Múltiples canales potencian efecto.</p>
-      </div>
-    </div>
-    <div class="highlight-box" style="margin-top:10px;">
-      💡 <strong>Frase clave del feedback efectivo:</strong> "Comparado con la guía local y con sus pares, su prescripción está/podría... Le sugerimos considerar... porque la evidencia/microbiología muestra..."
-    </div>
-    <p class="ref">Ivers N et al. Audit and feedback: effects on professional practice. Cochrane 2012;6:CD000259 / Brown B et al. CP-FIT theory. Implement Sci 2019</p>
-  </div>
-  <div class="footer">
-    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
-    <span class="web">www.avantiscorp.com</span>
-  </div>
+  <div class="slide-num">22 / 40</div>
 </div>
 
-<!-- ============== DIAPOSITIVA 22: BARRERAS AUDITORÍA ============== -->
+<!-- ============ DIAPOSITIVA 23: IMPACTO CLÍNICO ============ -->
 <div class="slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">22 / 32</div>
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Impacto Clínico de la RAM</h1>
+  <table>
+    <tr><th>Desenlace</th><th>Magnitud reportada</th></tr>
+    <tr><td>Mortalidad atribuible en bacteriemia por CRE vs. susceptible</td><td>OR 2.05 – 3.0</td></tr>
+    <tr><td>Mortalidad en bacteriemia por MRSA vs. MSSA</td><td>OR ~1.7</td></tr>
+    <tr><td>Retraso en inicio de terapia empírica adecuada</td><td>Incremento de mortalidad 30 – 70%</td></tr>
+    <tr><td>Estancia hospitalaria adicional atribuible</td><td>+6 a +12 días</td></tr>
+    <tr><td>Costo incremental por episodio de infección por CRE</td><td>USD 22.000 – 66.000</td></tr>
+  </table>
+  <div class="highlight"><b>Costo global proyectado:</b> hasta <b>US$ 100 trillones</b> de pérdida acumulada en PIB mundial al 2050 si no se actúa (Banco Mundial, 2017; actualización 2024).</div>
+  <p style="font-size: 11px; color: #666; font-style: italic;">Fuente: Tamma PD et al. Clin Infect Dis 2021. Cassini A et al. Lancet Infect Dis 2019;19:56-66.</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>RAM:</b> Resistencia Antimicrobiana · <b>CRE:</b> Carbapenem-Resistant Enterobacterales · <b>MRSA:</b> Methicillin-Resistant <i>Staphylococcus aureus</i> · <b>MSSA:</b> Methicillin-Susceptible <i>Staphylococcus aureus</i> · <b>OR:</b> Odds Ratio · <b>PIB:</b> Producto Interno Bruto · <b>USD:</b> United States Dollar.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
   </div>
-  <div class="content">
-    <h1 class="title">Barreras y Facilitadores de la Auditoría</h1>
-    <div class="pros-cons">
-      <div class="cons">
-        <h3>⚠️ Barreras frecuentes</h3>
-        <ul style="list-style:none;">
-          <li>Recursos humanos insuficientes (equipo PROA reducido)</li>
-          <li>Resistencia clínica: "no me digan cómo prescribir"</li>
-          <li>Jerarquías hospitalarias rígidas</li>
-          <li>Sistema de información fragmentado (sin CPOE)</li>
-          <li>Ausencia de protocolos de auditoría estandarizados</li>
-          <li>Feedback tardío, agregado pero no individualizado</li>
-          <li>Falta de soporte de la dirección institucional</li>
-        </ul>
+  <div class="slide-num">23 / 40</div>
+</div>
+
+<!-- ============ DIAPOSITIVA 24: IMPACTO ECONÓMICO ============ -->
+<div class="slide">
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Impacto Económico Sanitario</h1>
+  <ul>
+    <li>Costo directo anual estimado en USA: <b>US$ 4.6 mil millones</b> (CDC 2024).</li>
+    <li>Costo en UE/EEE: <b>€ 11.7 mil millones por año</b>.</li>
+    <li>Costo estimado en LAC: <b>~US$ 18 mil millones por año</b> (proyección OPS).</li>
+    <li>Reducción del PIB global proyectada al 2050: <b>1.1 – 3.8%</b> (escenarios alta vs. muy alta RAM).</li>
+    <li>Empuje a la pobreza extrema: <b>28 millones de personas adicionales</b> hacia 2050.</li>
+  </ul>
+  <div class="alert">La RAM amenaza directamente <b>10 de los 17 ODS</b>, especialmente los ODS 1, 2, 3, 6, 8 y 10.</div>
+  <p style="font-size: 11px; color: #666; font-style: italic;">Fuente: World Bank. Drug-Resistant Infections: A Threat to Our Economic Future. 2017 (actualización 2024). OECD Health at a Glance 2023.</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>USA:</b> United States of America · <b>CDC:</b> Centers for Disease Control and Prevention · <b>UE/EEE:</b> Unión Europea / Espacio Económico Europeo · <b>LAC:</b> Latin America and the Caribbean · <b>OPS:</b> Organización Panamericana de la Salud · <b>PIB:</b> Producto Interno Bruto · <b>RAM:</b> Resistencia Antimicrobiana · <b>ODS:</b> Objetivos de Desarrollo Sostenible · <b>OECD:</b> Organization for Economic Co-operation and Development.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
+  </div>
+  <div class="slide-num">24 / 40</div>
+</div>
+
+<!-- ============ DIAPOSITIVA 25: COVID Y RAM ============ -->
+<div class="slide">
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Impacto de COVID-19 sobre la Epidemiología de RAM</h1>
+  <ul>
+    <li>Uso masivo e inapropiado de antibióticos (azitromicina, ceftriaxona, piperacilina-tazobactam) en pacientes con COVID-19.</li>
+    <li>CDC reportó: <b>+15% MRSA hospitalario</b>, <b>+78% CRAB</b> y <b>+35% CRE</b> en 2020 frente a 2019.</li>
+    <li>Aceleración documentada de la diseminación de <i>C. auris</i> (brotes en cohortes COVID).</li>
+    <li>Disrupción de programas PROA en numerosos hospitales por reasignación de personal y recursos.</li>
+    <li>Recuperación parcial en 2022-2024 pero <b>niveles aún superiores a los pre-pandemia</b> en LAC.</li>
+  </ul>
+  <div class="highlight"><b>Lección aprendida:</b> cualquier crisis sanitaria sin gobernanza PROA amplifica la RAM. La preparación para futuras pandemias debe incluir la continuidad del <i>stewardship</i>.</div>
+  <p style="font-size: 11px; color: #666; font-style: italic;">Fuente: CDC. COVID-19 Impact on Antimicrobial Resistance Special Report 2022 (actualización 2024).</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>COVID-19:</b> Coronavirus Disease 2019 · <b>RAM:</b> Resistencia Antimicrobiana · <b>CDC:</b> Centers for Disease Control and Prevention · <b>MRSA:</b> Methicillin-Resistant <i>S. aureus</i> · <b>CRAB:</b> Carbapenem-Resistant <i>Acinetobacter baumannii</i> · <b>CRE:</b> Carbapenem-Resistant Enterobacterales · <b>PROA:</b> Programa de Optimización de Antimicrobianos · <b>LAC:</b> Latin America and the Caribbean.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
+  </div>
+  <div class="slide-num">25 / 40</div>
+</div>
+
+<!-- ============ DIAPOSITIVA 26: PIPELINE ============ -->
+<div class="slide">
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">El "Pipeline" Antibiótico: Crisis de Innovación</h1>
+  <ul>
+    <li>WHO Pipeline Review 2024: únicamente <b>12 antibióticos nuevos</b> en desarrollo clínico activo contra patógenos críticos.</li>
+    <li>Solo <b>2 cumplen criterios de innovación</b> (clase nueva o mecanismo novedoso).</li>
+    <li>Aprobaciones FDA recientes con utilidad PROA:
+      <ul>
+        <li>Ceftazidima-avibactam (activo contra KPC, OXA-48).</li>
+        <li>Meropenem-vaborbactam (activo contra KPC).</li>
+        <li>Imipenem-relebactam (activo contra KPC).</li>
+        <li>Cefiderocol (activo contra NDM, MBL, CRAB, <i>S. maltophilia</i>).</li>
+        <li>Eravaciclina, plazomicina, sulbactam-durlobactam.</li>
+      </ul>
+    </li>
+    <li>Modelo económico fallido: salida de Achaogen y Melinta del mercado pese a productos aprobados.</li>
+  </ul>
+  <div class="alert">Iniciativas <i>pull incentives</i>: <b>Subscription model</b> (NHS Reino Unido), <b>PASTEUR Act</b> (USA, en debate legislativo), <b>GARDP</b>.</div>
+  <p style="font-size: 11px; color: #666; font-style: italic;">Fuente: WHO. 2023 antibacterial agents in clinical and preclinical development. Ginebra; 2024.</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>WHO:</b> World Health Organization · <b>FDA:</b> Food and Drug Administration (USA) · <b>PROA:</b> Programa de Optimización de Antimicrobianos · <b>KPC:</b> Klebsiella pneumoniae Carbapenemase · <b>OXA-48:</b> Oxacilinasa-48 · <b>NDM:</b> New Delhi Metallo-β-lactamase · <b>MBL:</b> Metallo-β-Lactamasas · <b>CRAB:</b> Carbapenem-Resistant <i>Acinetobacter baumannii</i> · <b>NHS:</b> National Health Service · <b>PASTEUR Act:</b> Pioneering Antimicrobial Subscriptions to End Upsurging Resistance Act · <b>GARDP:</b> Global Antibiotic Research and Development Partnership.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
+  </div>
+  <div class="slide-num">26 / 40</div>
+</div>
+
+<!-- ============ DIAPOSITIVA 27: DIAGNÓSTICO RÁPIDO ============ -->
+<div class="slide">
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Diagnóstico Rápido como Herramienta Epidemiológica</h1>
+  <h3>Tecnologías que están transformando la epidemiología y el PROA</h3>
+  <ul>
+    <li><b>MALDI-TOF MS:</b> identificación bacteriana en menos de 5 minutos; detección funcional de carbapenemasas.</li>
+    <li><b>Paneles sindrómicos multiplex PCR</b> (BioFire BCID2, Verigene): resultado en menos de 1 hora.</li>
+    <li><b>NG-Test CARBA 5, Xpert Carba-R:</b> tipificación de carbapenemasas (KPC / NDM / VIM / IMP / OXA-48).</li>
+    <li><b>WGS:</b> vigilancia epidemiológica fina, investigación de brotes nosocomiales y trazabilidad One Health.</li>
+    <li><b>Procalcitonina y otros biomarcadores:</b> apoyo a la desescalada racional.</li>
+  </ul>
+  <div class="highlight">Implementar diagnóstico rápido reduce el <b>tiempo a terapia adecuada en 12 – 48 horas</b> y permite <b>desescalada precoz</b>, ambos indicadores PROA clave.</div>
+  <p style="font-size: 11px; color: #666; font-style: italic;">Fuente: Banerjee R et al. Clin Infect Dis 2021. IDSA Guidance MDR-GNB 2024.</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>PROA:</b> Programa de Optimización de Antimicrobianos · <b>MALDI-TOF MS:</b> Matrix-Assisted Laser Desorption/Ionization Time-of-Flight Mass Spectrometry · <b>PCR:</b> Polymerase Chain Reaction · <b>BCID2:</b> Blood Culture Identification Panel 2 · <b>KPC:</b> Klebsiella pneumoniae Carbapenemase · <b>NDM:</b> New Delhi Metallo-β-lactamase · <b>VIM:</b> Verona Integron Metallo-β-lactamase · <b>IMP:</b> Imipenemase · <b>OXA-48:</b> Oxacilinasa-48 · <b>WGS:</b> Whole Genome Sequencing · <b>IDSA:</b> Infectious Diseases Society of America · <b>MDR-GNB:</b> Multidrug-Resistant Gram-Negative Bacteria.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
+  </div>
+  <div class="slide-num">27 / 40</div>
+</div>
+
+<!-- ============ DIAPOSITIVA 28: GUÍAS ============ -->
+<div class="slide">
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Guías de Práctica Clínica Vigentes (2024-2025)</h1>
+  <table>
+    <tr><th>Documento</th><th>Año</th><th>Foco</th></tr>
+    <tr><td>IDSA Guidance on AMR Gram-negative</td><td>2024 (revisión anual)</td><td>BLEE, AmpC, CRE, DTR-<i>P. aeruginosa</i>, CRAB, <i>S. maltophilia</i></td></tr>
+    <tr><td>ESCMID Guidelines MDR-GNB</td><td>2022 (act. 2024)</td><td>Tratamiento de bacterias gram-negativas MDR</td></tr>
+    <tr><td>WHO Policy Guidance on PROA</td><td>2024</td><td>Implementación de PROA en hospitales</td></tr>
+    <tr><td>WHO IPC Core Components</td><td>2023</td><td>Prevención de transmisión nosocomial</td></tr>
+    <tr><td>SHEA / IDSA / PIDS Antimicrobial Stewardship</td><td>2024</td><td>Programa PROA hospitalario integral</td></tr>
+    <tr><td>OPS Guía PROA para América Latina</td><td>2024</td><td>Implementación regional adaptada</td></tr>
+  </table>
+  <div class="footer-bar">
+    <div class="footer-left"><b>IDSA:</b> Infectious Diseases Society of America · <b>AMR:</b> Antimicrobial Resistance · <b>BLEE:</b> β-Lactamasa de Espectro Extendido · <b>AmpC:</b> β-lactamasa cromosómica clase C · <b>CRE:</b> Carbapenem-Resistant Enterobacterales · <b>DTR:</b> Difficult-to-Treat Resistance · <b>CRAB:</b> Carbapenem-Resistant <i>Acinetobacter baumannii</i> · <b>ESCMID:</b> European Society of Clinical Microbiology and Infectious Diseases · <b>MDR-GNB:</b> Multidrug-Resistant Gram-Negative Bacteria · <b>WHO:</b> World Health Organization · <b>PROA:</b> Programa de Optimización de Antimicrobianos · <b>IPC:</b> Infection Prevention and Control · <b>SHEA:</b> Society for Healthcare Epidemiology of America · <b>PIDS:</b> Pediatric Infectious Diseases Society · <b>OPS:</b> Organización Panamericana de la Salud.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
+  </div>
+  <div class="slide-num">28 / 40</div>
+</div>
+
+<!-- ============ DIAPOSITIVA 29: PLAN GLOBAL ============ -->
+<div class="slide">
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Plan de Acción Global sobre RAM (Actualización 2026)</h1>
+  <p>La Asamblea Mundial de la Salud adoptará en mayo de 2026 la actualización del <b>Global Action Plan on AMR</b>. Pilares estratégicos:</p>
+  <ol>
+    <li><b>Concienciación y comprensión</b> de la RAM (comunicación y educación).</li>
+    <li><b>Vigilancia e investigación</b> (expansión de GLASS).</li>
+    <li><b>Reducción de la incidencia</b> de infección (IPC, vacunación, WASH).</li>
+    <li><b>Optimización del uso</b> de antimicrobianos en humanos, animales y plantas.</li>
+    <li><b>Inversión sostenible</b> e innovación en diagnóstico y terapéutica.</li>
+  </ol>
+  <h3>Metas cuantitativas UNGA 2024</h3>
+  <ul>
+    <li>Reducir las muertes humanas por RAM bacteriana en <b>10% para 2030</b>.</li>
+    <li>Reducir el uso de antimicrobianos en sistemas agroalimentarios en <b>30 – 50% para 2030</b>.</li>
+    <li>Alcanzar al menos <b>70% del consumo</b> total en categoría <b>Access</b>.</li>
+  </ul>
+  <p style="font-size: 11px; color: #666; font-style: italic;">Fuente: WHO EB158/18. Draft updated Global Action Plan on AMR 2026. UNGA Political Declaration on AMR, 26 sept. 2024.</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>RAM:</b> Resistencia Antimicrobiana · <b>AMR:</b> Antimicrobial Resistance · <b>GLASS:</b> Global Antimicrobial Resistance and Use Surveillance System · <b>IPC:</b> Infection Prevention and Control · <b>WASH:</b> Water, Sanitation and Hygiene · <b>UNGA:</b> United Nations General Assembly · <b>EB:</b> Executive Board (Consejo Ejecutivo OMS).</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
+  </div>
+  <div class="slide-num">29 / 40</div>
+</div>
+
+<!-- ============ DIAPOSITIVA 30: PROA Y EPIDEMIOLOGÍA ============ -->
+<div class="slide">
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Del Dato Epidemiológico al PROA</h1>
+  <div class="highlight" style="text-align:center; font-size:14px;">
+    <b>"No se puede optimizar lo que no se mide,<br>y no se puede medir lo que no se vigila."</b>
+  </div>
+  <h3>Indicadores epidemiológicos esenciales para un PROA institucional</h3>
+  <ol>
+    <li><b>Antibiograma acumulado institucional</b> (CLSI M39-A5, ≥30 aislados por especie, frecuencia anual).</li>
+    <li><b>Consumo:</b> DDD/100 PD y DOT/1000 PD.</li>
+    <li><b>Proporción AWaRe</b> (Access / Watch / Reserve).</li>
+    <li><b>Incidencia de infección</b> por patógenos centinela (MRSA, VRE, CRE, CRAB, <i>C. difficile</i>).</li>
+    <li><b>Adherencia a guías</b> (apropiada inicial, desescalada y duración).</li>
+    <li><b>Días de terapia innecesarios evitados</b>.</li>
+  </ol>
+  <div class="footer-bar">
+    <div class="footer-left"><b>PROA:</b> Programa de Optimización de Antimicrobianos · <b>CLSI:</b> Clinical and Laboratory Standards Institute · <b>DDD/100 PD:</b> Dosis Diaria Definida por 100 Pacientes-Día · <b>DOT/1000 PD:</b> Days of Therapy por 1000 Pacientes-Día · <b>AWaRe:</b> Access, Watch, Reserve · <b>MRSA:</b> Methicillin-Resistant <i>S. aureus</i> · <b>VRE:</b> Vancomycin-Resistant Enterococci · <b>CRE:</b> Carbapenem-Resistant Enterobacterales · <b>CRAB:</b> Carbapenem-Resistant <i>A. baumannii</i>.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
+  </div>
+  <div class="slide-num">30 / 40</div>
+</div>
+
+<!-- ============ DIAPOSITIVA 31: ANTIBIOGRAMA ============ -->
+<div class="slide">
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">El Antibiograma Acumulado como Brújula PROA</h1>
+  <h3>Requisitos metodológicos según CLSI M39-A5</h3>
+  <ul>
+    <li>Al menos <b>30 aislados</b> por especie por año para que el reporte sea estadísticamente válido.</li>
+    <li>Incluir solo el <b>primer aislado por paciente</b> por especie y período (evitar duplicados).</li>
+    <li>Reportar <b>% de susceptibilidad (%S)</b>, no % R, para evitar sobreestimación de resistencia.</li>
+    <li>Estratificar por: unidad clínica (UCI vs. sala), origen (comunitario vs. nosocomial), sitio anatómico.</li>
+    <li>Excluir aislados de tamizaje o de colonización.</li>
+    <li>Publicar y socializar institucionalmente al menos una vez al año.</li>
+  </ul>
+  <div class="alert"><b>Errores frecuentes en LAC:</b> mezcla de muestras de vigilancia con clínicas, reporte de duplicados, ausencia de estratificación por servicio, omisión de denominadores.</div>
+  <p style="font-size: 11px; color: #666; font-style: italic;">Fuente: CLSI M39-A5. Analysis and Presentation of Cumulative Antimicrobial Susceptibility Test Data. 5ª ed. 2022.</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>PROA:</b> Programa de Optimización de Antimicrobianos · <b>CLSI:</b> Clinical and Laboratory Standards Institute · <b>%S:</b> porcentaje de Susceptibilidad · <b>%R:</b> porcentaje de Resistencia · <b>UCI:</b> Unidad de Cuidados Intensivos · <b>LAC:</b> Latin America and the Caribbean.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
+  </div>
+  <div class="slide-num">31 / 40</div>
+</div>
+
+<!-- ============ DIAPOSITIVA 32: VACUNACIÓN ============ -->
+<div class="slide">
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Vacunación como Estrategia Anti-RAM</h1>
+  <p>Las vacunas reducen la RAM por <b>tres mecanismos complementarios</b>:</p>
+  <ol>
+    <li>Prevención directa de infección por patógeno resistente.</li>
+    <li>Reducción del consumo antibiótico (menos episodios infecciosos → menor presión selectiva).</li>
+    <li>Prevención de infecciones virales que motivan prescripción antibiótica inapropiada.</li>
+  </ol>
+  <h3>Impacto estimado (OMS, 2024)</h3>
+  <ul>
+    <li>Vacuna conjugada antineumocócica: evita <b>23.8 millones de DDD/año</b> globalmente.</li>
+    <li>Vacuna anti-<i>Haemophilus influenzae</i> tipo b: <b>2.7 millones</b> de DDD evitadas anualmente.</li>
+    <li>Vacuna antiinfluenza estacional: <b>~22% de reducción</b> en prescripción antibiótica en niños vacunados.</li>
+    <li>Una vacuna eficaz contra <i>S. aureus</i> podría evitar <b>500.000 muertes/año</b>.</li>
+  </ul>
+  <p style="font-size: 11px; color: #666; font-style: italic;">Fuente: WHO. Estimating the impact of vaccines in reducing antimicrobial resistance and antibiotic use. Ginebra; 2024.</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>RAM:</b> Resistencia Antimicrobiana · <b>OMS / WHO:</b> Organización Mundial de la Salud / World Health Organization · <b>DDD:</b> Defined Daily Dose.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
+  </div>
+  <div class="slide-num">32 / 40</div>
+</div>
+
+<!-- ============ DIAPOSITIVA 33: IPC ============ -->
+<div class="slide">
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Control de Infecciones: el Otro Pilar</h1>
+  <ul>
+    <li>Adherencia a la higiene de manos &lt;50% en LAC frente a la meta OMS de &gt;80%.</li>
+    <li>Los <i>bundles</i> de prevención de NAVM, ITS-CVC e ITU-CV reducen la infección y, por consiguiente, la presión antibiótica.</li>
+    <li>Aislamiento de contacto para pacientes colonizados o infectados por CRE, CRAB, MRSA, VRE y <i>C. auris</i>.</li>
+    <li>Vigilancia activa mediante cultivos de tamizaje (hisopado rectal para CRE) en UCI de alto riesgo.</li>
+    <li>Limpieza ambiental con peróxido de hidrógeno aerosolizado o luz UV-C en habitaciones de aislamiento.</li>
+  </ul>
+  <div class="highlight">Un PROA sin un programa IPC robusto fracasa. Son <b>estrategias complementarias e inseparables</b>.</div>
+  <p style="font-size: 11px; color: #666; font-style: italic;">Fuente: WHO Core Components for IPC Programmes. Ginebra; 2023.</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>IPC:</b> Infection Prevention and Control · <b>LAC:</b> Latin America and the Caribbean · <b>OMS:</b> Organización Mundial de la Salud · <b>NAVM:</b> Neumonía Asociada a Ventilación Mecánica · <b>ITS-CVC:</b> Infección del Torrente Sanguíneo asociada a Catéter Venoso Central · <b>ITU-CV:</b> Infección del Tracto Urinario asociada a Catéter Vesical · <b>CRE:</b> Carbapenem-Resistant Enterobacterales · <b>CRAB:</b> Carbapenem-Resistant <i>A. baumannii</i> · <b>MRSA:</b> Methicillin-Resistant <i>S. aureus</i> · <b>VRE:</b> Vancomycin-Resistant Enterococci · <b>UCI:</b> Unidad de Cuidados Intensivos · <b>UV-C:</b> Ultravioleta C · <b>PROA:</b> Programa de Optimización de Antimicrobianos.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
+  </div>
+  <div class="slide-num">33 / 40</div>
+</div>
+
+<!-- ============ DIAPOSITIVA 34: INEQUIDADES ============ -->
+<div class="slide">
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Inequidades Globales en la Lucha Anti-RAM</h1>
+  <div class="two-col">
+    <div>
+      <h3>Acceso vs. Exceso</h3>
+      <ul>
+        <li>En LMIC mueren <b>más personas por falta de acceso</b> a antibióticos apropiados que por RAM (Daulaire et al., 2015).</li>
+        <li>África subsahariana: cobertura de microbiología clínica &lt;1.3 laboratorios por 100.000 habitantes.</li>
+        <li>Solo el <b>3%</b> de hospitales africanos tienen acceso a cefiderocol o ceftazidima-avibactam.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Brecha Norte–Sur</h3>
+      <ul>
+        <li>Países OECD: 80% de hospitales con PROA estructurado.</li>
+        <li>LAC: ~40%; África: &lt;15%.</li>
+        <li>Diagnóstico molecular en LMIC: &lt;5% de capacidad necesaria.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="alert">Toda estrategia global eficaz contra la RAM debe <b>cerrar brechas de acceso simultáneamente</b> con la contención del consumo inapropiado.</div>
+  <p style="font-size: 11px; color: #666; font-style: italic;">Fuente: Mendelson M et al. Lancet 2024. Pearson M, Chandler C. Lancet Glob Health 2019.</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>RAM:</b> Resistencia Antimicrobiana · <b>LMIC:</b> Low- and Middle-Income Countries (Países de ingresos bajos y medianos) · <b>OECD:</b> Organisation for Economic Co-operation and Development · <b>LAC:</b> Latin America and the Caribbean · <b>PROA:</b> Programa de Optimización de Antimicrobianos.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
+  </div>
+  <div class="slide-num">34 / 40</div>
+</div>
+
+<!-- ============ DIAPOSITIVA 35: FUTURO ============ -->
+<div class="slide">
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Perspectivas y Retos para los Próximos 5 Años</h1>
+  <ol>
+    <li><b>Vigilancia genómica integrada</b> (WGS combinado con metagenómica de aguas residuales).</li>
+    <li><b>Inteligencia artificial</b> para predicción de resistencia y soporte de decisión clínica.</li>
+    <li><b>Bacteriófagos</b> como terapia adyuvante (uso compasivo en <i>Pseudomonas</i>, <i>Acinetobacter</i>).</li>
+    <li><b>Anticuerpos monoclonales antibacterianos</b> (anti-PcrV, anti-LPS de <i>A. baumannii</i>).</li>
+    <li><b>Modulación del microbioma</b> (FMT para CRE, productos vivos bioterapéuticos).</li>
+    <li><b>Diagnóstico point-of-care ultrarrápido</b> (CRISPR-Cas, biosensores).</li>
+    <li><b>Modelos pull de financiamiento</b> que aseguren un pipeline sostenible.</li>
+  </ol>
+  <div class="footer-bar">
+    <div class="footer-left"><b>WGS:</b> Whole Genome Sequencing · <b>PcrV:</b> proteína de virulencia tipo III de <i>P. aeruginosa</i> · <b>LPS:</b> Lipopolisacárido · <b>FMT:</b> Fecal Microbiota Transplantation · <b>CRE:</b> Carbapenem-Resistant Enterobacterales · <b>CRISPR-Cas:</b> Clustered Regularly Interspaced Short Palindromic Repeats – CRISPR-associated proteins.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
+  </div>
+  <div class="slide-num">35 / 40</div>
+</div>
+
+<!-- ============ DIAPOSITIVA 36: MENSAJES CLAVE ============ -->
+<div class="slide">
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Mensajes Clave</h1>
+  <ol>
+    <li>La RAM mató <b>~1.14 millones de personas directamente</b> y se asoció a <b>4.71 millones</b> en 2021; la proyección es de <b>1.91 millones de muertes directas anuales para 2050</b>.</li>
+    <li>Seis patógenos (<i>E. coli, S. aureus, K. pneumoniae, S. pneumoniae, A. baumannii, P. aeruginosa</i>) concentran ~76% de la mortalidad.</li>
+    <li>América Latina es la <b>región con mayor carga relativa</b> de mortalidad por RAM.</li>
+    <li>La <b>diseminación de NDM</b> y la <b>coexistencia KPC+NDM</b> están redefiniendo el manejo empírico de gram-negativos MDR.</li>
+    <li>La vigilancia local (antibiograma acumulado y consumo AWaRe) es el <b>insumo crítico para el PROA</b>.</li>
+    <li>La acción debe ser <b>One Health</b>, multisectorial y equitativa.</li>
+    <li>PROA + IPC + Vacunación + WASH = la fórmula con mejor evidencia.</li>
+  </ol>
+  <div class="footer-bar">
+    <div class="footer-left"><b>RAM:</b> Resistencia Antimicrobiana · <b>NDM:</b> New Delhi Metallo-β-lactamase · <b>KPC:</b> Klebsiella pneumoniae Carbapenemase · <b>MDR:</b> Multidrug-Resistant · <b>AWaRe:</b> Access, Watch, Reserve · <b>PROA:</b> Programa de Optimización de Antimicrobianos · <b>IPC:</b> Infection Prevention and Control · <b>WASH:</b> Water, Sanitation and Hygiene · <b>One Health:</b> enfoque integrado de salud humana, animal y ambiental.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
+  </div>
+  <div class="slide-num">36 / 40</div>
+</div>
+
+<!-- ============ DIAPOSITIVA 37: PREGUNTAS ============ -->
+<div class="slide">
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Preguntas para la Reflexión</h1>
+  <ol>
+    <li>¿Cómo se compara el perfil de resistencia de <b>su institución</b> con los datos de ReLAVRA+ y EARS-Net?</li>
+    <li>¿Qué <b>indicadores epidemiológicos</b> mínimos debería reportar mensualmente un PROA hospitalario?</li>
+    <li>¿Cuál es el <b>impacto esperado</b> de incorporar diagnóstico rápido en una UCI de su entorno?</li>
+    <li>¿Cómo abordar la <b>brecha One Health</b> con los actores veterinarios y ambientales locales?</li>
+    <li>¿Qué intervenciones priorizaría usted en los <b>primeros 12 meses</b> de un PROA naciente con recursos limitados?</li>
+  </ol>
+  <div class="footer-bar">
+    <div class="footer-left"><b>ReLAVRA+:</b> Red Latinoamericana y del Caribe de Vigilancia de la Resistencia a los Antimicrobianos · <b>EARS-Net:</b> European Antimicrobial Resistance Surveillance Network · <b>PROA:</b> Programa de Optimización de Antimicrobianos · <b>UCI:</b> Unidad de Cuidados Intensivos · <b>One Health:</b> enfoque integrado de salud humana, animal y ambiental.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
+  </div>
+  <div class="slide-num">37 / 40</div>
+</div>
+
+<!-- ============ DIAPOSITIVA 38: REFERENCIAS 1 ============ -->
+<div class="slide">
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Referencias Bibliográficas (1/2)</h1>
+  <ol style="font-size:12px;">
+    <li>GBD 2021 Antimicrobial Resistance Collaborators. Global burden of bacterial antimicrobial resistance 1990-2021. <i>Lancet</i> 2024;404(10459):1199-1226.</li>
+    <li>Naghavi M et al. Global burden of antimicrobial resistance and forecasts to 2050. <i>Lancet</i> 2024;404:1172-1173.</li>
+    <li>WHO. Global antibiotic resistance surveillance report 2025. Ginebra: WHO; 2025.</li>
+    <li>WHO. Bacterial Priority Pathogens List 2024. Ginebra: WHO; 2024.</li>
+    <li>ECDC. Antimicrobial resistance in the EU/EEA (EARS-Net) – Annual Epidemiological Report 2024. Estocolmo; 2025.</li>
+    <li>ECDC. Antimicrobial consumption in the EU/EEA (ESAC-Net) – Annual Report 2024.</li>
+    <li>CDC. Antimicrobial Resistance Threats Update 2024. Atlanta: CDC; 2024.</li>
+    <li>Devinney K et al. Increase in NDM-CRE, New York City. <i>MMWR</i> 2025;74(23).</li>
+    <li>PAHO/OPS. ReLAVRA+ Annual Report 2024.</li>
+    <li>Pillonetto M et al. Carbapenemase-producing gram-negative bacteria in LAC. <i>Antimicrob Resist Infect Control</i> 2025.</li>
+  </ol>
+  <div class="footer-bar">
+    <div class="footer-left"><b>GBD:</b> Global Burden of Disease · <b>WHO:</b> World Health Organization · <b>ECDC:</b> European Centre for Disease Prevention and Control · <b>EARS-Net:</b> European AMR Surveillance Network · <b>ESAC-Net:</b> European Surveillance of Antimicrobial Consumption Network · <b>CDC:</b> Centers for Disease Control · <b>MMWR:</b> Morbidity and Mortality Weekly Report · <b>PAHO/OPS:</b> Pan American Health Organization · <b>NDM-CRE:</b> NDM-producing Carbapenem-Resistant Enterobacterales · <b>LAC:</b> Latin America and the Caribbean.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
+  </div>
+  <div class="slide-num">38 / 40</div>
+</div>
+
+<!-- ============ DIAPOSITIVA 39: REFERENCIAS 2 ============ -->
+<div class="slide">
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title">Referencias Bibliográficas (2/2)</h1>
+  <ol start="11" style="font-size:12px;">
+    <li>Magiorakos AP et al. MDR, XDR and PDR bacteria: terminology. <i>Clin Microbiol Infect</i> 2012;18:268-281.</li>
+    <li>Kadri SS et al. Difficult-to-treat resistance. <i>Clin Infect Dis</i> 2018;67:1803-1814.</li>
+    <li>Tamma PD et al. IDSA Guidance on AMR Gram-negative infections. <i>Clin Infect Dis</i> 2024 (revisión anual).</li>
+    <li>Paul M et al. ESCMID guidelines for treatment of MDR-GNB infections. <i>Clin Microbiol Infect</i> 2022.</li>
+    <li>Cassini A et al. Attributable deaths from AR infections in EU/EEA. <i>Lancet Infect Dis</i> 2019;19:56-66.</li>
+    <li>Klein EY et al. Global increases in human antibiotic consumption. <i>PNAS</i> 2018;115:E3463.</li>
+    <li>WHO. AWaRe classification of antibiotics 2023 (rev. 2024).</li>
+    <li>CLSI M39-A5. Analysis and Presentation of Cumulative AMR Data. 2022.</li>
+    <li>WHO. Estimating the impact of vaccines in reducing AMR. Ginebra; 2024.</li>
+    <li>Lockhart SR et al. Global emergence and rapid spread of <i>Candidozyma auris</i>. <i>Clin Microbiol Rev</i> 2025.</li>
+    <li>UNGA. Political Declaration on AMR. Nueva York; 26 sept. 2024.</li>
+    <li>WHO EB158/18. Draft updated Global Action Plan on AMR. 2026.</li>
+  </ol>
+  <div class="footer-bar">
+    <div class="footer-left"><b>MDR:</b> Multidrug-Resistant · <b>XDR:</b> Extensively Drug-Resistant · <b>PDR:</b> Pandrug-Resistant · <b>IDSA:</b> Infectious Diseases Society of America · <b>AMR:</b> Antimicrobial Resistance · <b>ESCMID:</b> European Society of Clinical Microbiology and Infectious Diseases · <b>MDR-GNB:</b> Multidrug-Resistant Gram-Negative Bacteria · <b>EU/EEA:</b> European Union / European Economic Area · <b>PNAS:</b> Proceedings of the National Academy of Sciences · <b>WHO:</b> World Health Organization · <b>AWaRe:</b> Access, Watch, Reserve · <b>CLSI:</b> Clinical and Laboratory Standards Institute · <b>UNGA:</b> United Nations General Assembly.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
+  </div>
+  <div class="slide-num">39 / 40</div>
+</div>
+
+<!-- ============ DIAPOSITIVA 40: CIERRE ============ -->
+<div class="slide closing">
+  <div class="header-logos">
+    <div class="logo-avantis">
+      <div class="icon"></div>
+      <div class="text-block">
+        <div class="name">Avantiscorp</div>
+        <div class="tag">Capacitación Integral</div>
       </div>
-      <div class="pros">
-        <h3>✅ Facilitadores</h3>
-        <ul style="list-style:none;">
-          <li>Champions clínicos en cada servicio</li>
-          <li>Liderazgo institucional comprometido</li>
-          <li>CPOE con alertas integradas y reportes automatizados</li>
-          <li>Capacitación inicial y educación continua</li>
-          <li>Difusión de éxitos: casos donde la auditoría salvó vidas</li>
-          <li>Indicadores transparentes y compartidos</li>
-          <li>Cultura de seguridad del paciente como marco</li>
-        </ul>
-      </div>
     </div>
-    <div class="highlight-box" style="margin-top:12px;">
-      🛠️ <strong>Estrategia de implementación gradual:</strong> iniciar la auditoría en <strong>1-2 servicios piloto</strong> con buena disposición (UCI, Medicina Interna), demostrar resultados, expandir a otros servicios. El "efecto demostración" es clave.
+    <div class="logo-indo">
+      <div class="shield"></div>
+      <div class="name"><span>Universidad</span><span>Indoamérica</span></div>
     </div>
-    <p class="ref">Pulcini C et al. Antimicrobial stewardship in Europe: experiences and perspectives. Clin Microbiol Infect 2014;20(10):963-972</p>
   </div>
-  <div class="footer">
-    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
-    <span class="web">www.avantiscorp.com</span>
+  <div class="cover-content">
+    <h1 class="main-title">Gracias por<br>su atención</h1>
+    <div class="expositor">
+      ¿Preguntas y discusión?
+      <div class="expositor-name">Ph.D. Héctor Ortega</div>
+      <div class="institution-line" style="font-style:italic; color:#1e5fa8;">"Si no actuamos hoy, no podremos curar mañana"<br>— Margaret Chan, ex-Directora General OMS</div>
+    </div>
   </div>
+  <div class="divider-line" style="bottom: 90px;"></div>
+  <div class="footer-bar">
+    <div class="footer-left"><b>OMS:</b> Organización Mundial de la Salud · <b>PROA:</b> Programa de Optimización de Antimicrobianos · <b>RAM:</b> Resistencia Antimicrobiana</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
+  </div>
+  <div class="slide-num">40 / 40</div>
 </div>
 
-<!-- ============== DIAPOSITIVA 23: SEPARADOR INDICADORES ============== -->
-<div class="slide">
-  <div class="module-divider">
-    <div class="module-label">MÓDULO 3</div>
-    <h1>Indicadores y Evaluación<br>de Impacto</h1>
-    <p style="font-size:18px; max-width:70%;">"Lo que no se mide, no se mejora": el cuadro de mando del PROA</p>
-    <div class="duration">⏱️ 8 minutos</div>
+<!-- ============================================================== -->
+<!-- ================== TALLER EN PAREJAS ========================== -->
+<!-- ============================================================== -->
+
+<!-- ============ TALLER - PORTADA ============ -->
+<div class="slide workshop-slide">
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title" style="color:#2c8a3f;">Taller en Parejas — Análisis Epidemiológico Aplicado</h1>
+  <h2 class="subtitle">Duración del trabajo: 40 minutos · Defensa en próxima clase: 20 minutos por pareja</h2>
+  <div class="highlight">
+    <b>Caso institucional asignado:</b> Hospital de tercer nivel, 350 camas, 28 camas de UCI, en una ciudad de la región andina (perfil similar a Quito o Guayaquil). El comité de PROA, de reciente creación, les ha encomendado a ustedes (médico internista + infectólogo / enfermera) realizar el <b>diagnóstico epidemiológico basal</b> y proponer las primeras tres intervenciones priorizadas, sustentadas en evidencia.
   </div>
+  <h3>Estructura del taller</h3>
+  <ul>
+    <li><b>Diapositiva T-1:</b> esta portada e instrucciones generales.</li>
+    <li><b>Diapositiva T-2:</b> antibiograma acumulado institucional 2024 (datos completos).</li>
+    <li><b>Diapositiva T-3:</b> consumo antibiótico (DDD/100 PD) y datos comparativos regionales.</li>
+    <li><b>Diapositiva T-4:</b> tasas de infección por patógenos centinela (2022-2024) y consigna de productos a entregar.</li>
+    <li><b>Diapositiva T-5:</b> rúbrica de evaluación y bibliografía sugerida.</li>
+  </ul>
+  <div class="footer-bar">
+    <div class="footer-left"><b>UCI:</b> Unidad de Cuidados Intensivos · <b>PROA:</b> Programa de Optimización de Antimicrobianos · <b>DDD/100 PD:</b> Dosis Diaria Definida por 100 Pacientes-Día.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
+  </div>
+  <div class="slide-num">Taller 1/5</div>
 </div>
 
-<!-- ============== DIAPOSITIVA 24: INDICADORES TIPOS ============== -->
-<div class="slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">24 / 32</div>
+<!-- ============ TALLER - ANTIBIOGRAMA ============ -->
+<div class="slide workshop-slide">
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title" style="color:#2c8a3f;">Antibiograma Acumulado Institucional — Año 2024</h1>
+  <p style="font-size:12px;"><b>Metodología:</b> CLSI M39-A5. Primer aislado clínico por paciente y especie. Excluye muestras de vigilancia. n total = 2.847 aislados. Valores expresados como <b>% de Susceptibilidad (%S)</b>.</p>
+  <table style="font-size:11px;">
+    <tr>
+      <th>Microorganismo (n)</th>
+      <th>AMP</th><th>AMC</th><th>CTX/CRO</th><th>FEP</th><th>TZP</th><th>ETP</th><th>MEM</th><th>CIP</th><th>GEN</th><th>AMK</th><th>TMP/SMX</th><th>CST</th>
+    </tr>
+    <tr><td><i>E. coli</i> – global (n=812)</td><td>22</td><td>58</td><td>62</td><td>68</td><td>88</td><td>97</td><td>98</td><td>41</td><td>72</td><td>96</td><td>48</td><td>99</td></tr>
+    <tr><td><i>E. coli</i> – UCI (n=148)</td><td>14</td><td>42</td><td>45</td><td>52</td><td>78</td><td>92</td><td>94</td><td>28</td><td>61</td><td>92</td><td>38</td><td>99</td></tr>
+    <tr><td><i>K. pneumoniae</i> – global (n=486)</td><td>—</td><td>38</td><td>42</td><td>48</td><td>61</td><td>72</td><td>74</td><td>44</td><td>58</td><td>82</td><td>40</td><td>91</td></tr>
+    <tr><td><i>K. pneumoniae</i> – UCI (n=164)</td><td>—</td><td>22</td><td>26</td><td>30</td><td>42</td><td>58</td><td>62</td><td>26</td><td>40</td><td>71</td><td>22</td><td>87</td></tr>
+    <tr><td><i>Enterobacter cloacae</i> (n=121)</td><td>—</td><td>—</td><td>52</td><td>74</td><td>72</td><td>86</td><td>89</td><td>62</td><td>78</td><td>94</td><td>58</td><td>96</td></tr>
+    <tr><td><i>Proteus mirabilis</i> (n=98)</td><td>48</td><td>72</td><td>78</td><td>82</td><td>92</td><td>98</td><td>99</td><td>55</td><td>74</td><td>96</td><td>52</td><td>—</td></tr>
+    <tr><td><i>P. aeruginosa</i> – global (n=312)</td><td>—</td><td>—</td><td>—</td><td>72</td><td>68</td><td>—</td><td>64</td><td>61</td><td>—</td><td>78</td><td>—</td><td>89</td></tr>
+    <tr><td><i>P. aeruginosa</i> – UCI (n=142)</td><td>—</td><td>—</td><td>—</td><td>54</td><td>52</td><td>—</td><td>42</td><td>44</td><td>—</td><td>62</td><td>—</td><td>82</td></tr>
+    <tr><td><i>A. baumannii</i> – UCI (n=98)</td><td>—</td><td>—</td><td>—</td><td>18</td><td>22</td><td>—</td><td>21</td><td>16</td><td>28</td><td>34</td><td>32</td><td>78</td></tr>
+    <tr><td><i>S. aureus</i> (n=428)</td><td colspan="2" style="text-align:center;"><b>MRSA: 32% · MSSA: 68%</b></td><td colspan="2" style="text-align:center;">Vancomicina: 100% S</td><td colspan="2" style="text-align:center;">Linezolid: 100% S</td><td colspan="2" style="text-align:center;">Clindamicina: 64%</td><td colspan="2" style="text-align:center;">Daptomicina: 100% S</td></tr>
+    <tr><td><i>E. faecalis</i> (n=156)</td><td colspan="6" style="text-align:center;">Ampicilina: 92% S · Vancomicina: 98% S</td><td colspan="6" style="text-align:center;">Linezolid: 100% S · HLAR-Gen: 38%</td></tr>
+    <tr><td><i>E. faecium</i> (n=78)</td><td colspan="6" style="text-align:center;">Ampicilina: 18% S · Vancomicina: 76% S (VRE: 24%)</td><td colspan="6" style="text-align:center;">Linezolid: 99% S · Daptomicina: 98% S</td></tr>
+  </table>
+  <p style="font-size:10px; margin-top:6px;"><b>Notas:</b> Mecanismos detectados por PCR/inmunocromatografía en aislados carbapenem-R: KPC 62%, NDM 26%, KPC+NDM 8%, OXA-48 4%. BLEE CTX-M-15 confirmada en 84% de aislados 3GC-R. C. auris identificada en 11 episodios de candidemia (2024).</p>
+  <div class="footer-bar">
+    <div class="footer-left"><b>AMP:</b> Ampicilina · <b>AMC:</b> Amoxicilina-Clavulanato · <b>CTX/CRO:</b> Cefotaxima/Ceftriaxona · <b>FEP:</b> Cefepime · <b>TZP:</b> Piperacilina-Tazobactam · <b>ETP:</b> Ertapenem · <b>MEM:</b> Meropenem · <b>CIP:</b> Ciprofloxacino · <b>GEN:</b> Gentamicina · <b>AMK:</b> Amikacina · <b>TMP/SMX:</b> Trimetoprima-Sulfametoxazol · <b>CST:</b> Colistina · <b>MRSA/MSSA:</b> Methicillin-Resistant/Susceptible <i>S. aureus</i> · <b>HLAR-Gen:</b> High-Level Aminoglycoside Resistance – Gentamicina · <b>VRE:</b> Vancomycin-Resistant Enterococci · <b>KPC:</b> Klebsiella pneumoniae Carbapenemase · <b>NDM:</b> New Delhi Metallo-β-lactamase · <b>OXA-48:</b> Oxacilinasa-48 · <b>BLEE:</b> β-Lactamasa de Espectro Extendido · <b>3GC-R:</b> Cefalosporinas 3ª Generación – Resistente · <b>R:</b> Resistente · <b>S:</b> Susceptible · <b>UCI:</b> Unidad de Cuidados Intensivos · <b>CLSI:</b> Clinical and Laboratory Standards Institute.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
   </div>
-  <div class="content">
-    <h1 class="title">Indicadores PROA: Proceso, Consumo y Resultado</h1>
-    <table class="proa">
-      <thead>
-        <tr><th style="width:15%;">Tipo</th><th>Indicador</th><th style="width:22%;">Meta sugerida</th></tr>
-      </thead>
-      <tbody>
-        <tr><td rowspan="3"><strong>Proceso</strong></td><td>% prescripciones empíricas concordantes con guía local</td><td>≥ 80%</td></tr>
-        <tr><td>N° auditorías realizadas / N° prescripciones diana</td><td>≥ 90%</td></tr>
-        <tr><td>Tasa de aceptación de recomendaciones PROA</td><td>≥ 70%</td></tr>
-        <tr><td rowspan="3"><strong>Consumo</strong></td><td>DDD por 100 días-cama (carbapenémicos)</td><td>Reducción ≥ 20% basal</td></tr>
-        <tr><td>Días de terapia (DOT) por 1000 pacientes-día</td><td>Tendencia descendente</td></tr>
-        <tr><td>Ratio terapia oral / endovenosa</td><td>↑ progresivo</td></tr>
-        <tr><td rowspan="3"><strong>Resultado clínico</strong></td><td>Incidencia de <em>C. difficile</em> nosocomial</td><td>↓ 30% en 24 meses</td></tr>
-        <tr><td>Resistencia a carbapenémicos en Enterobacterias</td><td>Estabilización / ↓</td></tr>
-        <tr><td>Mortalidad por sepsis (no inferioridad)</td><td>Sin incremento</td></tr>
-        <tr><td><strong>Económico</strong></td><td>Ahorro en costo de antimicrobianos / paciente-día</td><td>Reducción ≥ 15%</td></tr>
-      </tbody>
-    </table>
-    <p class="ref">Morris AM. Antimicrobial stewardship programs: appropriate measures and metrics. Curr Treat Options Infect Dis 2014</p>
-  </div>
-  <div class="footer">
-    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
-    <span class="web">www.avantiscorp.com</span>
-  </div>
+  <div class="slide-num">Taller 2/5</div>
 </div>
 
-<!-- ============== DIAPOSITIVA 25: DDD vs DOT ============== -->
-<div class="slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">25 / 32</div>
+<!-- ============ TALLER - CONSUMO ============ -->
+<div class="slide workshop-slide">
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title" style="color:#2c8a3f;">Consumo Antibiótico y Comparativos — Año 2024</h1>
+  <h3>Tabla 1. Consumo institucional global (DDD/100 PD)</h3>
+  <table style="font-size:12px;">
+    <tr><th>Antibiótico</th><th>DDD/100 PD</th><th>Categoría AWaRe</th><th>% del consumo total</th></tr>
+    <tr><td>Ceftriaxona</td><td>28.4</td><td>Watch</td><td>22.1%</td></tr>
+    <tr><td>Piperacilina-tazobactam</td><td>18.7</td><td>Watch</td><td>14.6%</td></tr>
+    <tr><td>Meropenem</td><td>14.2</td><td>Watch</td><td>11.1%</td></tr>
+    <tr><td>Ciprofloxacino</td><td>12.6</td><td>Watch</td><td>9.8%</td></tr>
+    <tr><td>Vancomicina</td><td>9.8</td><td>Watch</td><td>7.6%</td></tr>
+    <tr><td>Amoxicilina / Amoxicilina-Clavulanato</td><td>11.2</td><td>Access</td><td>8.7%</td></tr>
+    <tr><td>Ampicilina-sulbactam</td><td>7.4</td><td>Access</td><td>5.8%</td></tr>
+    <tr><td>Colistina</td><td>3.8</td><td>Reserve</td><td>3.0%</td></tr>
+    <tr><td>Ceftazidima-avibactam</td><td>2.1</td><td>Reserve</td><td>1.6%</td></tr>
+    <tr><td>Linezolid</td><td>2.6</td><td>Reserve</td><td>2.0%</td></tr>
+    <tr><td>Tigeciclina</td><td>1.4</td><td>Reserve</td><td>1.1%</td></tr>
+    <tr><td>Otros (clindamicina, azitromicina, TMP/SMX, etc.)</td><td>16.4</td><td>Mixto</td><td>12.6%</td></tr>
+    <tr style="background:#f0f5ec;"><td><b>Total</b></td><td><b>128.6</b></td><td>—</td><td><b>100%</b></td></tr>
+  </table>
+  <h3>Tabla 2. Distribución AWaRe institucional vs. metas OMS</h3>
+  <table style="font-size:12px;">
+    <tr><th>Categoría</th><th>% institucional 2024</th><th>Meta OMS 2030</th><th>Brecha</th></tr>
+    <tr><td><b>Access</b></td><td>22.7%</td><td>≥ 60%</td><td>−37.3 pp</td></tr>
+    <tr><td><b>Watch</b></td><td>69.6%</td><td>Limitar</td><td>Excesivo</td></tr>
+    <tr><td><b>Reserve</b></td><td>7.7%</td><td>Muy restringido</td><td>Sobreuso</td></tr>
+  </table>
+  <div class="footer-bar">
+    <div class="footer-left"><b>DDD/100 PD:</b> Dosis Diaria Definida por 100 Pacientes-Día · <b>AWaRe:</b> Access, Watch, Reserve · <b>OMS:</b> Organización Mundial de la Salud · <b>TMP/SMX:</b> Trimetoprima-Sulfametoxazol · <b>pp:</b> puntos porcentuales.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
   </div>
-  <div class="content">
-    <h1 class="title">Métricas de Consumo: DDD vs DOT</h1>
-    <div class="grid-2">
-      <div class="card" style="border-left-color:#0066b3;">
-        <h3>📏 DDD (Defined Daily Dose)</h3>
-        <p><strong>Definición OMS-ATC:</strong> dosis diaria promedio asumida para un adulto en la indicación principal del fármaco.<br><br>
-        <strong>Fórmula:</strong> g consumidos ÷ DDD (g) × 100/días-cama<br><br>
-        <strong>Ventaja:</strong> estandarizada internacionalmente, comparable entre centros.<br>
-        <strong>Limitación:</strong> no refleja bien dosis pediátricas, ajustes por función renal, ni dosis altas terapéuticas.</p>
-      </div>
-      <div class="card" style="border-left-color:#0066b3;">
-        <h3>📏 DOT (Days of Therapy)</h3>
-        <p><strong>Definición CDC-NHSN:</strong> número de días que un paciente recibe un antimicrobiano específico, independientemente de la dosis.<br><br>
-        <strong>Fórmula:</strong> días con antibiótico × 1000/pacientes-día<br><br>
-        <strong>Ventaja:</strong> refleja exposición real, válido en pediatría y ajustes de dosis.<br>
-        <strong>Limitación:</strong> requiere CPOE robusto; combinaciones cuentan doble.</p>
-      </div>
-    </div>
-    <div class="highlight-box" style="margin-top:12px;">
-      💡 <strong>Recomendación actual (CDC, IDSA):</strong> usar preferentemente <strong>DOT</strong> en hospitales con CPOE; DDD sigue siendo válido y útil para comparaciones internacionales y benchmarking. <strong>LOT (Length of Therapy)</strong> mide días con cualquier antibiótico (sin contar combinaciones por separado).
-    </div>
-  </div>
-  <div class="footer">
-    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
-    <span class="web">www.avantiscorp.com</span>
-  </div>
+  <div class="slide-num">Taller 3/5</div>
 </div>
 
-<!-- ============== DIAPOSITIVA 26: CASO CLÍNICO 1 ============== -->
-<div class="slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">26 / 32</div>
+<!-- ============ TALLER - PATÓGENOS CENTINELA Y PRODUCTOS ============ -->
+<div class="slide workshop-slide">
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title" style="color:#2c8a3f;">Patógenos Centinela y Productos a Entregar</h1>
+  <h3>Tabla 3. Incidencia de infección por patógenos centinela (episodios/1.000 pacientes-día)</h3>
+  <table style="font-size:12px;">
+    <tr><th>Patógeno</th><th>2022</th><th>2023</th><th>2024</th><th>Tendencia</th></tr>
+    <tr><td>MRSA – bacteriemia</td><td>0.42</td><td>0.51</td><td>0.58</td><td>Ascendente</td></tr>
+    <tr><td>VRE – bacteriemia</td><td>0.08</td><td>0.14</td><td>0.22</td><td>Ascendente</td></tr>
+    <tr><td>CRE (KPC/NDM) – todos los sitios</td><td>0.38</td><td>0.61</td><td>0.89</td><td>Ascendente marcada</td></tr>
+    <tr><td>CRAB – todos los sitios</td><td>1.12</td><td>1.34</td><td>1.46</td><td>Ascendente</td></tr>
+    <tr><td><i>C. difficile</i></td><td>0.62</td><td>0.74</td><td>0.81</td><td>Ascendente</td></tr>
+    <tr><td><i>Candida auris</i> – candidemia</td><td>0</td><td>0.04</td><td>0.11</td><td>Emergente</td></tr>
+  </table>
+  <p style="font-size:11px;"><b>Datos comparativos regionales (referencia):</b> Ecuador ReLAVRA+ 2024 → K. pneumoniae carbapenem-R UCI 22-35%; A. baumannii carbapenem-R UCI &gt;75%; MRSA 28-34%. Adherencia institucional a higiene de manos: 48%. Diagnóstico molecular (Xpert Carba-R): disponible 24/7. Vigilancia activa de colonización por CRE: no implementada.</p>
+  <div class="alert"><b>Productos a entregar para la defensa de 20 minutos (formato libre: PPT, póster o nota técnica):</b>
+  <ol style="margin-top:6px;">
+    <li><b>Análisis crítico (5 min)</b> del perfil microbiológico institucional, comparado con datos regionales/globales.</li>
+    <li><b>Identificación de ≥3 problemas epidemiológicos prioritarios (5 min)</b> con justificación cuantitativa (cite cifras del antibiograma y del consumo).</li>
+    <li><b>Propuesta de 3 intervenciones PROA basadas en evidencia (8 min):</b> objetivo SMART, indicador de proceso, indicador de resultado, plazo y responsable.</li>
+    <li><b>Análisis crítico-reflexivo (2 min):</b> barreras esperadas para la implementación y estrategias para superarlas.</li>
+  </ol>
   </div>
-  <div class="content">
-    <h1 class="title">Caso Clínico Integrador 1 - NAC</h1>
-    <div class="case-study">
-      <p><strong>Paciente:</strong> Varón de 68 años, hospitalizado en Medicina Interna por neumonía adquirida en la comunidad (NAC). Día 4 de hospitalización recibe <strong>meropenem 1 g c/8 h EV</strong> indicado en urgencias. Antecedentes: HTA, DM2. Sin hospitalización previa. Sin uso de antibióticos en los últimos 90 días.</p>
-      <p style="margin-top:6px;"><strong>Hemocultivos (día 2):</strong> negativos. <strong>Cultivo de esputo:</strong> <em>Streptococcus pneumoniae</em> sensible a penicilina y ceftriaxona. <strong>PCR:</strong> 145 → 22 mg/L. Afebril desde día 2. Saturación 96% aire ambiental. Tolera vía oral.</p>
-    </div>
-    <h2 class="subtitle" style="margin-top:12px;">❓ Discusión guiada</h2>
-    <ul class="styled">
-      <li><strong>¿La elección empírica fue concordante con la guía local de NAC?</strong> Probablemente NO — sobreuso de carbapenémico en NAC sin factores de riesgo de patógenos resistentes.</li>
-      <li><strong>¿Qué recomendación PROA emitiría?</strong> Desescalamiento a <strong>amoxicilina 1g VO c/8h</strong> (terapia secuencial), duración total 5 días desde el inicio.</li>
-      <li><strong>¿Cómo registrar el feedback?</strong> Nota PROA en HC + comunicación verbal al equipo + caso anonimizado para sesión académica del servicio.</li>
-      <li><strong>¿Qué indicador mejora este caso?</strong> Tasa de adherencia a guía NAC, ratio IV/VO, DOT de carbapenémicos, costo por paciente.</li>
-    </ul>
+  <div class="footer-bar">
+    <div class="footer-left"><b>MRSA:</b> Methicillin-Resistant <i>S. aureus</i> · <b>VRE:</b> Vancomycin-Resistant Enterococci · <b>CRE:</b> Carbapenem-Resistant Enterobacterales · <b>KPC:</b> Klebsiella pneumoniae Carbapenemase · <b>NDM:</b> New Delhi Metallo-β-lactamase · <b>CRAB:</b> Carbapenem-Resistant <i>A. baumannii</i> · <b>UCI:</b> Unidad de Cuidados Intensivos · <b>ReLAVRA+:</b> Red Latinoamericana y del Caribe de Vigilancia de la Resistencia Antimicrobiana · <b>PROA:</b> Programa de Optimización de Antimicrobianos · <b>SMART:</b> Specific, Measurable, Achievable, Relevant, Time-bound · <b>PPT:</b> PowerPoint.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
   </div>
-  <div class="footer">
-    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
-    <span class="web">www.avantiscorp.com</span>
-  </div>
+  <div class="slide-num">Taller 4/5</div>
 </div>
 
-<!-- ============== DIAPOSITIVA 27: CASO CLÍNICO 2 ============== -->
-<div class="slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">27 / 32</div>
+<!-- ============ TALLER - RÚBRICA ============ -->
+<div class="slide workshop-slide">
+  <div class="corner-icon"></div>
+  <div class="top-line"></div>
+  <h1 class="slide-title" style="color:#2c8a3f;">Rúbrica de Evaluación y Bibliografía Sugerida</h1>
+  <h3>Rúbrica de evaluación (100 puntos)</h3>
+  <table style="font-size:12px;">
+    <tr><th>Criterio</th><th>Descripción</th><th>Puntaje</th></tr>
+    <tr><td>Rigor epidemiológico y uso de fuentes</td><td>Análisis cuantitativo correcto del antibiograma y consumo; citas a GLASS, EARS-Net, ReLAVRA+, IDSA, CLSI.</td><td>25</td></tr>
+    <tr><td>Pertinencia y priorización de problemas</td><td>Selección justificada de problemas críticos en función de magnitud, gravedad y factibilidad de intervención.</td><td>20</td></tr>
+    <tr><td>Calidad metodológica de las intervenciones</td><td>Intervenciones SMART, con indicadores de proceso y resultado, plazos y responsables; alineadas con evidencia.</td><td>25</td></tr>
+    <tr><td>Defensa oral y manejo de preguntas</td><td>Claridad, dominio del tema, capacidad de respuesta argumentada ante el panel evaluador.</td><td>20</td></tr>
+    <tr><td>Trabajo en equipo y pensamiento crítico</td><td>Integración disciplinaria, equilibrio en la participación y reflexión sobre barreras y limitaciones.</td><td>10</td></tr>
+    <tr style="background:#f0f5ec;"><td colspan="2"><b>Total</b></td><td><b>100</b></td></tr>
+  </table>
+  <h3>Bibliografía mínima sugerida</h3>
+  <ul style="font-size:12px;">
+    <li>WHO. Global Antibiotic Resistance Surveillance Report 2025.</li>
+    <li>ECDC. EARS-Net Annual Epidemiological Report 2024.</li>
+    <li>CLSI M39-A5. Analysis and Presentation of Cumulative AMR Data, 2022.</li>
+    <li>Tamma PD et al. IDSA Guidance on AMR Gram-negative Infections 2024.</li>
+    <li>OPS. Guía PROA para América Latina y el Caribe 2024.</li>
+    <li>WHO AWaRe Classification of Antibiotics 2024.</li>
+    <li>Antibiograma institucional propio (si disponible).</li>
+  </ul>
+  <div class="footer-bar">
+    <div class="footer-left"><b>GLASS:</b> Global Antimicrobial Resistance and Use Surveillance System · <b>EARS-Net:</b> European Antimicrobial Resistance Surveillance Network · <b>ReLAVRA+:</b> Red Latinoamericana de Vigilancia de la Resistencia Antimicrobiana · <b>IDSA:</b> Infectious Diseases Society of America · <b>CLSI:</b> Clinical and Laboratory Standards Institute · <b>SMART:</b> Specific, Measurable, Achievable, Relevant, Time-bound · <b>AMR:</b> Antimicrobial Resistance · <b>OPS:</b> Organización Panamericana de la Salud · <b>AWaRe:</b> Access, Watch, Reserve · <b>PROA:</b> Programa de Optimización de Antimicrobianos.</div>
+    <div class="footer-logo"><div class="icon"></div><div class="text-block"><div class="name">Avantiscorp</div><div class="tag">Capacitación Integral</div></div></div>
   </div>
-  <div class="content">
-    <h1 class="title">Caso Clínico Integrador 2 - ITU Complicada</h1>
-    <div class="case-study">
-      <p><strong>Paciente:</strong> Mujer de 74 años, hospitalizada por pielonefritis aguda con sepsis. Antecedente de ITU recurrente (3 episodios en 6 meses), portadora de sonda vesical permanente domiciliaria. Inicia <strong>ceftriaxona 2 g/día EV</strong> empírica.</p>
-      <p style="margin-top:6px;"><strong>Día 3:</strong> urocultivo aísla <em>Klebsiella pneumoniae</em> productora de BLEE, sensible solo a meropenem, ertapenem, amikacina y fosfomicina. Hemocultivos: <em>K. pneumoniae</em> BLEE. Paciente con mejoría clínica parcial, persistencia febril, PCR estable.</p>
-    </div>
-    <h2 class="subtitle" style="margin-top:12px;">❓ Discusión guiada</h2>
-    <ul class="styled">
-      <li><strong>¿La empírica fue adecuada según el riesgo de BLEE?</strong> Cuestionable: paciente con factores de riesgo (ITU recurrente, sonda permanente) podría justificar empírica más amplia según guía local.</li>
-      <li><strong>Recomendación PROA dirigida:</strong> escalar a <strong>ertapenem 1 g/día EV</strong> (más conveniente que meropenem si no hay shock ni Pseudomonas), duración 10-14 días en bacteriemia por BLEE.</li>
-      <li><strong>Plan de seguimiento:</strong> evaluar terapia secuencial a <strong>fosfomicina trometamol VO</strong> tras 7 días si evolución favorable.</li>
-      <li><strong>Lección PROA:</strong> incorporar a la guía local los <strong>factores de riesgo de BLEE</strong> para optimizar terapia empírica futura.</li>
-    </ul>
-  </div>
-  <div class="footer">
-    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
-    <span class="web">www.avantiscorp.com</span>
-  </div>
-</div>
-
-<!-- ============== DIAPOSITIVA 28: MENSAJES CLAVE ============== -->
-<div class="slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">28 / 32</div>
-  </div>
-  <div class="content">
-    <h1 class="title">Mensajes Clave para Llevar a la Práctica</h1>
-    <ul class="styled">
-      <li><strong>Las guías locales son la columna vertebral del PROA</strong>: sin ellas, la auditoría carece de estándar comparador.</li>
-      <li><strong>Adaptación local > adopción ciega:</strong> el antibiograma propio define la terapia empírica adecuada.</li>
-      <li><strong>La auditoría prospectiva con feedback</strong> es la intervención persuasiva con <strong>mayor evidencia</strong> y mejor aceptación clínica sostenible.</li>
-      <li><strong>La retroalimentación efectiva</strong> es oportuna, específica, comparativa, bidireccional, no punitiva y combinada (verbal + escrita + visual).</li>
-      <li><strong>Sin indicadores no hay PROA:</strong> medir proceso, consumo y resultado de forma sistemática y compartir resultados de manera transparente.</li>
-      <li><strong>Cambio cultural sostenible:</strong> educar antes que prohibir; persuadir antes que restringir; medir y demostrar antes que imponer.</li>
-      <li><strong>El equipo PROA es multidisciplinario:</strong> infectólogo + farmacéutico clínico + microbiólogo + epidemiólogo + enfermería son indispensables.</li>
-      <li><strong>La sostenibilidad del PROA</strong> depende del liderazgo institucional, recursos asignados y cultura de seguridad del paciente.</li>
-    </ul>
-    <div class="highlight-box" style="margin-top:15px;">
-      🌟 <em>"El mejor antibiótico es el que no se necesita; el segundo mejor, el que se usa correctamente y por el menor tiempo eficaz posible."</em>
-    </div>
-  </div>
-  <div class="footer">
-    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
-    <span class="web">www.avantiscorp.com</span>
-  </div>
-</div>
-
-<!-- ============== DIAPOSITIVA 29: TAREA INDIVIDUAL ============== -->
-<div class="slide task-slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">29 / 32</div>
-  </div>
-  <div class="content">
-    <h1 class="title" style="color:#ff6f00; border-bottom-color:#0066b3;">📝 Tarea Individual en Clase (30 min)</h1>
-    <div class="objective-box" style="background:#fff3e0; border-color:#ff6f00;">
-      <h2 class="subtitle" style="color:#ff6f00; margin-bottom:6px;">Instrucciones generales</h2>
-      <p style="font-size:14px;">Desarrolle individualmente la siguiente actividad <strong>durante los próximos 30 minutos</strong>. Al finalizar, exporte su documento en <strong>formato PDF</strong> y envíelo al aula virtual del diplomado antes del cierre de la sesión. <strong>Extensión:</strong> 2 a 3 páginas (Word/Google Docs convertido a PDF).</p>
-    </div>
-
-    <h2 class="subtitle" style="margin-top:10px;">🎯 Consigna</h2>
-    <p style="font-size:14px; margin-bottom:6px;">Considerando un servicio hospitalario donde usted trabaja (real o hipotético), elabore un <strong>plan operativo PROA</strong> que incluya los siguientes seis componentes:</p>
-    <ul class="styled">
-      <li><strong>(1) Selección de un escenario clínico</strong> para elaborar una guía local (ej. NAC, ITU complicada, sepsis abdominal, neutropenia febril). Justifique la elección en 3 líneas con datos epidemiológicos del servicio.</li>
-      <li><strong>(2) Tres antimicrobianos diana</strong> que priorizaría auditar prospectivamente y por qué (use clasificación AWaRe).</li>
-      <li><strong>(3) Diseño del proceso de auditoría</strong>: ¿quién audita?, ¿con qué frecuencia?, ¿con qué herramienta de registro?, ¿en qué momento del tratamiento?, ¿cómo entrega el feedback al prescriptor?</li>
-      <li><strong>(4) Tres indicadores</strong> (uno de proceso, uno de consumo y uno de resultado) con su fórmula, meta a 12 meses y fuente de datos.</li>
-      <li><strong>(5) Dos barreras anticipadas</strong> y sus estrategias específicas de mitigación.</li>
-      <li><strong>(6) Cronograma de implementación a 6 meses</strong> (diagrama de Gantt simplificado o tabla de hitos).</li>
-    </ul>
-  </div>
-  <div class="footer" style="background:#ff6f00;">
-    <span>Tarea Individual - Diplomado PROA AVANTIS CORP</span>
-    <span class="web" style="color:white;">www.avantiscorp.com</span>
-  </div>
-</div>
-
-<!-- ============== DIAPOSITIVA 30: RÚBRICA Y ENTREGA ============== -->
-<div class="slide task-slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">30 / 32</div>
-  </div>
-  <div class="content">
-    <h1 class="title" style="color:#ff6f00; border-bottom-color:#0066b3;">📊 Rúbrica de Evaluación e Instrucciones de Entrega</h1>
-    <h2 class="subtitle" style="color:#ff6f00;">Rúbrica (Total: 20 puntos)</h2>
-    <table class="proa">
-      <thead>
-        <tr><th style="width:55%;">Criterio</th><th style="width:15%;">Puntaje</th><th>Nivel esperado</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Pertinencia clínica y justificación epidemiológica del escenario seleccionado</td><td>3 pts</td><td>Datos locales</td></tr>
-        <tr><td>Selección razonada de antimicrobianos diana (con clasificación AWaRe)</td><td>3 pts</td><td>Justificada</td></tr>
-        <tr><td>Coherencia y operatividad del proceso de auditoría y feedback</td><td>5 pts</td><td>Detallado y factible</td></tr>
-        <tr><td>Calidad y factibilidad de los indicadores propuestos (proceso, consumo, resultado)</td><td>4 pts</td><td>Con fórmulas y metas</td></tr>
-        <tr><td>Identificación de barreras y estrategias de mitigación realistas</td><td>3 pts</td><td>Contextualizadas</td></tr>
-        <tr><td>Cronograma de implementación a 6 meses claro y viable</td><td>2 pts</td><td>Hitos definidos</td></tr>
-      </tbody>
-    </table>
-    <div class="objective-box" style="background:#fff3e0; border-color:#ff6f00; margin-top:12px;">
-      <h2 class="subtitle" style="color:#ff6f00; margin-bottom:6px;">📤 Instrucciones de entrega</h2>
-      <p style="font-size:13px;">
-        <strong>Formato:</strong> archivo PDF (no se aceptan Word ni imágenes).<br>
-        <strong>Nombre del archivo:</strong> <em>Apellido_Nombre_TareaPROA_EstrategiasClasicas.pdf</em><br>
-        <strong>Plazo:</strong> al término de los 30 minutos asignados.<br>
-        <strong>Plataforma:</strong> aula virtual del Diplomado PROA - AVANTIS CORP.<br>
-        <strong>Calificación mínima aprobatoria:</strong> 14/20 puntos.
-      </p>
-    </div>
-    <p class="ref" style="margin-top:6px;">⏰ Recuerde: al finalizar los 30 minutos iniciaremos la fase de discusión grupal con socialización de tareas seleccionadas.</p>
-  </div>
-  <div class="footer" style="background:#ff6f00;">
-    <span>Tarea Individual - Diplomado PROA AVANTIS CORP</span>
-    <span class="web" style="color:white;">www.avantiscorp.com</span>
-  </div>
-</div>
-
-<!-- ============== DIAPOSITIVA 31: DISCUSIÓN GRUPAL ============== -->
-<div class="slide discussion-slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">31 / 32</div>
-  </div>
-  <div class="content">
-    <h1 class="title" style="color:#2e7d32; border-bottom-color:#f7941d;">💬 Discusión Grupal (30 min)</h1>
-    <h2 class="subtitle" style="color:#2e7d32;">🎯 Objetivos de la discusión</h2>
-    <ul class="styled">
-      <li>Socializar planes operativos diseñados por los participantes.</li>
-      <li>Identificar fortalezas, oportunidades de mejora y aprendizajes cruzados.</li>
-      <li>Aplicar los principios del feedback efectivo entre pares (¡practicamos lo aprendido!).</li>
-      <li>Construir colectivamente recomendaciones aplicables a distintos contextos institucionales.</li>
-    </ul>
-    <h2 class="subtitle" style="color:#2e7d32; margin-top:12px;">📋 Estructura de la discusión</h2>
-    <table class="proa">
-      <thead><tr><th style="width:18%;">Tiempo</th><th>Actividad</th><th style="width:25%;">Modalidad</th></tr></thead>
-      <tbody>
-        <tr><td><strong>0-5 min</strong></td><td>Presentación de 2-3 tareas seleccionadas (voluntarios o aleatorio)</td><td>Plenario</td></tr>
-        <tr><td><strong>5-15 min</strong></td><td>Análisis crítico estructurado: ¿qué fortalezas tiene?, ¿qué barreras anticipa?, ¿es viable en su contexto?</td><td>Discusión guiada por la docente</td></tr>
-        <tr><td><strong>15-22 min</strong></td><td>Preguntas detonadoras: dilemas éticos, jerarquías, recursos limitados</td><td>Trabajo colaborativo</td></tr>
-        <tr><td><strong>22-28 min</strong></td><td>Síntesis colectiva: matriz de aprendizajes y recomendaciones aplicables</td><td>Pizarra compartida</td></tr>
-        <tr><td><strong>28-30 min</strong></td><td>Cierre, retroalimentación final y conexión con próxima sesión</td><td>Docente</td></tr>
-      </tbody>
-    </table>
-    <div class="highlight-box" style="margin-top:10px; background:#e8f5e9; border-left-color:#2e7d32;">
-      💡 <strong>Reglas de la discusión:</strong> escucha activa, crítica constructiva, lenguaje no punitivo, respeto a la diversidad de contextos institucionales, foco en mejora colectiva.
-    </div>
-  </div>
-  <div class="footer" style="background:#2e7d32;">
-    <span>Discusión Grupal - Diplomado PROA AVANTIS CORP</span>
-    <span class="web" style="color:#fff8e1;">www.avantiscorp.com</span>
-  </div>
-</div>
-
-<!-- ============== DIAPOSITIVA 32: CIERRE Y BIBLIOGRAFÍA ============== -->
-<div class="slide discussion-slide">
-  <div class="header">
-    <div class="logo">AVANTIS<span>CORP</span></div>
-    <div class="slide-num">32 / 32</div>
-  </div>
-  <div class="content">
-    <h1 class="title" style="color:#2e7d32; border-bottom-color:#f7941d;">🎓 Cierre y Bibliografía Recomendada</h1>
-    <h2 class="subtitle" style="color:#2e7d32;">📚 Lecturas esenciales</h2>
-    <ul class="styled" style="font-size:13px;">
-      <li>Barlam TF et al. <strong>Implementing an Antibiotic Stewardship Program: Guidelines by IDSA/SHEA</strong>. Clin Infect Dis 2016;62(10):e51-77.</li>
-      <li>Davey P et al. <strong>Interventions to improve antibiotic prescribing practices for hospital inpatients</strong>. Cochrane Database Syst Rev 2017;2:CD003543.</li>
-      <li>Ivers N et al. <strong>Audit and feedback: effects on professional practice and healthcare outcomes</strong>. Cochrane Database Syst Rev 2012;6:CD000259.</li>
-      <li>CDC. <strong>Core Elements of Hospital Antibiotic Stewardship Programs</strong>. Atlanta: CDC; 2019.</li>
-      <li>WHO. <strong>Global Action Plan on Antimicrobial Resistance</strong>. Geneva: WHO; 2015.</li>
-      <li>WHO. <strong>AWaRe Classification of Antibiotics</strong>. Geneva: WHO; 2021 update.</li>
-      <li>Schuts EC et al. <strong>Current evidence on hospital antimicrobial stewardship objectives</strong>. Lancet Infect Dis 2016;16(7):847-856.</li>
-      <li>Pulcini C et al. <strong>Forging a new path for antimicrobial stewardship: ESCMID-ESGAP perspective</strong>. Clin Microbiol Infect 2019.</li>
-    </ul>
-    <div class="objective-box" style="background:#e8f5e9; border-color:#2e7d32; margin-top:10px;">
-      <h2 class="subtitle" style="color:#2e7d32; margin-bottom:6px;">🌟 Reflexión final</h2>
-      <p style="font-size:14px; font-style:italic; text-align:center;">"El cambio en el uso de antimicrobianos no se logra con prohibiciones, sino con conocimiento, mediciones, conversaciones y cultura. Cada uno de ustedes es ahora un agente de transformación PROA en su institución."</p>
-    </div>
-    <p style="text-align:center; margin-top:12px; font-size:15px;"><strong>¡Muchas gracias por su atención y participación!</strong></p>
-    <p style="text-align:center; font-size:13px; color:#555;">MSc. Elisa Curay - Delegada Técnica PROA HGR<br>Diplomado PROA · AVANTIS CORP</p>
-  </div>
-  <div class="footer" style="background:#2e7d32;">
-    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
-    <span class="web" style="color:#fff8e1;">www.avantiscorp.com</span>
-  </div>
+  <div class="slide-num">Taller 5/5</div>
 </div>
 
 </body>
