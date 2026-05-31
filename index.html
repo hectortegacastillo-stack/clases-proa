@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Diplomado PROA - Estrategias Clásicas: Guías Locales, Auditoría y Retroalimentación</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #e8eef5;
+    padding: 20px;
+    color: #1a3a5c;
+  }
+  .slide {
+    width: 1100px;
+    height: 620px;
+    margin: 30px auto;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f6fc 100%);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+  .slide::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 12px;
+    background: linear-gradient(180deg, #0066b3 0%, #00a4e4 50%, #f7941d 100%);
+  }
+  .header {
+    background: linear-gradient(90deg, #0066b3 0%, #0086c9 100%);
+    color: white;
+    padding: 16px 40px 16px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  .logo span { color: #f7941d; }
+  .slide-num {
+    background: #f7941d;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+  }
+  .footer {
+    position: absolute;
+    bottom: 0; left: 12px; right: 0;
+    height: 38px;
+    background: #1a3a5c;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    font-size: 12px;
+  }
+  .footer .web { color: #f7941d; font-weight: bold; }
+  .content {
+    padding: 25px 45px 55px 60px;
+    height: calc(100% - 70px - 38px);
+    overflow: hidden;
+  }
+  h1.title {
+    color: #0066b3;
+    font-size: 28px;
+    border-bottom: 3px solid #f7941d;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+  }
+  h2.subtitle {
+    color: #1a3a5c;
+    font-size: 19px;
+    margin-bottom: 10px;
+    margin-top: 8px;
+  }
+  .cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    background: linear-gradient(135deg, #0066b3 0%, #003d6b 100%);
+    color: white;
+    position: relative;
+  }
+  .cover::after {
+    content: "";
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(247,148,29,0.3) 0%, transparent 70%);
+  }
+  .cover .logo-big {
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin-bottom: 30px;
+  }
+  .cover .logo-big span { color: #f7941d; }
+  .cover h1 {
+    font-size: 40px;
+    margin-bottom: 18px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+  }
+  .cover h2 {
+    font-size: 24px;
+    color: #f7941d;
+    margin-bottom: 40px;
+  }
+  .cover .author {
+    font-size: 17px;
+    border-top: 2px solid #f7941d;
+    padding-top: 15px;
+    width: 65%;
+    line-height: 1.6;
+  }
+  ul.styled {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul.styled li {
+    padding: 6px 0 6px 28px;
+    position: relative;
+    font-size: 15px;
+    line-height: 1.45;
+  }
+  ul.styled li::before {
+    content: "▸";
+    color: #f7941d;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    font-size: 18px;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-top: 10px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .card {
+    background: white;
+    border-left: 5px solid #f7941d;
+    padding: 12px 15px;
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  }
+  .card h3 {
+    color: #0066b3;
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+  .card p { font-size: 13px; line-height: 1.4; }
+  .highlight-box {
+    background: linear-gradient(90deg, #fff3e0 0%, #ffffff 100%);
+    border-left: 5px solid #f7941d;
+    padding: 12px 18px;
+    margin: 12px 0;
+    border-radius: 6px;
+    font-style: italic;
+    font-size: 14px;
+  }
+  .objective-box {
+    background: #e3f2fd;
+    border: 2px dashed #0066b3;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+  table.proa {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    font-size: 13px;
+  }
+  table.proa th {
+    background: #0066b3;
+    color: white;
+    padding: 8px;
+    text-align: left;
+  }
+  table.proa td {
+    padding: 6px 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  table.proa tr:nth-child(even) { background: #f5f9fc; }
+  .timeline {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+    position: relative;
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    top: 22px; left: 5%; right: 5%;
+    height: 3px;
+    background: #f7941d;
+  }
+  .step {
+    background: #0066b3;
+    color: white;
+    width: 45px; height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    z-index: 1;
+    position: relative;
+    margin: 0 auto;
+  }
+  .step-container {
+    text-align: center;
+    width: 18%;
+  }
+  .step-container p {
+    font-size: 12px;
+    margin-top: 6px;
+    font-weight: 600;
+  }
+  .task-slide {
+    background: linear-gradient(135deg, #fff8e1 0%, #ffffff 100%);
+  }
+  .task-slide .header {
+    background: linear-gradient(90deg, #f7941d 0%, #ff6f00 100%);
+  }
+  .discussion-slide {
+    background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%);
+  }
+  .discussion-slide .header {
+    background: linear-gradient(90deg, #2e7d32 0%, #43a047 100%);
+  }
+  .case-study {
+    background: #f5f9fc;
+    border: 1px solid #b3d4ec;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .case-study strong { color: #0066b3; }
+  .ref {
+    font-size: 10px;
+    color: #666;
+    font-style: italic;
+    margin-top: 6px;
+  }
+  .module-divider {
+    background: linear-gradient(135deg, #0066b3 0%, #003d6b 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+  }
+  .module-divider .module-label {
+    font-size: 18px;
+    color: #f7941d;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+  }
+  .module-divider h1 {
+    font-size: 42px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    margin-bottom: 15px;
+  }
+  .module-divider .duration {
+    background: #f7941d;
+    padding: 8px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  .stat-box {
+    background: white;
+    border-top: 4px solid #f7941d;
+    padding: 12px;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  }
+  .stat-box .number {
+    font-size: 28px;
+    font-weight: bold;
+    color: #0066b3;
+  }
+  .stat-box .label {
+    font-size: 12px;
+    color: #555;
+    margin-top: 4px;
+  }
+  .pros-cons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  .pros, .cons {
+    padding: 12px 15px;
+    border-radius: 8px;
+  }
+  .pros {
+    background: #e8f5e9;
+    border-left: 5px solid #2e7d32;
+  }
+  .cons {
+    background: #ffebee;
+    border-left: 5px solid #c62828;
+  }
+  .pros h3 { color: #2e7d32; font-size: 15px; margin-bottom: 6px; }
+  .cons h3 { color: #c62828; font-size: 15px; margin-bottom: 6px; }
+  .pros li, .cons li { font-size: 13px; padding: 3px 0 3px 22px; list-style: none; position: relative; }
+  .pros li::before { content: "✓"; color: #2e7d32; position: absolute; left: 0; font-weight: bold; }
+  .cons li::before { content: "✗"; color: #c62828; position: absolute; left: 0; font-weight: bold; }
+  @media print {
+    body { background: white; padding: 0; }
+    .slide { margin: 0; box-shadow: none; page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============== DIAPOSITIVA 1: PORTADA ============== -->
+<div class="slide">
+  <div class="cover">
+    <div class="logo-big">AVANTIS<span>CORP</span></div>
+    <h1>Estrategias Clásicas PROA</h1>
+    <h2>Guías Locales, Auditoría y Retroalimentación</h2>
+    <div class="author">
+      <strong>Diplomado en Programas de Optimización del Uso de Antimicrobianos (PROA)</strong><br><br>
+      <strong>Expositora:</strong> MSc. Elisa Curay<br>
+      Delegada Técnica PROA - HGR<br><br>
+      Clase Magistral · Duración Total: 120 minutos
+    </div>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 2: ESTRUCTURA DE LA SESIÓN ============== -->
+<div class="slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">02 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title">Estructura de la Sesión (120 minutos)</h1>
+    <div class="grid-3">
+      <div class="card" style="border-left-color:#0066b3;">
+        <h3>📚 Bloque 1: Clase Magistral</h3>
+        <p><strong>60 minutos</strong><br>Marco conceptual, desarrollo teórico de las tres estrategias clásicas, evidencia científica y casos integradores.</p>
+      </div>
+      <div class="card" style="border-left-color:#f7941d;">
+        <h3>✍️ Bloque 2: Trabajo Individual</h3>
+        <p><strong>30 minutos</strong><br>Desarrollo en clase de tarea aplicada al contexto institucional. Entrega en PDF al término.</p>
+      </div>
+      <div class="card" style="border-left-color:#2e7d32;">
+        <h3>💬 Bloque 3: Discusión</h3>
+        <p><strong>30 minutos</strong><br>Socialización de tareas, análisis crítico, retroalimentación grupal y cierre con aprendizajes clave.</p>
+      </div>
+    </div>
+    <div class="objective-box" style="margin-top:15px;">
+      <h2 class="subtitle" style="margin-bottom:6px;">🎯 Objetivo General</h2>
+      <p style="font-size:14px;">Al finalizar la sesión, el participante será capaz de <strong>diseñar, implementar y evaluar</strong> las tres estrategias clásicas PROA (guías locales, auditoría prospectiva y retroalimentación) en su institución de salud, con base en evidencia y adaptación al contexto local.</p>
+    </div>
+  </div>
+  <div class="footer">
+    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
+    <span class="web">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 3: AGENDA DETALLADA ============== -->
+<div class="slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">03 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title">Agenda Detallada de la Clase Magistral (60 min)</h1>
+    <table class="proa">
+      <thead>
+        <tr><th style="width:15%;">Tiempo</th><th>Contenido</th><th style="width:18%;">Diapositivas</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>0 - 5 min</strong></td><td>Introducción, contexto epidemiológico de la RAM y justificación PROA</td><td>4 - 6</td></tr>
+        <tr><td><strong>5 - 10 min</strong></td><td>Marco conceptual: estrategias restrictivas vs persuasivas</td><td>7 - 8</td></tr>
+        <tr><td><strong>10 - 25 min</strong></td><td><strong>Guías locales:</strong> definición, atributos, proceso y barreras</td><td>9 - 14</td></tr>
+        <tr><td><strong>25 - 45 min</strong></td><td><strong>Auditoría prospectiva con retroalimentación</strong>: metodología y operativa</td><td>15 - 22</td></tr>
+        <tr><td><strong>45 - 53 min</strong></td><td>Indicadores, evidencia Cochrane y cuadro de mando PROA</td><td>23 - 25</td></tr>
+        <tr><td><strong>53 - 60 min</strong></td><td>Caso clínico integrador y mensajes clave</td><td>26 - 28</td></tr>
+        <tr><td><strong>60 - 90 min</strong></td><td>Tarea individual en clase + entrega en PDF</td><td>29 - 30</td></tr>
+        <tr><td><strong>90 - 120 min</strong></td><td>Discusión grupal y cierre</td><td>31 - 32</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="footer">
+    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
+    <span class="web">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 4: CONTEXTO RAM ============== -->
+<div class="slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">04 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title">Contexto: La Resistencia Antimicrobiana (RAM)</h1>
+    <p style="font-size:15px; margin-bottom:12px;">La RAM es declarada por la <strong>OMS</strong> como una de las <strong>10 principales amenazas para la salud pública mundial</strong>. Su impacto se refleja en mortalidad, costos sanitarios y pérdida de eficacia de antimicrobianos esenciales.</p>
+    <div class="grid-4">
+      <div class="stat-box">
+        <div class="number">4.95M</div>
+        <div class="label">Muertes asociadas a RAM en 2019 (Lancet 2022)</div>
+      </div>
+      <div class="stat-box">
+        <div class="number">1.27M</div>
+        <div class="label">Muertes directamente atribuibles a RAM/año</div>
+      </div>
+      <div class="stat-box">
+        <div class="number">10M</div>
+        <div class="label">Muertes proyectadas/año al 2050 sin acción</div>
+      </div>
+      <div class="stat-box">
+        <div class="number">30-50%</div>
+        <div class="label">Prescripciones antibióticas inapropiadas en hospitales</div>
+      </div>
+    </div>
+    <div class="highlight-box" style="margin-top:18px;">
+      🌍 <strong>Plan de Acción Mundial OMS contra la RAM (2015):</strong> exige a los Estados implementar PROA institucionales como pilar estratégico. Los PROA son obligatorios en muchos países y su evidencia de impacto es robusta.
+    </div>
+    <p class="ref">Murray CJL et al. Global burden of bacterial antimicrobial resistance in 2019. Lancet 2022;399(10325):629-655</p>
+  </div>
+  <div class="footer">
+    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
+    <span class="web">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 5: QUÉ ES PROA ============== -->
+<div class="slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">05 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title">¿Qué es un PROA? Recordatorio Conceptual</h1>
+    <h2 class="subtitle">📖 Definición operativa</h2>
+    <p style="font-size:15px; margin-bottom:10px;">Un <strong>Programa de Optimización del Uso de Antimicrobianos (PROA)</strong> es un conjunto coordinado de intervenciones diseñadas para mejorar y medir el uso apropiado de antimicrobianos, promoviendo la selección del régimen óptimo (fármaco, dosis, duración, vía) para lograr el mejor desenlace clínico minimizando toxicidad, resistencia y costos.</p>
+    
+    <h2 class="subtitle">🏛️ Pilares estructurales (CDC Core Elements 2019)</h2>
+    <div class="grid-3">
+      <div class="card"><h3>1. Liderazgo</h3><p>Compromiso institucional, presupuesto, recursos humanos dedicados.</p></div>
+      <div class="card"><h3>2. Responsabilidad</h3><p>Médico líder PROA con autoridad clara.</p></div>
+      <div class="card"><h3>3. Experticia farmacéutica</h3><p>Químico farmacéutico co-líder operativo.</p></div>
+      <div class="card"><h3>4. Acciones</h3><p>Intervenciones (guías, auditoría, restricciones).</p></div>
+      <div class="card"><h3>5. Seguimiento</h3><p>Monitoreo de procesos, consumo y resultados.</p></div>
+      <div class="card"><h3>6. Reporte y educación</h3><p>Comunicación periódica y capacitación continua.</p></div>
+    </div>
+    <p class="ref">CDC. Core Elements of Hospital Antibiotic Stewardship Programs 2019</p>
+  </div>
+  <div class="footer">
+    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
+    <span class="web">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 6: OBJETIVOS PROA ============== -->
+<div class="slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">06 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title">Objetivos Fundamentales de un PROA</h1>
+    <div class="grid-2">
+      <div class="card" style="border-left-color:#2e7d32;">
+        <h3>🎯 Objetivos Primarios (Clínicos)</h3>
+        <p>• Mejorar desenlaces clínicos (curación, mortalidad)<br>• Reducir efectos adversos asociados a antimicrobianos<br>• Disminuir infecciones por <em>C. difficile</em><br>• Minimizar selección de cepas resistentes</p>
+      </div>
+      <div class="card" style="border-left-color:#0066b3;">
+        <h3>📊 Objetivos Secundarios (Sistema)</h3>
+        <p>• Reducir consumo innecesario de antimicrobianos<br>• Optimizar costos farmacéuticos<br>• Mejorar adherencia a guías clínicas<br>• Generar cultura de prescripción responsable</p>
+      </div>
+    </div>
+    <h2 class="subtitle" style="margin-top:15px;">🧩 Las "5 D" del Stewardship</h2>
+    <div class="grid-4">
+      <div class="card"><h3>Diagnóstico</h3><p>Correcto antes de tratar.</p></div>
+      <div class="card"><h3>Drug</h3><p>Fármaco correcto.</p></div>
+      <div class="card"><h3>Dose</h3><p>Dosis óptima (PK/PD).</p></div>
+      <div class="card"><h3>Duración</h3><p>El menor tiempo eficaz.</p></div>
+    </div>
+    <div class="highlight-box" style="margin-top:12px;">
+      💡 La <strong>5ª D: De-escalation (desescalamiento)</strong> es transversal a todas las estrategias clásicas que veremos hoy.
+    </div>
+  </div>
+  <div class="footer">
+    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
+    <span class="web">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 7: TIPOS DE INTERVENCIONES ============== -->
+<div class="slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">07 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title">Clasificación de las Intervenciones PROA</h1>
+    <p style="font-size:15px; margin-bottom:10px;">La <strong>IDSA/SHEA (Barlam et al., 2016)</strong> y la <strong>Cochrane Review (Davey et al., 2017)</strong> agrupan las intervenciones en dos grandes categorías:</p>
+    <div class="pros-cons">
+      <div class="pros" style="background:#e3f2fd; border-left-color:#0066b3;">
+        <h3 style="color:#0066b3;">🔒 ESTRATEGIAS RESTRICTIVAS (Front-end)</h3>
+        <ul style="list-style:none;">
+          <li style="padding-left:0;">• Pre-autorización para antimicrobianos restringidos</li>
+          <li style="padding-left:0;">• Formulario terapéutico limitado</li>
+          <li style="padding-left:0;">• Restricción por servicio o por diagnóstico</li>
+          <li style="padding-left:0;">• Stop orders automáticos</li>
+        </ul>
+        <p style="font-size:12px; margin-top:8px;"><strong>Ventaja:</strong> efecto inmediato. <strong>Desventaja:</strong> resistencia cultural, percepción punitiva.</p>
+      </div>
+      <div class="cons" style="background:#fff3e0; border-left-color:#f7941d;">
+        <h3 style="color:#f7941d;">🤝 ESTRATEGIAS PERSUASIVAS (Back-end)</h3>
+        <ul style="list-style:none;">
+          <li style="padding-left:0;">• <strong>Guías locales de tratamiento</strong></li>
+          <li style="padding-left:0;">• <strong>Auditoría prospectiva con feedback</strong></li>
+          <li style="padding-left:0;">• Educación continua y rondas clínicas</li>
+          <li style="padding-left:0;">• Recordatorios y order-sets en CPOE</li>
+        </ul>
+        <p style="font-size:12px; margin-top:8px;"><strong>Ventaja:</strong> sostenibilidad, cambio cultural. <strong>Desventaja:</strong> efecto más lento.</p>
+      </div>
+    </div>
+    <div class="highlight-box">
+      📌 <strong>Hoy nos enfocaremos en las 3 estrategias persuasivas clásicas:</strong> Guías Locales + Auditoría + Retroalimentación. Son el "corazón" de cualquier PROA institucional sostenible.
+    </div>
+  </div>
+  <div class="footer">
+    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
+    <span class="web">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 8: EVIDENCIA COCHRANE ============== -->
+<div class="slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">08 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title">Evidencia: Revisión Cochrane (Davey et al., 2017)</h1>
+    <p style="font-size:15px; margin-bottom:10px;">Revisión sistemática que incluyó <strong>221 estudios</strong> (58 ECA, 163 estudios de series temporales) sobre intervenciones PROA en hospitales.</p>
+    <div class="grid-2">
+      <div class="stat-box">
+        <div class="number">+15%</div>
+        <div class="label">Aumento absoluto en prescripción adecuada con intervenciones combinadas</div>
+      </div>
+      <div class="stat-box">
+        <div class="number">-1.95 días</div>
+        <div class="label">Reducción promedio en duración de antibioticoterapia</div>
+      </div>
+      <div class="stat-box">
+        <div class="number">-1.12 días</div>
+        <div class="label">Reducción promedio en estancia hospitalaria</div>
+      </div>
+      <div class="stat-box">
+        <div class="number">Sin ↑</div>
+        <div class="label">Mortalidad: NO incrementa con intervenciones PROA</div>
+      </div>
+    </div>
+    <h2 class="subtitle" style="margin-top:15px;">🔬 Conclusiones clave</h2>
+    <ul class="styled">
+      <li>Las estrategias <strong>persuasivas y restrictivas son igualmente eficaces</strong> a largo plazo.</li>
+      <li>La <strong>combinación de varias estrategias</strong> (multifacética) supera intervenciones aisladas.</li>
+      <li>El <strong>feedback estructurado</strong> potencia el efecto de las guías locales (sinergia).</li>
+      <li>La <strong>seguridad clínica</strong> está demostrada: no hay aumento de mortalidad ni reingresos.</li>
+    </ul>
+    <p class="ref">Davey P et al. Interventions to improve antibiotic prescribing practices for hospital inpatients. Cochrane Database Syst Rev 2017;2:CD003543</p>
+  </div>
+  <div class="footer">
+    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
+    <span class="web">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 9: SEPARADOR MÓDULO GUÍAS ============== -->
+<div class="slide">
+  <div class="module-divider">
+    <div class="module-label">MÓDULO 1</div>
+    <h1>Guías Locales de<br>Tratamiento Antimicrobiano</h1>
+    <p style="font-size:18px; max-width:70%;">Adaptar lo global a la realidad local: el primer pilar persuasivo del PROA</p>
+    <div class="duration">⏱️ 15 minutos</div>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 10: GUÍAS - DEFINICIÓN ============== -->
+<div class="slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">10 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title">Guías Locales: Definición y Justificación</h1>
+    <h2 class="subtitle">📘 Definición operativa</h2>
+    <p style="font-size:15px; margin-bottom:10px;">Documentos institucionales que <strong>adaptan recomendaciones internacionales</strong> (IDSA, ESCMID, OMS, NICE) a la <strong>epidemiología local</strong>, perfil de resistencia, formulario terapéutico disponible, recursos diagnósticos y características poblacionales del centro.</p>
+    
+    <h2 class="subtitle">❓ ¿Por qué guías "locales" y no solo "internacionales"?</h2>
+    <ul class="styled">
+      <li><strong>Variabilidad geográfica de la resistencia:</strong> la prevalencia de BLEE en Enterobacterias varía del 5% al 70% entre regiones del mismo país.</li>
+      <li><strong>Disponibilidad del formulario:</strong> no todos los centros disponen de los mismos antimicrobianos (ceftolozano-tazobactam, meropenem-vaborbactam, etc.).</li>
+      <li><strong>Características poblacionales:</strong> comorbilidades, patología endémica, perfil del paciente del centro.</li>
+      <li><strong>Recursos diagnósticos:</strong> disponibilidad de PCR, biomarcadores, cultivos rápidos, MALDI-TOF.</li>
+      <li><strong>Apropiación clínica:</strong> los profesionales adhieren más a guías que perciben como "propias".</li>
+    </ul>
+    <div class="highlight-box">
+      💡 <strong>Principio rector:</strong> "Pensar globalmente, actuar localmente". Las guías internacionales orientan; el antibiograma local decide.
+    </div>
+  </div>
+  <div class="footer">
+    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
+    <span class="web">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 11: ATRIBUTOS AGREE-II ============== -->
+<div class="slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">11 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title">Atributos de una Guía Local de Calidad (AGREE-II)</h1>
+    <p style="font-size:14px; margin-bottom:8px;">El instrumento <strong>AGREE-II</strong> evalúa la calidad metodológica de las guías de práctica clínica en 6 dominios:</p>
+    <div class="grid-3">
+      <div class="card">
+        <h3>1. Alcance y propósito</h3>
+        <p>Pregunta clínica clara, objetivos específicos, población definida, escenario delimitado (ej. NAC en adultos hospitalizados).</p>
+      </div>
+      <div class="card">
+        <h3>2. Participación de actores</h3>
+        <p>Equipo multidisciplinario: infectología, microbiología, farmacia, enfermería, médicos asistenciales relevantes.</p>
+      </div>
+      <div class="card">
+        <h3>3. Rigor metodológico</h3>
+        <p>Búsqueda sistemática de evidencia + datos locales de resistencia (antibiograma de los últimos 12-24 meses).</p>
+      </div>
+      <div class="card">
+        <h3>4. Claridad de presentación</h3>
+        <p>Algoritmos visuales, dosis exactas, duración recomendada, criterios explícitos de desescalamiento y suspensión.</p>
+      </div>
+      <div class="card">
+        <h3>5. Aplicabilidad</h3>
+        <p>Considera barreras, facilitadores, recursos disponibles, indicadores de monitoreo y herramientas de implementación.</p>
+      </div>
+      <div class="card">
+        <h3>6. Independencia editorial</h3>
+        <p>Declaración de conflictos de interés, financiación transparente, revisión externa por pares.</p>
+      </div>
+    </div>
+    <p class="ref">AGREE Next Steps Consortium. The AGREE II Instrument [www.agreetrust.org]</p>
+  </div>
+  <div class="footer">
+    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
+    <span class="web">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 12: PROCESO ELABORACIÓN ============== -->
+<div class="slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">12 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title">Proceso de Elaboración de una Guía Local</h1>
+    <div class="timeline">
+      <div class="step-container"><div class="step">1</div><p>Diagnóstico situacional</p></div>
+      <div class="step-container"><div class="step">2</div><p>Análisis epidemiológico local</p></div>
+      <div class="step-container"><div class="step">3</div><p>Redacción multidisciplinaria</p></div>
+      <div class="step-container"><div class="step">4</div><p>Validación y pilotaje</p></div>
+      <div class="step-container"><div class="step">5</div><p>Difusión y monitoreo</p></div>
+    </div>
+    <table class="proa" style="margin-top:15px;">
+      <tr><th style="width:18%;">Etapa</th><th>Actividades clave</th><th style="width:25%;">Productos</th></tr>
+      <tr><td><strong>Diagnóstico</strong></td><td>Identificar escenarios prioritarios, prescripciones inadecuadas más frecuentes</td><td>Mapa de necesidades</td></tr>
+      <tr><td><strong>Epidemiología</strong></td><td>Antibiograma acumulado del centro, perfil de patógenos por servicio</td><td>Reporte microbiológico</td></tr>
+      <tr><td><strong>Redacción</strong></td><td>Revisión de evidencia + adaptación a recursos locales + consenso clínico</td><td>Borrador de guía</td></tr>
+      <tr><td><strong>Validación</strong></td><td>Revisión externa, pilotaje en servicio piloto, ajustes</td><td>Guía aprobada</td></tr>
+      <tr><td><strong>Difusión</strong></td><td>Capacitación, formato bolsillo + digital, integración a CPOE</td><td>Plan de implementación</td></tr>
+    </table>
+  </div>
+  <div class="footer">
+    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
+    <span class="web">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 13: ANTIBIOGRAMA LOCAL ============== -->
+<div class="slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">13 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title">El Antibiograma Local: Fuente de Verdad de la Guía</h1>
+    <h2 class="subtitle">📊 Reglas para construir un antibiograma acumulado válido (CLSI M39)</h2>
+    <ul class="styled">
+      <li><strong>Mínimo 30 aislamientos</strong> por especie/servicio para reportar % de sensibilidad confiable.</li>
+      <li><strong>Solo el primer aislamiento</strong> por paciente y por especie en el período (evitar duplicación).</li>
+      <li><strong>Período mínimo 12 meses</strong>; ideal acumulado anual con tendencia trianual.</li>
+      <li><strong>Estratificar</strong>: por servicio (UCI vs sala general), origen (comunitario vs nosocomial), grupo etario.</li>
+      <li><strong>Excluir cultivos de vigilancia</strong> y muestras de colonización; usar solo aislamientos clínicamente significativos.</li>
+    </ul>
+    <h2 class="subtitle" style="margin-top:12px;">🎯 Uso del antibiograma en la guía</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Decisión empírica</h3>
+        <p>Elegir antibiótico con sensibilidad ≥80-90% frente al patógeno más probable según escenario clínico.</p>
+      </div>
+      <div class="card">
+        <h3>Detección de tendencias</h3>
+        <p>Monitorear emergencia de resistencias (KPC, NDM, MRSA-CA) para actualización oportuna de la guía.</p>
+      </div>
+    </div>
+    <p class="ref">CLSI M39-A4. Analysis and Presentation of Cumulative Antimicrobial Susceptibility Test Data; 2014</p>
+  </div>
+  <div class="footer">
+    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
+    <span class="web">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 14: IMPLEMENTACIÓN Y BARRERAS ============== -->
+<div class="slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">14 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title">Implementación: Claves del Éxito y Barreras</h1>
+    <div class="pros-cons">
+      <div class="pros">
+        <h3>✅ Facilitadores de adherencia</h3>
+        <ul style="list-style:none;">
+          <li>Formato de bolsillo + app móvil + intranet</li>
+          <li>Códigos QR en estaciones de enfermería y CPOE</li>
+          <li>Order-sets preestablecidos por escenario clínico</li>
+          <li>Capacitación inicial + recordatorios periódicos</li>
+          <li>Champions clínicos en cada servicio</li>
+          <li>Feedback de adherencia individual y por servicio</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h3>⚠️ Barreras frecuentes</h3>
+        <ul style="list-style:none;">
+          <li>Guía extensa, poco práctica en cama del paciente</li>
+          <li>Falta de actualización (>3 años desactualizada)</li>
+          <li>Resistencia de servicios al "intervencionismo PROA"</li>
+          <li>Ausencia de integración con CPOE/historia clínica</li>
+          <li>Datos de antibiograma local no representativos</li>
+          <li>Personal en rotación (residentes) sin inducción</li>
+        </ul>
+      </div>
+    </div>
+    <div class="highlight-box" style="margin-top:12px;">
+      ⚠️ <strong>Error frecuente:</strong> "copiar-pegar" guías internacionales sin adaptación local genera fracaso terapéutico (sub-cobertura empírica) o sobreuso de antibióticos de amplio espectro innecesarios. La <strong>credibilidad del PROA</strong> depende de la calidad de la guía.
+    </div>
+    <p class="ref">Schuts EC et al. Current evidence on hospital antimicrobial stewardship objectives. Lancet Infect Dis 2016;16(7):847-856</p>
+  </div>
+  <div class="footer">
+    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
+    <span class="web">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 15: SEPARADOR AUDITORÍA ============== -->
+<div class="slide">
+  <div class="module-divider">
+    <div class="module-label">MÓDULO 2</div>
+    <h1>Auditoría Prospectiva<br>con Retroalimentación</h1>
+    <p style="font-size:18px; max-width:70%;">El "Audit & Feedback" — la intervención persuasiva con mayor evidencia de impacto en PROA</p>
+    <div class="duration">⏱️ 20 minutos</div>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 16: AUDITORÍA - DEFINICIÓN ============== -->
+<div class="slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">16 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title">Auditoría Prospectiva con Retroalimentación (PAF)</h1>
+    <h2 class="subtitle">🔍 Definición</h2>
+    <p style="font-size:15px; margin-bottom:10px;">Revisión <strong>prospectiva</strong>, individualizada y no impositiva de las prescripciones antimicrobianas activas, con <strong>recomendación directa al médico tratante</strong> sobre la optimización del tratamiento (espectro, dosis, duración, vía, desescalamiento o suspensión).</p>
+    
+    <div class="grid-2">
+      <div class="card" style="border-left-color:#0066b3;">
+        <h3>📌 Características clave</h3>
+        <p>• Realizada a las <strong>48-72 h</strong> del inicio del antimicrobiano<br>• Recomendación <strong>NO vinculante</strong> (consultoría)<br>• Enfoque <strong>educativo, no punitivo</strong><br>• Documentada en historia clínica<br>• Seguimiento de aceptación</p>
+      </div>
+      <div class="card" style="border-left-color:#0066b3;">
+        <h3>📊 Recomendación IDSA/SHEA 2016</h3>
+        <p><strong>Recomendación FUERTE, evidencia de calidad MODERADA</strong>. Reduce consumo de antibióticos de amplio espectro, disminuye <em>C. difficile</em>, costos y resistencias. Sin afectar mortalidad ni reingresos.</p>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      💡 <strong>Diferencia con la pre-autorización:</strong> la auditoría actúa <em>después</em> de iniciado el tratamiento (back-end), permitiendo refinar con datos clínicos y microbiológicos disponibles, mientras que la pre-autorización actúa <em>antes</em> (front-end).
+    </div>
+    <p class="ref">Barlam TF et al. Implementing an antibiotic stewardship program. Clin Infect Dis 2016;62(10):e51-77</p>
+  </div>
+  <div class="footer">
+    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
+    <span class="web">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 17: ANTIMICROBIANOS DIANA ============== -->
+<div class="slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">17 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title">¿Qué Antimicrobianos Auditar Prioritariamente?</h1>
+    <p style="font-size:14px; margin-bottom:10px;">No todos los antimicrobianos requieren auditoría intensiva. Se prioriza por <strong>riesgo de resistencia, toxicidad, costo y volumen de uso</strong>.</p>
+    <div class="grid-3">
+      <div class="card">
+        <h3>🦠 Anti-Gram negativos amplio espectro</h3>
+        <p>Carbapenémicos (meropenem, imipenem), piperacilina-tazobactam, cefalosporinas anti-Pseudomonas (cefepime, ceftazidima), aminoglucósidos.</p>
+      </div>
+      <div class="card">
+        <h3>🦠 Anti-Gram positivos resistentes</h3>
+        <p>Vancomicina, linezolid, daptomicina, ceftarolina, tedizolid.</p>
+      </div>
+      <div class="card">
+        <h3>🦠 Antifúngicos sistémicos</h3>
+        <p>Equinocandinas (caspofungina, anidulafungina), voriconazol, posaconazol, anfotericina liposomal.</p>
+      </div>
+      <div class="card">
+        <h3>💊 Anti-RAM extrema (Reserve OMS)</h3>
+        <p>Ceftolozano-tazobactam, ceftazidima-avibactam, meropenem-vaborbactam, cefiderocol, polimixinas.</p>
+      </div>
+      <div class="card">
+        <h3>🦠 Antivirales de alto costo</h3>
+        <p>Ganciclovir, valganciclovir, oseltamivir prolongado, remdesivir.</p>
+      </div>
+      <div class="card">
+        <h3>📍 Escenarios prioritarios</h3>
+        <p>Tratamientos >7 días, neutropenia febril prolongada, sospecha de infecciones por MDR, pacientes en UCI.</p>
+      </div>
+    </div>
+    <div class="highlight-box" style="margin-top:10px;">
+      📌 <strong>Clasificación AWaRe (OMS 2021):</strong> priorizar auditoría sobre los grupos <strong>Watch</strong> y <strong>Reserve</strong>; los <strong>Access</strong> requieren menos vigilancia rutinaria.
+    </div>
+  </div>
+  <div class="footer">
+    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
+    <span class="web">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 18: METODOLOGÍA AUDITORÍA ============== -->
+<div class="slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">18 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title">Metodología Operativa de la Auditoría (Paso a Paso)</h1>
+    <table class="proa">
+      <thead>
+        <tr><th style="width:15%;">Etapa</th><th style="width:45%;">Acción</th><th>Responsable / Herramienta</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>1. Identificación</strong></td><td>Listado diario de pacientes con antimicrobianos diana (reporte automatizado de farmacia/CPOE)</td><td>Químico farmacéutico PROA</td></tr>
+        <tr><td><strong>2. Revisión clínica</strong></td><td>Historia clínica, microbiología, imágenes, biomarcadores (PCR, PCT), evolución</td><td>Médico infectólogo / internista PROA</td></tr>
+        <tr><td><strong>3. Evaluación</strong></td><td>Adecuación según guía local: indicación, espectro, dosis, vía, duración, interacciones</td><td>Checklist estandarizado PROA</td></tr>
+        <tr><td><strong>4. Recomendación</strong></td><td>Sugerencia escrita y/o verbal al equipo tratante (mantener / desescalar / cambiar / suspender)</td><td>Nota en HC + comunicación directa</td></tr>
+        <tr><td><strong>5. Seguimiento</strong></td><td>Verificar aceptación a las 24-48 h y desenlace clínico del paciente</td><td>Registro en base de datos PROA</td></tr>
+        <tr><td><strong>6. Análisis</strong></td><td>Cálculo de indicadores: tasa de aceptación, tipo de recomendación, ahorro de DDD</td><td>Reporte mensual al comité PROA</td></tr>
+      </tbody>
+    </table>
+    <div class="highlight-box" style="margin-top:12px;">
+      💡 <strong>Regla de oro:</strong> "El médico tratante mantiene la autoridad final sobre la decisión clínica." La auditoría es un <em>servicio consultivo</em>, no una orden administrativa. Esta postura es esencial para mantener la relación de confianza y la sostenibilidad del programa.
+    </div>
+  </div>
+  <div class="footer">
+    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
+    <span class="web">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 19: TIPOS DE RECOMENDACIONES ============== -->
+<div class="slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">19 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title">Tipos de Recomendaciones de Auditoría</h1>
+    <div class="grid-2">
+      <div class="card">
+        <h3>🔽 Desescalamiento</h3>
+        <p>Cambio de antibiótico de amplio espectro a uno de espectro reducido tras conocer microbiología (ej. meropenem → ampicilina en <em>Listeria</em>).</p>
+      </div>
+      <div class="card">
+        <h3>⏹️ Suspensión</h3>
+        <p>Detener antimicrobiano cuando se descarta infección bacteriana o se completa duración óptima (ej. NAC con buena evolución a 5 días).</p>
+      </div>
+      <div class="card">
+        <h3>🔁 Cambio de antibiótico</h3>
+        <p>Por resistencia detectada, fracaso terapéutico, toxicidad o interacción medicamentosa relevante.</p>
+      </div>
+      <div class="card">
+        <h3>📐 Ajuste de dosis</h3>
+        <p>Por función renal, peso, sitio de infección (meningitis), criterios PK/PD (infusión extendida de β-lactámicos).</p>
+      </div>
+      <div class="card">
+        <h3>💊 Terapia secuencial (IV→VO)</h3>
+        <p>Cambio a vía oral en paciente estable, afebril 24-48 h, tolerando dieta, con biodisponibilidad oral adecuada (fluoroquinolonas, linezolid, metronidazol).</p>
+      </div>
+      <div class="card">
+        <h3>⏱️ Optimización de duración</h3>
+        <p>Ajustar a evidencia actual: NAC 5 días, ITU no complicada 3-5 días, PNA 7 días, bacteriemia por GN 7 días.</p>
+      </div>
+    </div>
+    <p class="ref">Spellberg B. The new antibiotic mantra: "Shorter is better". JAMA Intern Med 2016;176(9):1254-1255</p>
+  </div>
+  <div class="footer">
+    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
+    <span class="web">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 20: RETROALIMENTACIÓN TIPOS ============== -->
+<div class="slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">20 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title">Retroalimentación: Tipos y Modalidades</h1>
+    <div class="grid-2">
+      <div class="card" style="border-left-color:#0066b3;">
+        <h3>👤 Feedback Individual (caso a caso)</h3>
+        <p>Recomendación directa al prescriptor sobre un paciente específico, en tiempo real o cercano. <strong>Mayor impacto educativo inmediato y mayor tasa de aceptación</strong>. Requiere personal dedicado.</p>
+      </div>
+      <div class="card" style="border-left-color:#0066b3;">
+        <h3>📊 Feedback Agregado (servicio/institución)</h3>
+        <p>Reportes periódicos (mensual/trimestral) con indicadores: DDD/100 días-cama, % adherencia a guías, tasa de aceptación, comparación entre servicios. <strong>Impulsa cambio cultural</strong>.</p>
+      </div>
+    </div>
+    <h2 class="subtitle" style="margin-top:12px;">📡 Modalidades de comunicación</h2>
+    <div class="grid-3">
+      <div class="card"><h3>Verbal directa</h3><p>Pase de visita conjunto, llamada telefónica. Alto impacto, requiere tiempo.</p></div>
+      <div class="card"><h3>Escrita en HC</h3><p>Nota PROA estructurada, formal. Genera trazabilidad documental.</p></div>
+      <div class="card"><h3>Digital / app</h3><p>Mensajería institucional segura, alertas en CPOE. Escalable y asíncrona.</p></div>
+      <div class="card"><h3>Reportes visuales</h3><p>Dashboards con gráficos de tendencia y benchmarking entre pares.</p></div>
+      <div class="card"><h3>Sesiones académicas</h3><p>Discusión de casos auditados en reuniones del servicio (educativo grupal).</p></div>
+      <div class="card"><h3>Newsletter PROA</h3><p>Boletín mensual con casos destacados, evidencia y datos institucionales.</p></div>
+    </div>
+  </div>
+  <div class="footer">
+    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
+    <span class="web">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 21: PRINCIPIOS FEEDBACK EFECTIVO ============== -->
+<div class="slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">21 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title">Principios del Feedback Efectivo</h1>
+    <p style="font-size:14px; margin-bottom:8px;">Basados en la revisión Cochrane de Ivers et al. (2012, 140 estudios) y el modelo de <strong>Clinical Performance Feedback Intervention Theory (CP-FIT)</strong>.</p>
+    <div class="grid-2">
+      <div class="card">
+        <h3>⏰ Oportuno</h3>
+        <p>Cuanto más cercano al evento clínico, mayor efecto educativo. Idealmente dentro de 24-72 h de la prescripción.</p>
+      </div>
+      <div class="card">
+        <h3>🎯 Específico</h3>
+        <p>Mensaje concreto: qué cambiar, por qué y cómo. Evitar generalidades. Citar guía local y evidencia.</p>
+      </div>
+      <div class="card">
+        <h3>📈 Comparativo</h3>
+        <p>Con metas claras, benchmarking entre pares y servicios. Mostrar tendencia individual e institucional.</p>
+      </div>
+      <div class="card">
+        <h3>🔄 Bidireccional</h3>
+        <p>Escuchar al prescriptor, no monólogo del PROA. Considerar el contexto clínico que el equipo conoce mejor.</p>
+      </div>
+      <div class="card">
+        <h3>🤝 Constructivo / no punitivo</h3>
+        <p>Enfoque en mejora del proceso, no en culpabilizar. Lenguaje colaborativo: "podríamos considerar..."</p>
+      </div>
+      <div class="card">
+        <h3>🔁 Repetido y combinado</h3>
+        <p>Verbal + escrito + visual. Sostenido en el tiempo (no eventos aislados). Múltiples canales potencian efecto.</p>
+      </div>
+    </div>
+    <div class="highlight-box" style="margin-top:10px;">
+      💡 <strong>Frase clave del feedback efectivo:</strong> "Comparado con la guía local y con sus pares, su prescripción está/podría... Le sugerimos considerar... porque la evidencia/microbiología muestra..."
+    </div>
+    <p class="ref">Ivers N et al. Audit and feedback: effects on professional practice. Cochrane 2012;6:CD000259 / Brown B et al. CP-FIT theory. Implement Sci 2019</p>
+  </div>
+  <div class="footer">
+    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
+    <span class="web">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 22: BARRERAS AUDITORÍA ============== -->
+<div class="slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">22 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title">Barreras y Facilitadores de la Auditoría</h1>
+    <div class="pros-cons">
+      <div class="cons">
+        <h3>⚠️ Barreras frecuentes</h3>
+        <ul style="list-style:none;">
+          <li>Recursos humanos insuficientes (equipo PROA reducido)</li>
+          <li>Resistencia clínica: "no me digan cómo prescribir"</li>
+          <li>Jerarquías hospitalarias rígidas</li>
+          <li>Sistema de información fragmentado (sin CPOE)</li>
+          <li>Ausencia de protocolos de auditoría estandarizados</li>
+          <li>Feedback tardío, agregado pero no individualizado</li>
+          <li>Falta de soporte de la dirección institucional</li>
+        </ul>
+      </div>
+      <div class="pros">
+        <h3>✅ Facilitadores</h3>
+        <ul style="list-style:none;">
+          <li>Champions clínicos en cada servicio</li>
+          <li>Liderazgo institucional comprometido</li>
+          <li>CPOE con alertas integradas y reportes automatizados</li>
+          <li>Capacitación inicial y educación continua</li>
+          <li>Difusión de éxitos: casos donde la auditoría salvó vidas</li>
+          <li>Indicadores transparentes y compartidos</li>
+          <li>Cultura de seguridad del paciente como marco</li>
+        </ul>
+      </div>
+    </div>
+    <div class="highlight-box" style="margin-top:12px;">
+      🛠️ <strong>Estrategia de implementación gradual:</strong> iniciar la auditoría en <strong>1-2 servicios piloto</strong> con buena disposición (UCI, Medicina Interna), demostrar resultados, expandir a otros servicios. El "efecto demostración" es clave.
+    </div>
+    <p class="ref">Pulcini C et al. Antimicrobial stewardship in Europe: experiences and perspectives. Clin Microbiol Infect 2014;20(10):963-972</p>
+  </div>
+  <div class="footer">
+    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
+    <span class="web">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 23: SEPARADOR INDICADORES ============== -->
+<div class="slide">
+  <div class="module-divider">
+    <div class="module-label">MÓDULO 3</div>
+    <h1>Indicadores y Evaluación<br>de Impacto</h1>
+    <p style="font-size:18px; max-width:70%;">"Lo que no se mide, no se mejora": el cuadro de mando del PROA</p>
+    <div class="duration">⏱️ 8 minutos</div>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 24: INDICADORES TIPOS ============== -->
+<div class="slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">24 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title">Indicadores PROA: Proceso, Consumo y Resultado</h1>
+    <table class="proa">
+      <thead>
+        <tr><th style="width:15%;">Tipo</th><th>Indicador</th><th style="width:22%;">Meta sugerida</th></tr>
+      </thead>
+      <tbody>
+        <tr><td rowspan="3"><strong>Proceso</strong></td><td>% prescripciones empíricas concordantes con guía local</td><td>≥ 80%</td></tr>
+        <tr><td>N° auditorías realizadas / N° prescripciones diana</td><td>≥ 90%</td></tr>
+        <tr><td>Tasa de aceptación de recomendaciones PROA</td><td>≥ 70%</td></tr>
+        <tr><td rowspan="3"><strong>Consumo</strong></td><td>DDD por 100 días-cama (carbapenémicos)</td><td>Reducción ≥ 20% basal</td></tr>
+        <tr><td>Días de terapia (DOT) por 1000 pacientes-día</td><td>Tendencia descendente</td></tr>
+        <tr><td>Ratio terapia oral / endovenosa</td><td>↑ progresivo</td></tr>
+        <tr><td rowspan="3"><strong>Resultado clínico</strong></td><td>Incidencia de <em>C. difficile</em> nosocomial</td><td>↓ 30% en 24 meses</td></tr>
+        <tr><td>Resistencia a carbapenémicos en Enterobacterias</td><td>Estabilización / ↓</td></tr>
+        <tr><td>Mortalidad por sepsis (no inferioridad)</td><td>Sin incremento</td></tr>
+        <tr><td><strong>Económico</strong></td><td>Ahorro en costo de antimicrobianos / paciente-día</td><td>Reducción ≥ 15%</td></tr>
+      </tbody>
+    </table>
+    <p class="ref">Morris AM. Antimicrobial stewardship programs: appropriate measures and metrics. Curr Treat Options Infect Dis 2014</p>
+  </div>
+  <div class="footer">
+    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
+    <span class="web">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 25: DDD vs DOT ============== -->
+<div class="slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">25 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title">Métricas de Consumo: DDD vs DOT</h1>
+    <div class="grid-2">
+      <div class="card" style="border-left-color:#0066b3;">
+        <h3>📏 DDD (Defined Daily Dose)</h3>
+        <p><strong>Definición OMS-ATC:</strong> dosis diaria promedio asumida para un adulto en la indicación principal del fármaco.<br><br>
+        <strong>Fórmula:</strong> g consumidos ÷ DDD (g) × 100/días-cama<br><br>
+        <strong>Ventaja:</strong> estandarizada internacionalmente, comparable entre centros.<br>
+        <strong>Limitación:</strong> no refleja bien dosis pediátricas, ajustes por función renal, ni dosis altas terapéuticas.</p>
+      </div>
+      <div class="card" style="border-left-color:#0066b3;">
+        <h3>📏 DOT (Days of Therapy)</h3>
+        <p><strong>Definición CDC-NHSN:</strong> número de días que un paciente recibe un antimicrobiano específico, independientemente de la dosis.<br><br>
+        <strong>Fórmula:</strong> días con antibiótico × 1000/pacientes-día<br><br>
+        <strong>Ventaja:</strong> refleja exposición real, válido en pediatría y ajustes de dosis.<br>
+        <strong>Limitación:</strong> requiere CPOE robusto; combinaciones cuentan doble.</p>
+      </div>
+    </div>
+    <div class="highlight-box" style="margin-top:12px;">
+      💡 <strong>Recomendación actual (CDC, IDSA):</strong> usar preferentemente <strong>DOT</strong> en hospitales con CPOE; DDD sigue siendo válido y útil para comparaciones internacionales y benchmarking. <strong>LOT (Length of Therapy)</strong> mide días con cualquier antibiótico (sin contar combinaciones por separado).
+    </div>
+  </div>
+  <div class="footer">
+    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
+    <span class="web">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 26: CASO CLÍNICO 1 ============== -->
+<div class="slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">26 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title">Caso Clínico Integrador 1 - NAC</h1>
+    <div class="case-study">
+      <p><strong>Paciente:</strong> Varón de 68 años, hospitalizado en Medicina Interna por neumonía adquirida en la comunidad (NAC). Día 4 de hospitalización recibe <strong>meropenem 1 g c/8 h EV</strong> indicado en urgencias. Antecedentes: HTA, DM2. Sin hospitalización previa. Sin uso de antibióticos en los últimos 90 días.</p>
+      <p style="margin-top:6px;"><strong>Hemocultivos (día 2):</strong> negativos. <strong>Cultivo de esputo:</strong> <em>Streptococcus pneumoniae</em> sensible a penicilina y ceftriaxona. <strong>PCR:</strong> 145 → 22 mg/L. Afebril desde día 2. Saturación 96% aire ambiental. Tolera vía oral.</p>
+    </div>
+    <h2 class="subtitle" style="margin-top:12px;">❓ Discusión guiada</h2>
+    <ul class="styled">
+      <li><strong>¿La elección empírica fue concordante con la guía local de NAC?</strong> Probablemente NO — sobreuso de carbapenémico en NAC sin factores de riesgo de patógenos resistentes.</li>
+      <li><strong>¿Qué recomendación PROA emitiría?</strong> Desescalamiento a <strong>amoxicilina 1g VO c/8h</strong> (terapia secuencial), duración total 5 días desde el inicio.</li>
+      <li><strong>¿Cómo registrar el feedback?</strong> Nota PROA en HC + comunicación verbal al equipo + caso anonimizado para sesión académica del servicio.</li>
+      <li><strong>¿Qué indicador mejora este caso?</strong> Tasa de adherencia a guía NAC, ratio IV/VO, DOT de carbapenémicos, costo por paciente.</li>
+    </ul>
+  </div>
+  <div class="footer">
+    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
+    <span class="web">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 27: CASO CLÍNICO 2 ============== -->
+<div class="slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">27 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title">Caso Clínico Integrador 2 - ITU Complicada</h1>
+    <div class="case-study">
+      <p><strong>Paciente:</strong> Mujer de 74 años, hospitalizada por pielonefritis aguda con sepsis. Antecedente de ITU recurrente (3 episodios en 6 meses), portadora de sonda vesical permanente domiciliaria. Inicia <strong>ceftriaxona 2 g/día EV</strong> empírica.</p>
+      <p style="margin-top:6px;"><strong>Día 3:</strong> urocultivo aísla <em>Klebsiella pneumoniae</em> productora de BLEE, sensible solo a meropenem, ertapenem, amikacina y fosfomicina. Hemocultivos: <em>K. pneumoniae</em> BLEE. Paciente con mejoría clínica parcial, persistencia febril, PCR estable.</p>
+    </div>
+    <h2 class="subtitle" style="margin-top:12px;">❓ Discusión guiada</h2>
+    <ul class="styled">
+      <li><strong>¿La empírica fue adecuada según el riesgo de BLEE?</strong> Cuestionable: paciente con factores de riesgo (ITU recurrente, sonda permanente) podría justificar empírica más amplia según guía local.</li>
+      <li><strong>Recomendación PROA dirigida:</strong> escalar a <strong>ertapenem 1 g/día EV</strong> (más conveniente que meropenem si no hay shock ni Pseudomonas), duración 10-14 días en bacteriemia por BLEE.</li>
+      <li><strong>Plan de seguimiento:</strong> evaluar terapia secuencial a <strong>fosfomicina trometamol VO</strong> tras 7 días si evolución favorable.</li>
+      <li><strong>Lección PROA:</strong> incorporar a la guía local los <strong>factores de riesgo de BLEE</strong> para optimizar terapia empírica futura.</li>
+    </ul>
+  </div>
+  <div class="footer">
+    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
+    <span class="web">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 28: MENSAJES CLAVE ============== -->
+<div class="slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">28 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title">Mensajes Clave para Llevar a la Práctica</h1>
+    <ul class="styled">
+      <li><strong>Las guías locales son la columna vertebral del PROA</strong>: sin ellas, la auditoría carece de estándar comparador.</li>
+      <li><strong>Adaptación local > adopción ciega:</strong> el antibiograma propio define la terapia empírica adecuada.</li>
+      <li><strong>La auditoría prospectiva con feedback</strong> es la intervención persuasiva con <strong>mayor evidencia</strong> y mejor aceptación clínica sostenible.</li>
+      <li><strong>La retroalimentación efectiva</strong> es oportuna, específica, comparativa, bidireccional, no punitiva y combinada (verbal + escrita + visual).</li>
+      <li><strong>Sin indicadores no hay PROA:</strong> medir proceso, consumo y resultado de forma sistemática y compartir resultados de manera transparente.</li>
+      <li><strong>Cambio cultural sostenible:</strong> educar antes que prohibir; persuadir antes que restringir; medir y demostrar antes que imponer.</li>
+      <li><strong>El equipo PROA es multidisciplinario:</strong> infectólogo + farmacéutico clínico + microbiólogo + epidemiólogo + enfermería son indispensables.</li>
+      <li><strong>La sostenibilidad del PROA</strong> depende del liderazgo institucional, recursos asignados y cultura de seguridad del paciente.</li>
+    </ul>
+    <div class="highlight-box" style="margin-top:15px;">
+      🌟 <em>"El mejor antibiótico es el que no se necesita; el segundo mejor, el que se usa correctamente y por el menor tiempo eficaz posible."</em>
+    </div>
+  </div>
+  <div class="footer">
+    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
+    <span class="web">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 29: TAREA INDIVIDUAL ============== -->
+<div class="slide task-slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">29 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title" style="color:#ff6f00; border-bottom-color:#0066b3;">📝 Tarea Individual en Clase (30 min)</h1>
+    <div class="objective-box" style="background:#fff3e0; border-color:#ff6f00;">
+      <h2 class="subtitle" style="color:#ff6f00; margin-bottom:6px;">Instrucciones generales</h2>
+      <p style="font-size:14px;">Desarrolle individualmente la siguiente actividad <strong>durante los próximos 30 minutos</strong>. Al finalizar, exporte su documento en <strong>formato PDF</strong> y envíelo al aula virtual del diplomado antes del cierre de la sesión. <strong>Extensión:</strong> 2 a 3 páginas (Word/Google Docs convertido a PDF).</p>
+    </div>
+
+    <h2 class="subtitle" style="margin-top:10px;">🎯 Consigna</h2>
+    <p style="font-size:14px; margin-bottom:6px;">Considerando un servicio hospitalario donde usted trabaja (real o hipotético), elabore un <strong>plan operativo PROA</strong> que incluya los siguientes seis componentes:</p>
+    <ul class="styled">
+      <li><strong>(1) Selección de un escenario clínico</strong> para elaborar una guía local (ej. NAC, ITU complicada, sepsis abdominal, neutropenia febril). Justifique la elección en 3 líneas con datos epidemiológicos del servicio.</li>
+      <li><strong>(2) Tres antimicrobianos diana</strong> que priorizaría auditar prospectivamente y por qué (use clasificación AWaRe).</li>
+      <li><strong>(3) Diseño del proceso de auditoría</strong>: ¿quién audita?, ¿con qué frecuencia?, ¿con qué herramienta de registro?, ¿en qué momento del tratamiento?, ¿cómo entrega el feedback al prescriptor?</li>
+      <li><strong>(4) Tres indicadores</strong> (uno de proceso, uno de consumo y uno de resultado) con su fórmula, meta a 12 meses y fuente de datos.</li>
+      <li><strong>(5) Dos barreras anticipadas</strong> y sus estrategias específicas de mitigación.</li>
+      <li><strong>(6) Cronograma de implementación a 6 meses</strong> (diagrama de Gantt simplificado o tabla de hitos).</li>
+    </ul>
+  </div>
+  <div class="footer" style="background:#ff6f00;">
+    <span>Tarea Individual - Diplomado PROA AVANTIS CORP</span>
+    <span class="web" style="color:white;">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 30: RÚBRICA Y ENTREGA ============== -->
+<div class="slide task-slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">30 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title" style="color:#ff6f00; border-bottom-color:#0066b3;">📊 Rúbrica de Evaluación e Instrucciones de Entrega</h1>
+    <h2 class="subtitle" style="color:#ff6f00;">Rúbrica (Total: 20 puntos)</h2>
+    <table class="proa">
+      <thead>
+        <tr><th style="width:55%;">Criterio</th><th style="width:15%;">Puntaje</th><th>Nivel esperado</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Pertinencia clínica y justificación epidemiológica del escenario seleccionado</td><td>3 pts</td><td>Datos locales</td></tr>
+        <tr><td>Selección razonada de antimicrobianos diana (con clasificación AWaRe)</td><td>3 pts</td><td>Justificada</td></tr>
+        <tr><td>Coherencia y operatividad del proceso de auditoría y feedback</td><td>5 pts</td><td>Detallado y factible</td></tr>
+        <tr><td>Calidad y factibilidad de los indicadores propuestos (proceso, consumo, resultado)</td><td>4 pts</td><td>Con fórmulas y metas</td></tr>
+        <tr><td>Identificación de barreras y estrategias de mitigación realistas</td><td>3 pts</td><td>Contextualizadas</td></tr>
+        <tr><td>Cronograma de implementación a 6 meses claro y viable</td><td>2 pts</td><td>Hitos definidos</td></tr>
+      </tbody>
+    </table>
+    <div class="objective-box" style="background:#fff3e0; border-color:#ff6f00; margin-top:12px;">
+      <h2 class="subtitle" style="color:#ff6f00; margin-bottom:6px;">📤 Instrucciones de entrega</h2>
+      <p style="font-size:13px;">
+        <strong>Formato:</strong> archivo PDF (no se aceptan Word ni imágenes).<br>
+        <strong>Nombre del archivo:</strong> <em>Apellido_Nombre_TareaPROA_EstrategiasClasicas.pdf</em><br>
+        <strong>Plazo:</strong> al término de los 30 minutos asignados.<br>
+        <strong>Plataforma:</strong> aula virtual del Diplomado PROA - AVANTIS CORP.<br>
+        <strong>Calificación mínima aprobatoria:</strong> 14/20 puntos.
+      </p>
+    </div>
+    <p class="ref" style="margin-top:6px;">⏰ Recuerde: al finalizar los 30 minutos iniciaremos la fase de discusión grupal con socialización de tareas seleccionadas.</p>
+  </div>
+  <div class="footer" style="background:#ff6f00;">
+    <span>Tarea Individual - Diplomado PROA AVANTIS CORP</span>
+    <span class="web" style="color:white;">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 31: DISCUSIÓN GRUPAL ============== -->
+<div class="slide discussion-slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">31 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title" style="color:#2e7d32; border-bottom-color:#f7941d;">💬 Discusión Grupal (30 min)</h1>
+    <h2 class="subtitle" style="color:#2e7d32;">🎯 Objetivos de la discusión</h2>
+    <ul class="styled">
+      <li>Socializar planes operativos diseñados por los participantes.</li>
+      <li>Identificar fortalezas, oportunidades de mejora y aprendizajes cruzados.</li>
+      <li>Aplicar los principios del feedback efectivo entre pares (¡practicamos lo aprendido!).</li>
+      <li>Construir colectivamente recomendaciones aplicables a distintos contextos institucionales.</li>
+    </ul>
+    <h2 class="subtitle" style="color:#2e7d32; margin-top:12px;">📋 Estructura de la discusión</h2>
+    <table class="proa">
+      <thead><tr><th style="width:18%;">Tiempo</th><th>Actividad</th><th style="width:25%;">Modalidad</th></tr></thead>
+      <tbody>
+        <tr><td><strong>0-5 min</strong></td><td>Presentación de 2-3 tareas seleccionadas (voluntarios o aleatorio)</td><td>Plenario</td></tr>
+        <tr><td><strong>5-15 min</strong></td><td>Análisis crítico estructurado: ¿qué fortalezas tiene?, ¿qué barreras anticipa?, ¿es viable en su contexto?</td><td>Discusión guiada por la docente</td></tr>
+        <tr><td><strong>15-22 min</strong></td><td>Preguntas detonadoras: dilemas éticos, jerarquías, recursos limitados</td><td>Trabajo colaborativo</td></tr>
+        <tr><td><strong>22-28 min</strong></td><td>Síntesis colectiva: matriz de aprendizajes y recomendaciones aplicables</td><td>Pizarra compartida</td></tr>
+        <tr><td><strong>28-30 min</strong></td><td>Cierre, retroalimentación final y conexión con próxima sesión</td><td>Docente</td></tr>
+      </tbody>
+    </table>
+    <div class="highlight-box" style="margin-top:10px; background:#e8f5e9; border-left-color:#2e7d32;">
+      💡 <strong>Reglas de la discusión:</strong> escucha activa, crítica constructiva, lenguaje no punitivo, respeto a la diversidad de contextos institucionales, foco en mejora colectiva.
+    </div>
+  </div>
+  <div class="footer" style="background:#2e7d32;">
+    <span>Discusión Grupal - Diplomado PROA AVANTIS CORP</span>
+    <span class="web" style="color:#fff8e1;">www.avantiscorp.com</span>
+  </div>
+</div>
+
+<!-- ============== DIAPOSITIVA 32: CIERRE Y BIBLIOGRAFÍA ============== -->
+<div class="slide discussion-slide">
+  <div class="header">
+    <div class="logo">AVANTIS<span>CORP</span></div>
+    <div class="slide-num">32 / 32</div>
+  </div>
+  <div class="content">
+    <h1 class="title" style="color:#2e7d32; border-bottom-color:#f7941d;">🎓 Cierre y Bibliografía Recomendada</h1>
+    <h2 class="subtitle" style="color:#2e7d32;">📚 Lecturas esenciales</h2>
+    <ul class="styled" style="font-size:13px;">
+      <li>Barlam TF et al. <strong>Implementing an Antibiotic Stewardship Program: Guidelines by IDSA/SHEA</strong>. Clin Infect Dis 2016;62(10):e51-77.</li>
+      <li>Davey P et al. <strong>Interventions to improve antibiotic prescribing practices for hospital inpatients</strong>. Cochrane Database Syst Rev 2017;2:CD003543.</li>
+      <li>Ivers N et al. <strong>Audit and feedback: effects on professional practice and healthcare outcomes</strong>. Cochrane Database Syst Rev 2012;6:CD000259.</li>
+      <li>CDC. <strong>Core Elements of Hospital Antibiotic Stewardship Programs</strong>. Atlanta: CDC; 2019.</li>
+      <li>WHO. <strong>Global Action Plan on Antimicrobial Resistance</strong>. Geneva: WHO; 2015.</li>
+      <li>WHO. <strong>AWaRe Classification of Antibiotics</strong>. Geneva: WHO; 2021 update.</li>
+      <li>Schuts EC et al. <strong>Current evidence on hospital antimicrobial stewardship objectives</strong>. Lancet Infect Dis 2016;16(7):847-856.</li>
+      <li>Pulcini C et al. <strong>Forging a new path for antimicrobial stewardship: ESCMID-ESGAP perspective</strong>. Clin Microbiol Infect 2019.</li>
+    </ul>
+    <div class="objective-box" style="background:#e8f5e9; border-color:#2e7d32; margin-top:10px;">
+      <h2 class="subtitle" style="color:#2e7d32; margin-bottom:6px;">🌟 Reflexión final</h2>
+      <p style="font-size:14px; font-style:italic; text-align:center;">"El cambio en el uso de antimicrobianos no se logra con prohibiciones, sino con conocimiento, mediciones, conversaciones y cultura. Cada uno de ustedes es ahora un agente de transformación PROA en su institución."</p>
+    </div>
+    <p style="text-align:center; margin-top:12px; font-size:15px;"><strong>¡Muchas gracias por su atención y participación!</strong></p>
+    <p style="text-align:center; font-size:13px; color:#555;">MSc. Elisa Curay - Delegada Técnica PROA HGR<br>Diplomado PROA · AVANTIS CORP</p>
+  </div>
+  <div class="footer" style="background:#2e7d32;">
+    <span>Diplomado PROA - AVANTIS CORP | MSc. Elisa Curay</span>
+    <span class="web" style="color:#fff8e1;">www.avantiscorp.com</span>
+  </div>
+</div>
+
+</body>
+</html>
